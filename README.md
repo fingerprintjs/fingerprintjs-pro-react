@@ -1,8 +1,12 @@
 # @fingerprintjs/fingerprintjs-pro-react
-FingerprintJS SDK for React Single Page Applications (SPA)
-
 [![npm](https://img.shields.io/npm/v/@fingerprintjs/fingerprintjs-pro-react.svg?style=flat)](https://www.npmjs.com/package/@fingerprintjs/fingerprintjs-pro-react)
 [![License](https://img.shields.io/:license-mit-blue.svg?style=flat)](https://opensource.org/licenses/MIT)
+
+FingerprintJS SDK for React Single Page Applications (SPA)
+
+**This SDK works with FingerprintJS Pro, it will not work with the OSS version!** 
+Learn more about the [difference between Pro and OSS](https://dev.fingerprintjs.com/docs/pro-vs-open-source). 
+If you'd like to have a similar React wrapper for the OSS version of FingerprintJS, consider [raising and issue on our issue tracker](https://github.com/fingerprintjs/fingerprintjs-pro-react/issues).
 
 ## Table of Contents
 
