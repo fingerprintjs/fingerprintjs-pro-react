@@ -12,7 +12,7 @@ export interface VisitorQueryResult<TExtended extends boolean> extends QueryResu
 }
 
 export interface VisitorQueryContext<TExtended extends boolean> extends VisitorQueryResult<TExtended> {
-  getData: (ignoreCache?: boolean) => void
+  getData: (ignoreCache?: boolean) => Promise<VisitorData<TExtended> | void>
 }
 
 const stub = (): never => {

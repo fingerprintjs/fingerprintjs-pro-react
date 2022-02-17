@@ -51,7 +51,13 @@ function SignInPage() {
         className='form'
         onSubmit={(e) => {
           e.preventDefault()
-          getData(ignoreCache)
+          getData(ignoreCache).then((data) => {
+            if (data) {
+              // do something with the visitor data
+              // for example, append visitor data to the form data to send to your server
+              console.log(data)
+            }
+          })
         }}
       >
         <div className='form-control'>

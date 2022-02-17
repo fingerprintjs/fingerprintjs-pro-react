@@ -40,6 +40,7 @@ export function useVisitorData<TExtended extends boolean>(
 
         const result = await getVisitorData(getOptions, ignoreCache)
         setState((state) => ({ ...state, data: result, isLoading: false, error: undefined }))
+        return result
       } catch (error) {
         if (error instanceof Error) {
           error.message = `${error.name}: ${error.message}`
