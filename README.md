@@ -2,7 +2,7 @@
 [![npm](https://img.shields.io/npm/v/@fingerprintjs/fingerprintjs-pro-react.svg?style=flat)](https://www.npmjs.com/package/@fingerprintjs/fingerprintjs-pro-react)
 [![License](https://img.shields.io/:license-mit-blue.svg?style=flat)](https://opensource.org/licenses/MIT)
 
-Easy-to-use React wrapper for FingerprintJS Pro.
+Easy-to-use React wrapper for <strong>[FingerprintJS Pro](https://fingerprintjs.com/)</strong>.
 
 **This SDK works with FingerprintJS Pro, it will not work with the OSS version!** 
 Learn more about the [difference between Pro and OSS](https://dev.fingerprintjs.com/docs/pro-vs-open-source). 
