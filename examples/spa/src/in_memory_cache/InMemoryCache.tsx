@@ -3,8 +3,7 @@ import { useState } from 'react'
 import { Outlet } from 'react-router-dom'
 import { FPJS_TOKEN } from '../shared/utils/env'
 import { Nav } from '../shared/components/Nav'
-import { LoadOptions } from '@fingerprintjs/fingerprintjs-pro'
-import { CacheLocation } from '@fingerprintjs/fingerprintjs-pro-spa'
+import { CacheLocation, LoadOptions } from '@fingerprintjs/fingerprintjs-pro-spa'
 
 function InMemoryCache() {
   const [loadOptions] = useState<LoadOptions>({

@@ -1,7 +1,6 @@
 import FpjsContext, { FpjsContextInterface, QueryResult, VisitorQueryContext } from './fpjs-context'
 import { useCallback, useContext, useEffect, useMemo, useState } from 'react'
-import { VisitorData } from '@fingerprintjs/fingerprintjs-pro-spa'
-import { GetOptions } from '@fingerprintjs/fingerprintjs-pro'
+import { VisitorData, GetOptions } from '@fingerprintjs/fingerprintjs-pro-spa'
 
 /**
  * ```js

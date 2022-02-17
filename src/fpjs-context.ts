@@ -1,6 +1,5 @@
-import React from 'react'
-import { GetOptions } from '@fingerprintjs/fingerprintjs-pro'
-import { VisitorData } from '@fingerprintjs/fingerprintjs-pro-spa'
+import { createContext } from 'react'
+import { VisitorData, GetOptions } from '@fingerprintjs/fingerprintjs-pro-spa'
 
 export interface QueryResult<TData, TError = Error> {
   data?: TData
@@ -33,6 +32,6 @@ export interface FpjsContextInterface<TExtended extends boolean> {
   clearCache: () => void
 }
 
-const FpjsContext = React.createContext<FpjsContextInterface<any>>(initialContext)
+const FpjsContext = createContext<FpjsContextInterface<any>>(initialContext)
 
 export default FpjsContext

@@ -1,7 +1,6 @@
 import { PropsWithChildren, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import FpjsContext from './fpjs-context'
-import { FpjsClient, FpjsClientOptions } from '@fingerprintjs/fingerprintjs-pro-spa'
-import { Agent } from '@fingerprintjs/fingerprintjs-pro'
+import { FpjsClient, FpjsClientOptions, Agent } from '@fingerprintjs/fingerprintjs-pro-spa'
 
 interface FpjsProviderOptions extends FpjsClientOptions {
   /**

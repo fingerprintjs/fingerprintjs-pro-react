@@ -5,13 +5,9 @@ module.exports = {
     node: true,
   },
   extends: [
-    'react-app',
-    'eslint:recommended',
     'plugin:react/recommended',
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:react-hooks/recommended',
-    'plugin:react/jsx-runtime',
-    'plugin:prettier/recommended',
   ],
   globals: {
     Atomics: 'readonly',
