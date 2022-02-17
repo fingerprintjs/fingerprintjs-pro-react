@@ -6,7 +6,7 @@ Easy-to-use React wrapper for FingerprintJS Pro.
 
 **This SDK works with FingerprintJS Pro, it will not work with the OSS version!** 
 Learn more about the [difference between Pro and OSS](https://dev.fingerprintjs.com/docs/pro-vs-open-source). 
-If you'd like to have a similar React wrapper for the OSS version of FingerprintJS, consider [raising an issue in our issue tracker](https://github.com/fingerprintjs/fingerprintjs-pro-react/issues).
+If you'd like to have a similar React wrapper for the [OSS version of FingerprintJS](https://github.com/fingerprintjs/fingerprintjs), consider [raising an issue in our issue tracker](https://github.com/fingerprintjs/fingerprintjs-pro-react/issues).
 
 ## Table of Contents
 
