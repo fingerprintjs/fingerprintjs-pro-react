@@ -161,6 +161,8 @@ export default App;
 
 For support or to provide feedback, please [raise an issue on our issue tracker](https://github.com/fingerprintjs/fingerprintjs-pro-react/issues).
 
+If you require private support, please email us at oss-support@fingerprintjs.com
+
 ## What is FingerprintJS?
 
 ### FingerprintJS Pro is the fraud detection API for your business
