@@ -157,6 +157,8 @@ function App() {
 export default App;
 ```
 
+See the full code example in the [examples folder](https://github.com/fingerprintjs/fingerprintjs-pro-react/tree/main/examples/spa)
+
 ## Support + Feedback
 
 For support or to provide feedback, please [raise an issue on our issue tracker](https://github.com/fingerprintjs/fingerprintjs-pro-react/issues).
