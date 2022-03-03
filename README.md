@@ -58,7 +58,7 @@ import App from './App';
 ReactDOM.render(
   <FpjsProvider
     loadOptions = {{
-      token: 'your-fpjs-public-api-key'
+      apiKey: 'your-fpjs-public-api-key'
     }}
   >
     <App />

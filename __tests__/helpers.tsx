@@ -3,7 +3,7 @@ import { FpjsClientOptions } from '@fingerprintjs/fingerprintjs-pro-spa'
 import { FpjsProvider } from '../src'
 
 export const getDefaultLoadOptions = () => ({
-  token: 'test_token',
+  apiKey: 'test_api_key',
 })
 
 export const createWrapper =
