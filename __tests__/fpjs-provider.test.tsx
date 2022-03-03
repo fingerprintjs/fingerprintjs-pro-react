@@ -6,7 +6,7 @@ import { CacheLocation, FpjsClient, FpjsClientOptions } from '@fingerprintjs/fin
 
 jest.mock('@fingerprintjs/fingerprintjs-pro-spa', () => {
   return {
-    ...jest.requireActual('@fingerprintjs/fingerprintjs-pro-spa'),
+    ...jest.requireActual<any>('@fingerprintjs/fingerprintjs-pro-spa'),
     FpjsClient: jest.fn(),
   }
 })

@@ -2,12 +2,12 @@ import { FpjsProvider } from '@fingerprintjs/fingerprintjs-pro-react'
 import { useState } from 'react'
 import { Outlet } from 'react-router-dom'
 import { Nav } from '../shared/components/Nav'
-import { FPJS_TOKEN } from '../shared/utils/env'
+import { FPJS_API_KEY } from '../shared/utils/env'
 import { CacheLocation, LoadOptions } from '@fingerprintjs/fingerprintjs-pro-spa'
 
 function WithoutCache() {
   const [loadOptions] = useState<LoadOptions>({
-    token: FPJS_TOKEN,
+    apiKey: FPJS_API_KEY,
   })
 
   return (

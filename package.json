@@ -38,11 +38,6 @@
 		"url": "https://github.com/fingerprintjs/fingerprintjs-pro-react/issues"
 	},
 	"homepage": "https://github.com/fingerprintjs/fingerprintjs-pro-react#readme",
-	"eslintConfig": {
-		"extends": [
-			"react-app"
-		]
-	},
 	"dependencies": {
 		"@fingerprintjs/fingerprintjs-pro-spa": "^0.2.3"
 	},
