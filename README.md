@@ -58,7 +58,8 @@ import App from './App';
 ReactDOM.render(
   <FpjsProvider
     loadOptions = {{
-      apiKey: 'your-fpjs-public-api-key'
+      apiKey: 'your-fpjs-public-api-key',
+      region: 'selected region'
     }}
   >
     <App />
@@ -107,7 +108,7 @@ The `useVisitorData` hook also returns a `getData` method which can make an API 
 
 ```jsx
 // src/App.js
-import React from 'react';
+import React, { useState } from 'react';
 import { useVisitorData } from '@fingerprintjs/fingerprintjs-pro-react'
 
 function App() {
