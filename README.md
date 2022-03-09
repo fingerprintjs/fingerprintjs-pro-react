@@ -92,7 +92,7 @@ function App() {
     // perform some logic based on the visitor data
     return (
       <div>
-        Welcome {data.visitorFound ? 'back' : ''}!
+        Welcome {data.visitorFound ? `back ${data.visitorId}` : ''}!
       </div>
     );
   } else {
