@@ -115,7 +115,7 @@ function App() {
     isLoading,
     error,
     getData,
-  } = useVisitorData({tag: 'subscription-form'}, false);
+  } = useVisitorData({tag: 'subscription-form'}, { immediate: false });
   const [email, setEmail] = useState('')
 
   if (isLoading) {
