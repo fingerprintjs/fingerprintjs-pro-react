@@ -46,10 +46,15 @@ export function FpjsProvider<TExtended extends boolean>({
     }
   }, [forceRebuild, clientOptions])
 
-  const clientPromise = useRef<Promise<Agent>>()
+  const clientPromise = useRef<Promise<Agent>>(client.init())
+  const firstRender = useRef(true)
 
   useEffect(() => {
-    clientPromise.current = client.init()
+    if (firstRender) {
+      firstRender.current = false
+    } else {
+      clientPromise.current = client.init()
+    }
   }, [client])
 
   const getVisitorData = useCallback(
