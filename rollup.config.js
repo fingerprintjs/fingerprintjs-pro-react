@@ -24,6 +24,7 @@ const commonInput = {
 
 const commonOutput = {
   exports: 'named',
+  sourcemap: true,
 }
 
 export default [
