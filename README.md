@@ -1,26 +1,32 @@
-# @fingerprintjs/fingerprintjs-pro-react
-[![npm](https://img.shields.io/npm/v/@fingerprintjs/fingerprintjs-pro-react.svg?style=flat)](https://www.npmjs.com/package/@fingerprintjs/fingerprintjs-pro-react)
-[![License](https://img.shields.io/:license-mit-blue.svg?style=flat)](https://opensource.org/licenses/MIT)
+<p align="center">
+  <a href="https://fingerprintjs.com">
+    <img src="https://user-images.githubusercontent.com/10922372/126062498-31921b6c-c7fd-47cb-bf85-9e172e08b664.png" alt="FingerprintJS" width="312px" />
+  </a>
+<p align="center">
+<a href="https://www.npmjs.com/package/@fingerprintjs/fingerprintjs-pro-react">
+  <img src="https://img.shields.io/npm/v/@fingerprintjs/fingerprintjs-pro-react.svg" alt="Current NPM version">
+</a>
+<a href="https://www.npmjs.com/package/@fingerprintjs/fingerprintjs-pro-react">
+  <img src="https://img.shields.io/npm/dm/@fingerprintjs/fingerprintjs-pro-react.svg" alt="Monthly downloads from NPM">
+</a>
+<a href="https://opensource.org/licenses/MIT">
+  <img src="https://img.shields.io/:license-mit-blue.svg" alt="MIT license">
+</a>
+<a href="https://discord.gg/39EpE2neBg">
+  <img src="https://img.shields.io/discord/852099967190433792?style=logo&label=Discord&logo=Discord&logoColor=white" alt="Discord server">
+</a>
+  
+# FingerprintJS Pro React
 
-Easy-to-use React wrapper for <strong>[FingerprintJS Pro](https://fingerprintjs.com/)</strong>.
+FingerprintJS Pro React is an easy-to-use React library for <strong>[FingerprintJS Pro](https://fingerprintjs.com/)</strong>. **This package works with FingerprintJS Pro, it is not compatible with [open-source FingerprintJS](https://github.com/fingerprintjs/fingerprintjs).** You can learn more about the difference between FingerprintJS Pro and open-source FingerprintJS in the [official documentation](https://dev.fingerprintjs.com/docs/pro-vs-open-source).
 
-**This SDK works with FingerprintJS Pro, it will not work with the OSS version!** 
-Learn more about the [difference between Pro and OSS](https://dev.fingerprintjs.com/docs/pro-vs-open-source). 
-If you'd like to have a similar React wrapper for the [OSS version of FingerprintJS](https://github.com/fingerprintjs/fingerprintjs), consider [raising an issue in our issue tracker](https://github.com/fingerprintjs/fingerprintjs-pro-react/issues).
+## Table of contents
 
-## Table of Contents
-
-- [Documentation](#documentation)
 - [Installation](#installation)
-- [Getting Started](#getting-started)
-- [Support + Feedback](#support--feedback)
-- [What is FingerprintJS](#what-is-fingerprintjs)
+- [Getting started](#getting-started)
+- [Documentation](#documentation)
+- [Support and feedback](#support-and-feedback)
 - [License](#license)
-
-## Documentation
-
-This library uses [FingerprintJS Pro](https://fingerprintjs.com/github/) under the hood, you can view the document for the core technology.
-- [Documentation](https://dev.fingerprintjs.com/docs)
 
 ## Installation
 
@@ -36,17 +42,12 @@ Using [yarn](https://yarnpkg.com):
 yarn add @fingerprintjs/fingerprintjs-pro-react
 ```
 
-## Getting Started
+## Getting started
 
-### FingerprintJS public API key
+In order to identify visitors, you'll need a FingerprintJS Pro account (you can [sign up for free](https://dashboard.fingerprintjs.com/signup/)).
+You can learn more about API keys in the [official FingerprintJS Pro documentation](https://dev.fingerprintjs.com/docs/quick-start-guide).
 
-In order to identify visitors you'll need a FingerprintJS Pro account (you can [sign up for free](https://dashboard.fingerprintjs.com/signup/)).
-
-- Go to [FingerprintJS Dashboard](https://dashboard.fingerprintjs.com/)
-- Open the _API keys_ page from the sidebar
-- Find your _Public_ API key
-
-Configure the SDK by wrapping your application in `FpjsProvider`:
+1. Wrap your application (or component) in FpjsProvider. You can specify multiple configuration options.
 
 ```jsx
 // src/index.js
@@ -67,7 +68,7 @@ ReactDOM.render(
 );
 ```
 
-Use the `useVisitorData` hook in your components to perform visitor identification and get the data. 
+2. Use the `useVisitorData` hook in your components to perform visitor identification and get the data. 
 
 ```jsx
 // src/App.js
@@ -157,30 +158,49 @@ function App() {
 export default App;
 ```
 
-See the full code example in the [examples folder](https://github.com/fingerprintjs/fingerprintjs-pro-react/tree/main/examples/spa)
+See the full code example in the [examples folder](https://github.com/fingerprintjs/fingerprintjs-pro-react/tree/main/examples/spa).
 
-## Support + Feedback
+## Documentation
 
-For support or to provide feedback, please [raise an issue on our issue tracker](https://github.com/fingerprintjs/fingerprintjs-pro-react/issues).
+This library uses [FingerprintJS Pro agent](https://fingerprintjs.com/github/) internally. The documentation for the FingerprintJS Pro agent is available on https://dev.fingerprintjs.com/docs.
 
-If you require private support, please email us at oss-support@fingerprintjs.com
+---
 
-## What is FingerprintJS?
+### FpjsProvider props
+#### loadOptions: loadOptions: FingerprintJS.LoadOptions
+Options for the FingerprintJS JS Pro agent `load()` method. Options follow [agent's initialisation properties](https://dev.fingerprintjs.com/docs/js-agent#agent-initialization).
 
-### FingerprintJS Pro is the fraud detection API for your business
+---
 
-FingerprintJS Pro is a combination of a JavaScript agent that runs in the browser and a server-side storage and API system
-that securely identifies visitors and stores all the information you need to detect fraud.
+#### cacheLocation?: CacheLocation
+Defines which built-in cache mechanism the client should use. Caching options follow properties defined in [fingerprintjs-pro-spa repository](https://github.com/fingerprintjs/fingerprintjs-pro-spa#caching).
 
-### JavaScript agent
-FingerprintJS Pro does not calculate fingerprints in the browser. Instead, it uses a lightweight JavaScript agent that collects multiple device signals and sends them to our servers.
-This helps prevent reverse engineering and spoofing of an identifier by advanced bots. The agent is hosted at edge locations around the world. It is only 12 KB in size and 20 ms away from your users.
+---
 
-### Server-side identification system
-Server-side identification system provides a platform that processes and stores page views and events to identify your website visitors.
-It also provides many helpful features that are explained in more detail on dedicated documentation pages.
+#### cache?: ICache
+Custom cache implementation. Takes precedence over the `cacheLocation` property. Caching options follow properties defined in [fingerprintjs-pro-spa repository](https://github.com/fingerprintjs/fingerprintjs-pro-spa#caching).
 
-Learn more on our [official documentation page](https://dev.fingerprintjs.com/docs/introduction)
+---
+
+#### cacheTimeInSeconds?: number;
+Duration in seconds for which data is stored in the cache. Cannot exceed 86_400 (24h) because caching data for longer than 24 hours can negatively affect identification accuracy. Caching options follow properties defined in [fingerprintjs-pro-spa repository](https://github.com/fingerprintjs/fingerprintjs-pro-spa#caching).
+
+---
+
+#### cachePrefix?: string;
+Custom prefix for localStorage and sessionStorage cache keys. Will be ignored if the `cache` is provided. Caching options follow properties defined in [fingerprintjs-pro-spa repository](https://github.com/fingerprintjs/fingerprintjs-pro-spa#caching).
+
+---
+
+### Hooks
+#### useVisitorData(params)
+`useVisitorData` hook performs identification requests with the FingerprintJS Pro API. The returned object contains information about loading status, errors, and [visitor](https://dev.fingerprintjs.com/docs/js-agent#extendedresultac). Parameters for `useVisitorData` function follow parameters of the FingerprintJS Pro's [`get` function](https://dev.fingerprintjs.com/docs/js-agent#parameters-reference).
+
+---
+
+## Support and feedback
+For support or to provide feedback, please [raise an issue on our issue tracker](https://github.com/fingerprintjs/fingerprintjs-pro-react/issues). If you require private support, please email us at oss-support@fingerprintjs.com. If you'd like to have a similar React wrapper for the [open-source FingerprintJS](https://github.com/fingerprintjs/fingerprintjs), consider [raising an issue in our issue tracker](https://github.com/fingerprintjs/fingerprintjs-pro-react/issues).
+
 
 ## License
 
