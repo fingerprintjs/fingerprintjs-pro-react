@@ -1,6 +1,6 @@
 {
 	"name": "@fingerprintjs/fingerprintjs-pro-react",
-	"version": "0.2.1",
+	"version": "0.2.2",
 	"description": "FingerprintJS Pro React SDK",
 	"main": "dist/fp-pro-react.cjs.js",
 	"module": "dist/fp-pro-react.esm.js",
