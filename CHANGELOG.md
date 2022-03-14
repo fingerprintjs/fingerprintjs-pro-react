@@ -1,3 +1,17 @@
+### 0.3.0 (2022-03-14)
+
+##### Chores
+
+*  added source maps ([f922344e](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/f922344e47fc04a8bbce0f10cc99dbc4e5945c20))
+
+##### New Features
+
+*  pass config to the useVisitorData hook ([750733a3](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/750733a39de8cf30db1be5576f30c618c5bdb060))
+
+##### Bug Fixes
+
+*  race condition (getData called before init) ([0c787786](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/0c78778652b598b329d3056ec002bf85d0733460))
+
 #### 0.2.2 (2022-03-11)
 
 ##### Chores
