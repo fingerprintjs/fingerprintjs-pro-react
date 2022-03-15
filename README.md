@@ -165,23 +165,29 @@ See the full code example in the [examples folder](https://github.com/fingerprin
 This library uses [FingerprintJS Pro agent](https://fingerprintjs.com/github/) internally. The documentation for the FingerprintJS Pro agent is available on https://dev.fingerprintjs.com/docs.
 
 ### FpjsProvider props
-#### `loadOptions: loadOptions: FingerprintJS.LoadOptions`
+`loadOptions: FingerprintJS.LoadOptions`
+
 Options for the FingerprintJS JS Pro agent `load()` method. Options follow [agent's initialisation properties](https://dev.fingerprintjs.com/docs/js-agent#agent-initialization).
 
-#### `cacheLocation?: CacheLocation`
+`cacheLocation?: CacheLocation`
+
 Defines which built-in cache mechanism the client should use. Caching options follow properties defined in [fingerprintjs-pro-spa repository](https://github.com/fingerprintjs/fingerprintjs-pro-spa#caching).
 
-#### `cache?: ICache`
+`cache?: ICache`
+
 Custom cache implementation. Takes precedence over the `cacheLocation` property. Caching options follow properties defined in [fingerprintjs-pro-spa repository](https://github.com/fingerprintjs/fingerprintjs-pro-spa#caching).
 
-#### `cacheTimeInSeconds?: number`
+`cacheTimeInSeconds?: number`
+
 Duration in seconds for which data is stored in the cache. Cannot exceed 86_400 (24h) because caching data for longer than 24 hours can negatively affect identification accuracy. Caching options follow properties defined in [fingerprintjs-pro-spa repository](https://github.com/fingerprintjs/fingerprintjs-pro-spa#caching).
 
-#### `cachePrefix?: string`
+`cachePrefix?: string`
+
 Custom prefix for localStorage and sessionStorage cache keys. Will be ignored if the `cache` is provided. Caching options follow properties defined in [fingerprintjs-pro-spa repository](https://github.com/fingerprintjs/fingerprintjs-pro-spa#caching).
 
 ### Hooks
-#### `useVisitorData(params)`
+`useVisitorData(params)`
+
 `useVisitorData` hook performs identification requests with the FingerprintJS Pro API. The returned object contains information about loading status, errors, and [visitor](https://dev.fingerprintjs.com/docs/js-agent#extendedresultac). Parameters for `useVisitorData` function follow parameters of the FingerprintJS Pro's [`get` function](https://dev.fingerprintjs.com/docs/js-agent#parameters-reference).
 
 ## Support and feedback
