@@ -3,6 +3,9 @@
     <img src="https://user-images.githubusercontent.com/10922372/126062498-31921b6c-c7fd-47cb-bf85-9e172e08b664.png" alt="FingerprintJS" width="312px" />
   </a>
 <p align="center">
+<a href="https://github.com/fingerprintjs/fingerprintjs-pro-react/actions/workflows/release.yml">
+  <img src="https://github.com/fingerprintjs/fingerprintjs-pro-react/actions/workflows/release.yml/badge.svg" alt="CI badge" />
+</a>
 <a href="https://www.npmjs.com/package/@fingerprintjs/fingerprintjs-pro-react">
   <img src="https://img.shields.io/npm/v/@fingerprintjs/fingerprintjs-pro-react.svg" alt="Current NPM version">
 </a>
