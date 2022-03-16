@@ -186,9 +186,11 @@ Duration in seconds for which data is stored in the cache. Cannot exceed 86_400 
 Custom prefix for localStorage and sessionStorage cache keys. Will be ignored if the `cache` is provided. Caching options follow properties defined in [fingerprintjs-pro-spa repository](https://github.com/fingerprintjs/fingerprintjs-pro-spa#caching).
 
 ### Hooks
-`useVisitorData(params)`
+`useVisitorData(getOptions, config)`
 
-`useVisitorData` hook performs identification requests with the FingerprintJS Pro API. The returned object contains information about loading status, errors, and [visitor](https://dev.fingerprintjs.com/docs/js-agent#extendedresultac). Parameters for `useVisitorData` function follow parameters of the FingerprintJS Pro's [`get` function](https://dev.fingerprintjs.com/docs/js-agent#parameters-reference).
+`useVisitorData` hook performs identification requests with the FingerprintJS Pro API. The returned object contains information about loading status, errors, and [visitor](https://dev.fingerprintjs.com/docs/js-agent#extendedresultac).
+- `getOptions: GetOptions<TExtended>` parameter follows parameters of the FingerprintJS Pro's [`get` function](https://dev.fingerprintjs.com/docs/js-agent#parameters-reference).
+- `config: UseVisitorDataConfig` parameter determines whether the `getData()` method will be called immediately after the hook mounts or not.
 
 ## Support and feedback
 For support or to provide feedback, please [raise an issue on our issue tracker](https://github.com/fingerprintjs/fingerprintjs-pro-react/issues). If you require private support, please email us at oss-support@fingerprintjs.com. If you'd like to have a similar React wrapper for the [open-source FingerprintJS](https://github.com/fingerprintjs/fingerprintjs), consider [raising an issue in our issue tracker](https://github.com/fingerprintjs/fingerprintjs-pro-react/issues).
