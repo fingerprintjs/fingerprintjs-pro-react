@@ -42,7 +42,7 @@
 	},
 	"homepage": "https://github.com/fingerprintjs/fingerprintjs-pro-react#readme",
 	"dependencies": {
-		"@fingerprintjs/fingerprintjs-pro-spa": "^0.2.4"
+		"@fingerprintjs/fingerprintjs-pro-spa": "^0.3.1"
 	},
 	"devDependencies": {
 		"@rollup/plugin-json": "^4.1.0",
