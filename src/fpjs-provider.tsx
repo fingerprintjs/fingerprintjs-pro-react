@@ -1,6 +1,7 @@
 import { PropsWithChildren, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import FpjsContext from './fpjs-context'
 import { FpjsClient, FpjsClientOptions, Agent } from '@fingerprintjs/fingerprintjs-pro-spa'
+import * as packageInfo from '../package.json'
 
 interface FpjsProviderOptions extends FpjsClientOptions {
   /**
@@ -35,7 +36,16 @@ export function FpjsProvider<TExtended extends boolean>({
   loadOptions,
 }: PropsWithChildren<FpjsProviderOptions>) {
   const clientOptions = useMemo(() => {
-    return { cache, cacheTimeInSeconds, cachePrefix, cacheLocation, loadOptions }
+    return {
+      cache,
+      cacheTimeInSeconds,
+      cachePrefix,
+      cacheLocation,
+      loadOptions: {
+        ...loadOptions,
+        integrationInfo: [...(loadOptions.integrationInfo || []), `fingerprintjs-pro-react/${packageInfo.version}`],
+      },
+    }
   }, [cache, cacheTimeInSeconds, cachePrefix, cacheLocation, loadOptions])
 
   const [client, setClient] = useState<FpjsClient>(() => new FpjsClient(clientOptions))
