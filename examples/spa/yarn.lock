@@ -1149,29 +1149,22 @@
     strip-json-comments "^3.1.1"
 
 "@fingerprintjs/fingerprintjs-pro-react@link:../..":
-  version "0.0.0"
-  uid ""
-
-"@fingerprintjs/fingerprintjs-pro-spa@^0.2.4":
-  version "0.2.4"
-  resolved "https://registry.yarnpkg.com/@fingerprintjs/fingerprintjs-pro-spa/-/fingerprintjs-pro-spa-0.2.4.tgz#53fc70b26f51c07f34eeaf90bd7f0c21f5925c48"
-  integrity sha512-aDE8YJuwEIpQkZzrrDZq19E65eH0OVPf9yybCNkXtdsbwFitgZSgsOlfzF5TvnFe/EbWggornDvbxQopQaJu8g==
+  version "0.3.0"
   dependencies:
-    "@fingerprintjs/fingerprintjs-pro" "^3.5.6"
+    "@fingerprintjs/fingerprintjs-pro-spa" "^0.3.1"
+
+"@fingerprintjs/fingerprintjs-pro-spa@^0.3.1":
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/@fingerprintjs/fingerprintjs-pro-spa/-/fingerprintjs-pro-spa-0.3.1.tgz#01d1c4827958233e502870616a4ca8719dd5e20c"
+  integrity sha512-RPZj9jHBuAOSkHif4X+dYmjA7DMwaiw4W80eUE2oH9KC70+q6I7wT9MLrRO3xf7LyGqxZk2N4Tgd7QJU6v5LvA==
+  dependencies:
+    "@fingerprintjs/fingerprintjs-pro" "^3.6.0"
     tslib "^2.2.0"
 
-"@fingerprintjs/fingerprintjs-pro@^3.5.6":
-  version "3.5.6"
-  resolved "https://registry.yarnpkg.com/@fingerprintjs/fingerprintjs-pro/-/fingerprintjs-pro-3.5.6.tgz#1a57cc940b61ca41693cbcad50593601d8a9185b"
-  integrity sha512-3Dtj5v1YIVpIKfdJDOqRG7b01D0XFZ1JbnQlCzkttZZkFbgA3Irukg9sZ2ed23opNnO82191x6WwWHDwEwNFyw==
-  dependencies:
-    "@fingerprintjs/fingerprintjs" "3.3.3"
-    tslib "^2.0.1"
-
-"@fingerprintjs/fingerprintjs@3.3.3":
-  version "3.3.3"
-  resolved "https://registry.yarnpkg.com/@fingerprintjs/fingerprintjs/-/fingerprintjs-3.3.3.tgz#ead445032c92a79d5f585953019402ed223edc7d"
-  integrity sha512-HH6KqZnopF3NIXypYG4f2qxoSRmGCSzp81wJMfWjSTtvsX3cAg12RFJcm+a6Az3XadcZUrXKW3p5Dv0wyCUeuA==
+"@fingerprintjs/fingerprintjs-pro@^3.6.0":
+  version "3.6.1"
+  resolved "https://registry.yarnpkg.com/@fingerprintjs/fingerprintjs-pro/-/fingerprintjs-pro-3.6.1.tgz#0222b2f6b5975fb67c610bfe9abd015163c4393d"
+  integrity sha512-10A5sNcYRds3VNxDULfLbpRR67ONj8kiz19fSHSm6BpDD7wi0BrjkLmOPEDUTH+jBr88VAHxEIhD39fgL+g89Q==
   dependencies:
     tslib "^2.0.1"
 
@@ -5761,7 +5754,7 @@ lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.20, lodash@^4.17.21, lodash@^4.7.
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
 
-loose-envify@^1.1.0, loose-envify@^1.4.0:
+loose-envify@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/loose-envify/-/loose-envify-1.4.0.tgz#71ee51fa7be4caec1a63839f7e682d8132d30caf"
   integrity sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==
@@ -5917,9 +5910,9 @@ minimatch@^3.0.4, minimatch@^3.1.2:
     brace-expansion "^1.1.7"
 
 minimist@^1.1.1, minimist@^1.2.0, minimist@^1.2.5:
-  version "1.2.5"
-  resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.5.tgz#67d66014b66a6a8aaa0c083c5fd58df4e4e97602"
-  integrity sha512-FM9nNUYrRBAELZQT3xeZQ7fmMOBg6nWNmJKTcgsJeaLstP/UODVpGsr5OhXhhXg6f+qtJ8uiZ+PUxkDWcgIXLw==
+  version "1.2.6"
+  resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.6.tgz#8637a5b759ea0d6e98702cfb3a9283323c93af44"
+  integrity sha512-Jsjnk4bw3YJqYzbdyBiNsPWHPfO++UGG749Cxs6peCu5Xg4nrena6OVxOYxrQTqww0Jmwt+Ref8rggumkTLz9Q==
 
 mkdirp@^0.5.5, mkdirp@~0.5.1:
   version "0.5.5"
@@ -7081,7 +7074,6 @@ react-dev-utils@^12.0.0:
 
 "react-dom@link:../../node_modules/react-dom":
   version "0.0.0"
-  uid ""
 
 react-error-boundary@^3.1.0:
   version "3.1.4"
@@ -7182,7 +7174,6 @@ react-scripts@5.0.0:
 
 "react@link:../../node_modules/react":
   version "0.0.0"
-  uid ""
 
 readable-stream@^2.0.1:
   version "2.3.7"
@@ -7455,14 +7446,6 @@ saxes@^5.0.1:
   integrity sha512-5LBh1Tls8c9xgGjw3QrMwETmTMVk0oFgvrFSvWx62llR2hcEInrKNZ2GZCCuuy2lvWrdl5jhbpeqc5hRYKFOcw==
   dependencies:
     xmlchars "^2.2.0"
-
-scheduler@^0.20.2:
-  version "0.20.2"
-  resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.20.2.tgz#4baee39436e34aa93b4874bddcbf0fe8b8b50e91"
-  integrity sha512-2eWfGgAqqWFGqtdMmcL5zCMK1U8KlXv8SQFGglL3CEtd0aDVDWgeF/YoCmvln55m5zSk3J/20hTaSBeSObsQDQ==
-  dependencies:
-    loose-envify "^1.1.0"
-    object-assign "^4.1.1"
 
 schema-utils@2.7.0:
   version "2.7.0"
