@@ -8,11 +8,11 @@ The main branch is locked for the push action. For proposing changes, use the st
 
 ### Development playground
 
-It's a demo page in `/examples/spa` folder. More info about configuring and starting demo you can find in [readme](examples/spa/README.md).
+It's a demo page in `/examples/spa` folder. You can find more info about configuration and starting demo in [readme](examples/spa/README.md).
 
-If you want to test integration with [fingerprintjs-pro-spa](https://github.com/fingerprintjs/fingerprintjs-pro-spa), just [link package](https://yarnpkg.com/cli/link) with the `yarn link`.
+If you want to test integration with [fingerprintjs-pro-spa](https://github.com/fingerprintjs/fingerprintjs-pro-spa), just [link the package](https://yarnpkg.com/cli/link) with the `yarn link`.
 
-❗ Build projects before testing integration. First build `fingerprintjs-pro-spa`, after `fingerprintjs-pro-react` and then start spa example app.
+❗ Build projects before testing integration. First build `fingerprintjs-pro-spa`, then `fingerprintjs-pro-react`, and then start spa example app.
 
 ### How to build
 Just run:
@@ -27,13 +27,13 @@ The code style is controlled by [ESLint](https://eslint.org/) and [Prettier](htt
 yarn lint
 ```
 
-You aren't required to run the check manually, the CI will do it. Run to fix code style mistakes (not all mistakes can be fixed automatically):
+You aren't required to run the check manually, the CI will do it. Run the following command to fix style issues (not all issues can be fixed automatically):
 ```shell
 yarn lint:fix
 ```
 
 ### How to test
-Tests located in `__tests__` folder and run by [jest](https://jestjs.io/) in [jsdom](https://github.com/jsdom/jsdom) environment.
+Tests are located in `__tests__` folder and run by [jest](https://jestjs.io/) in [jsdom](https://github.com/jsdom/jsdom) environment.
 
 To run tests you can use IDE instruments or just run:
 ```shell
