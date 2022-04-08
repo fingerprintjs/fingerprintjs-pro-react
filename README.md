@@ -59,6 +59,7 @@ ReactDOM.render(
   <FpjsProvider
     loadOptions = {{
       apiKey: 'your-fpjs-public-api-key',
+      // set a region if you have chosen a non-global region during registration
       region: 'selected region'
     }}
   >
