@@ -40,6 +40,7 @@ module.exports = {
         html: true,
       },
     ],
+    'react/react-in-jsx-scope': 'off',
     'prettier/prettier': 'error',
     '@typescript-eslint/no-unused-vars': ['error'],
     curly: [2, 'all'],

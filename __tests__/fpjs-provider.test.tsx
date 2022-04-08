@@ -3,6 +3,7 @@ import { renderHook } from '@testing-library/react-hooks'
 import { FpjsContext } from '../src'
 import { createWrapper, getDefaultLoadOptions } from './helpers'
 import { CacheLocation, FpjsClient, FpjsClientOptions } from '@fingerprintjs/fingerprintjs-pro-spa'
+import * as packageInfo from '../package.json'
 
 jest.mock('@fingerprintjs/fingerprintjs-pro-spa', () => {
   return {
@@ -26,7 +27,10 @@ describe(`FpjsProvider`, () => {
     })
     expect(FpjsClient).toHaveBeenCalledWith(
       expect.objectContaining({
-        loadOptions: expect.objectContaining({ ...loadOptions }),
+        loadOptions: expect.objectContaining({
+          ...loadOptions,
+          integrationInfo: [`fingerprintjs-pro-react/${packageInfo.version}`],
+        }),
         cacheLocation: CacheLocation.LocalStorage,
         cachePrefix: 'TEST_PREFIX',
         cacheTimeInSeconds: 60 * 15,

@@ -1,6 +1,6 @@
 {
 	"name": "@fingerprintjs/fingerprintjs-pro-react",
-	"version": "0.2.1",
+	"version": "0.3.0",
 	"description": "FingerprintJS Pro React SDK",
 	"main": "dist/fp-pro-react.cjs.js",
 	"module": "dist/fp-pro-react.esm.js",
@@ -23,7 +23,10 @@
 		"lint": "eslint --ext .js,.ts --ignore-path .gitignore --max-warnings 0 .",
 		"lint:fix": "yarn lint --fix",
 		"test": "jest",
-		"test:dts": "tsc --noEmit dist/fp-pro-react.d.ts"
+		"test:dts": "tsc --noEmit --isolatedModules dist/fp-pro-react.d.ts",
+		"release:major": "changelog -M && git add CHANGELOG.md && yarn version --major",
+		"release:minor": "changelog -m && git add CHANGELOG.md && yarn version --minor",
+		"release:patch": "changelog -p && git add CHANGELOG.md && yarn version --patch"
 	},
 	"files": [
 		"dist"
@@ -39,7 +42,7 @@
 	},
 	"homepage": "https://github.com/fingerprintjs/fingerprintjs-pro-react#readme",
 	"dependencies": {
-		"@fingerprintjs/fingerprintjs-pro-spa": "^0.2.4"
+		"@fingerprintjs/fingerprintjs-pro-spa": "^0.3.1"
 	},
 	"devDependencies": {
 		"@rollup/plugin-json": "^4.1.0",
@@ -56,8 +59,9 @@
 		"eslint": "^8.9.0",
 		"eslint-config-prettier": "^8.3.0",
 		"eslint-plugin-prettier": "^4.0.0",
-		"eslint-plugin-react": "^7.28.0",
+		"eslint-plugin-react": "7.27.0",
 		"eslint-plugin-react-hooks": "^4.3.0",
+		"generate-changelog": "^1.8.0",
 		"jest": "^27.5.1",
 		"prettier": "^2.5.1",
 		"react": "^17.0.2",

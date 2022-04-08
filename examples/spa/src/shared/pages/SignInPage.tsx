@@ -10,7 +10,10 @@ function SignInPage() {
   const [ignoreCache, setIgnoreCache] = useState(false)
   const [extendedResult, setExtendedResult] = useState(false)
 
-  const { getData, data, isLoading, error } = useVisitorData({ extendedResult, tag, linkedId: login }, false)
+  const { getData, data, isLoading, error } = useVisitorData(
+    { extendedResult, tag, linkedId: login },
+    { immediate: false }
+  )
 
   return (
     <section className='body'>
