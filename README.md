@@ -50,8 +50,9 @@ yarn add @fingerprintjs/fingerprintjs-pro-react
 In order to identify visitors, you'll need a FingerprintJS Pro account (you can [sign up for free](https://dashboard.fingerprintjs.com/signup/)).
 You can learn more about API keys in the [official FingerprintJS Pro documentation](https://dev.fingerprintjs.com/docs/quick-start-guide).
 
-1. Wrap your application (or component) in FpjsProvider. You can specify multiple configuration options.
-
+1. Wrap your application (or component) in FpjsProvider. You can specify multiple configuration options. \
+   Set a region if you have chosen a non-global region during registration. Please refer to [Regions page](https://dev.fingerprintjs.com/docs/regions).
+  
 ```jsx
 // src/index.js
 import React from 'react';
@@ -62,9 +63,7 @@ import App from './App';
 ReactDOM.render(
   <FpjsProvider
     loadOptions = {{
-      apiKey: 'your-fpjs-public-api-key',
-      // set a region if you have chosen a non-global region during registration
-      region: 'selected region'
+      apiKey: 'your-fpjs-public-api-key'
     }}
   >
     <App />
