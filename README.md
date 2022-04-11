@@ -27,6 +27,7 @@ FingerprintJS Pro React is an easy-to-use React library for **[FingerprintJS Pro
 
 - [Installation](#installation)
 - [Getting started](#getting-started)
+- [Caching strategy](#caching-strategy)
 - [Documentation](#documentation)
 - [Support and feedback](#support-and-feedback)
 - [License](#license)
