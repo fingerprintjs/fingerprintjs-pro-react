@@ -51,7 +51,7 @@ yarn add @fingerprintjs/fingerprintjs-pro-react
 In order to identify visitors, you'll need a FingerprintJS Pro account (you can [sign up for free](https://dashboard.fingerprintjs.com/signup/)).
 You can learn more about API keys in the [official FingerprintJS Pro documentation](https://dev.fingerprintjs.com/docs/quick-start-guide).
 
-1. Wrap your application (or component) in FpjsProvider. You can specify multiple configuration options. \
+1. Wrap your application (or component) in `FpjsProvider`. You can specify multiple configuration options. \
    Set a region if you have chosen a non-global region during registration. Please refer to the [Regions page](https://dev.fingerprintjs.com/docs/regions).
   
 ```jsx
@@ -166,11 +166,11 @@ export default App;
 See the full code example in the [examples folder](https://github.com/fingerprintjs/fingerprintjs-pro-react/tree/main/examples/spa).
 
 ## Caching strategy
-:warning: **WARNING** If you use data from `extendedResult`, please pay additional attention to caching strategy
+:warning: **WARNING** If you use data from `extendedResult`, please pay additional attention to caching strategy.
 
-FingerprintJS Pro uses API calls as the basis for billing. Our [best practices](https://dev.fingerprintjs.com/docs/caching-visitor-information) strongly recommend using cache for saving your money. Library use `SessionStorage` cache strategy by default.
+FingerprintJS Pro uses API calls as the basis for billing. Our [best practices](https://dev.fingerprintjs.com/docs/caching-visitor-information) strongly recommend using cache to optimise API calls rate. The Library uses the SessionStorage cache strategy by default.
 
-But if you need some [`extendedResult`](https://dev.fingerprintjs.com/docs/js-agent#extendedresult) fields that can change, like `ip` or `lastSeenAt` it is better to pass `ignoreCache=true` inside [`getData`](#returned-object) function.
+Some fields from the [extendedResult](https://dev.fingerprintjs.com/docs/js-agent#extendedresult) (e.g `ip` or `lastSeenAt`) might change for the same visitor. If you need exact current data, it is recommended to pass `ignoreCache=true` inside [getData](#returned-object) function.
 
 ## Documentation
 
@@ -208,9 +208,9 @@ Custom prefix for localStorage and sessionStorage cache keys. Will be ignored if
 
 #### Returned object
 - `getData: (ignoreCache: boolean) => Promise<VisitorData>` Performs identification request to server and returns visitors data. When it is called, a FingerprintJS server will send a [webhook request](https://dev.fingerprintjs.com/docs/webhooks) to your server.
-- `isLoading: boolean` Indicates `getData` request status
-- `data: VisitorData` Contains visitors data requested after after `getData()` call
-- `error: Error` Error information in case of failed request
+- `isLoading: boolean` Indicates `getData` request status.
+- `data: VisitorData` Contains visitors data requested after `getData()` call.
+- `error: Error` Error information in case the request failed.
 
 
 ## Support and feedback
