@@ -24,9 +24,9 @@
 		"lint:fix": "yarn lint --fix",
 		"test": "jest",
 		"test:dts": "tsc --noEmit --isolatedModules dist/fp-pro-react.d.ts",
-		"release:major": "changelog -M && git add CHANGELOG.md && yarn version --major",
-		"release:minor": "changelog -m && git add CHANGELOG.md && yarn version --minor",
-		"release:patch": "changelog -p && git add CHANGELOG.md && yarn version --patch"
+		"release:major": "changelog -M && git add CHANGELOG.md && yarn version --major --no-git-tag-version",
+		"release:minor": "changelog -m && git add CHANGELOG.md && yarn version --minor --no-git-tag-version",
+		"release:patch": "changelog -p && git add CHANGELOG.md && yarn version --patch --no-git-tag-version"
 	},
 	"files": [
 		"dist"
