@@ -34,8 +34,8 @@ export function useVisitorData<TExtended extends boolean>(
   const initialState = { isLoading: false }
   const [state, setState] = useState<QueryResult<VisitorData<TExtended>>>(initialState)
 
-  const getData = useCallback(
-    async (ignoreCache = false) => {
+  const getData = useCallback<VisitorQueryContext<TExtended>['getData']>(
+    async ({ ignoreCache = false } = {}) => {
       try {
         setState((state) => ({ ...state, isLoading: true }))
 

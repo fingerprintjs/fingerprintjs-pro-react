@@ -207,7 +207,7 @@ Custom prefix for localStorage and sessionStorage cache keys. Will be ignored if
 - `config: UseVisitorDataConfig`'s property `immediate` determines whether the `getData()` method will be called immediately after the hook mounts or not.
 
 #### Returned object
-- `getData: (ignoreCache: boolean) => Promise<VisitorData>` Performs identification request to server and returns visitors data.
+- `getData: ({ignoreCache?: boolean}) => Promise<VisitorData>` Performs identification request to server and returns visitors data.
 - `isLoading: boolean` Indicates `getData` request status.
 - `data: VisitorData` Contains visitors data requested after `getData()` call.
 - `error: Error` Error information in case the request failed.
