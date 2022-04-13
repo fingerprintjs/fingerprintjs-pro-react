@@ -21,12 +21,13 @@
   
 # FingerprintJS Pro React
 
-FingerprintJS Pro React is an easy-to-use React library for <strong>[FingerprintJS Pro](https://fingerprintjs.com/)</strong>. **This package works with FingerprintJS Pro, it is not compatible with [open-source FingerprintJS](https://github.com/fingerprintjs/fingerprintjs).** You can learn more about the difference between FingerprintJS Pro and open-source FingerprintJS in the [official documentation](https://dev.fingerprintjs.com/docs/pro-vs-open-source).
+FingerprintJS Pro React is an easy-to-use React library for **[FingerprintJS Pro](https://fingerprintjs.com/)**. **This package works with FingerprintJS Pro, it is not compatible with [open-source FingerprintJS](https://github.com/fingerprintjs/fingerprintjs).** You can learn more about the difference between FingerprintJS Pro and open-source FingerprintJS in the [official documentation](https://dev.fingerprintjs.com/docs/pro-vs-open-source).
 
 ## Table of contents
 
 - [Installation](#installation)
 - [Getting started](#getting-started)
+- [Caching strategy](#caching-strategy)
 - [Documentation](#documentation)
 - [Support and feedback](#support-and-feedback)
 - [License](#license)
@@ -50,8 +51,8 @@ yarn add @fingerprintjs/fingerprintjs-pro-react
 In order to identify visitors, you'll need a FingerprintJS Pro account (you can [sign up for free](https://dashboard.fingerprintjs.com/signup/)).
 You can learn more about API keys in the [official FingerprintJS Pro documentation](https://dev.fingerprintjs.com/docs/quick-start-guide).
 
-1. Wrap your application (or component) in FpjsProvider. You can specify multiple configuration options. \
-   Set a region if you have chosen a non-global region during registration. Please refer to [Regions page](https://dev.fingerprintjs.com/docs/regions).
+1. Wrap your application (or component) in `FpjsProvider`. You can specify multiple configuration options. \
+   Set a region if you have chosen a non-global region during registration. Please refer to the [Regions page](https://dev.fingerprintjs.com/docs/regions).
   
 ```jsx
 // src/index.js
@@ -164,6 +165,13 @@ export default App;
 
 See the full code example in the [examples folder](https://github.com/fingerprintjs/fingerprintjs-pro-react/tree/main/examples/spa).
 
+## Caching strategy
+:warning: **WARNING** If you use data from `extendedResult`, please pay additional attention to caching strategy.
+
+FingerprintJS Pro uses API calls as the basis for billing. Our [best practices](https://dev.fingerprintjs.com/docs/caching-visitor-information) strongly recommend using cache to optimise API calls rate. The Library uses the SessionStorage cache strategy by default.
+
+Some fields from the [extendedResult](https://dev.fingerprintjs.com/docs/js-agent#extendedresult) (e.g `ip` or `lastSeenAt`) might change for the same visitor. If you need exact current data, it is recommended to pass `ignoreCache=true` inside [getData](#returned-object) function.
+
 ## Documentation
 
 This library uses [FingerprintJS Pro agent](https://fingerprintjs.com/github/) internally. The documentation for the FingerprintJS Pro agent is available on https://dev.fingerprintjs.com/docs.
@@ -193,8 +201,17 @@ Custom prefix for localStorage and sessionStorage cache keys. Will be ignored if
 `useVisitorData(getOptions, config)`
 
 `useVisitorData` hook performs identification requests with the FingerprintJS Pro API. The returned object contains information about loading status, errors, and [visitor](https://dev.fingerprintjs.com/docs/js-agent#extendedresultac).
+
+#### Params
 - `getOptions: GetOptions<TExtended>` parameter follows parameters of the FingerprintJS Pro's [`get` function](https://dev.fingerprintjs.com/docs/js-agent#parameters-reference).
 - `config: UseVisitorDataConfig`'s property `immediate` determines whether the `getData()` method will be called immediately after the hook mounts or not.
+
+#### Returned object
+- `getData: (ignoreCache: boolean) => Promise<VisitorData>` Performs identification request to server and returns visitors data.
+- `isLoading: boolean` Indicates `getData` request status.
+- `data: VisitorData` Contains visitors data requested after `getData()` call.
+- `error: Error` Error information in case the request failed.
+
 
 ## Support and feedback
 For support or to provide feedback, please [raise an issue on our issue tracker](https://github.com/fingerprintjs/fingerprintjs-pro-react/issues). If you require private support, please email us at oss-support@fingerprintjs.com. If you'd like to have a similar React wrapper for the [open-source FingerprintJS](https://github.com/fingerprintjs/fingerprintjs), consider [raising an issue in our issue tracker](https://github.com/fingerprintjs/fingerprintjs-pro-react/issues).
