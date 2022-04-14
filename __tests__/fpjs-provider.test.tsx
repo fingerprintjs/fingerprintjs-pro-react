@@ -8,7 +8,9 @@ import * as packageInfo from '../package.json'
 jest.mock('@fingerprintjs/fingerprintjs-pro-spa', () => {
   return {
     ...jest.requireActual<any>('@fingerprintjs/fingerprintjs-pro-spa'),
-    FpjsClient: jest.fn(),
+    FpjsClient: jest.fn(() => ({
+      init: jest.fn(),
+    })),
   }
 })
 
