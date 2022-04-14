@@ -1,22 +1,25 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Setting up
+In order to try out these examples, you set your public API key as the value of the NEXT_PUBLIC_FPJS_PUBLIC_API_KEY variable\
+in the `.local.env`, you can just copy `.env` file, located in this directory.
 
-## Getting Started
+### FingerprintJS public API key
+- Go to [FingerprintJS Dashboard](https://dashboard.fingerprintjs.com/)*
+- Open the _API keys_ page from the sidebar
+- Find your _Public_ API key
 
-First, run the development server:
+*If you don't have a FingerprintJS Pro account, [sign up for free](https://dashboard.fingerprintjs.com/signup/)).
 
-```bash
-npm run dev
-# or
+### Installing dependencies
+1. Go to the root of the project, install dependencies and build it (`cd ../../ && yarn install && yarn build`)
+2. Come back to the example folder (`cd examples/next`) and run `yarn install`.
+
+After you've completed all the steps and inserted the API key, you can run:
+```shell
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Runs the app in the development mode.\
+Open [http://localhost:3002](http://localhost:3002) to view it in the browser.
 
 ## Learn More
 
@@ -24,11 +27,3 @@ To learn more about Next.js, take a look at the following resources:
 
 - [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
