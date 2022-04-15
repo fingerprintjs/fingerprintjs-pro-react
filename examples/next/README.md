@@ -1,5 +1,5 @@
 ## Setting up
-In order to try out these examples, you set your public API key as the value of the NEXT_PUBLIC_FPJS_PUBLIC_API_KEY variable\
+In order to try out these examples, you need to set your public API key as the value of the NEXT_PUBLIC_FPJS_PUBLIC_API_KEY variable\
 in the `.local.env`, you can just copy `.env` file, located in this directory.
 
 ### FingerprintJS public API key

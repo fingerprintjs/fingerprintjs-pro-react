@@ -8,7 +8,7 @@ The main branch is locked for the push action. For proposing changes, use the st
 
 ### Development playground
 
-It's a 2 demo page for this integration:
+There are 2 demo pages for this integration:
 1. In `/examples/spa` folder. It is a rich demo with scenarios of using different caching strategies. You can find more info about configuration and starting demo in [readme](examples/spa/README.md).
 2. In `/examples/next` folder. It is a demo build with NextJS that allows to test SSR scenario. You can find more info about configuration and starting demo in [readme](examples/next/README.md).
 
