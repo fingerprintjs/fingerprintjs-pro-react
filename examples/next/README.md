@@ -2,15 +2,10 @@
 To try out these examples, you need to set your public API key as the value of the NEXT_PUBLIC_FPJS_PUBLIC_API_KEY variable\
 in the `.local.env`. You can just copy `.env` file located in this directory.
 
-### FingerprintJS public API key
-- Go to [FingerprintJS Dashboard](https://dashboard.fingerprintjs.com/)*
-- Open the _API keys_ page from the sidebar
-- Find your _Public_ API key
-
-*If you don't have a FingerprintJS Pro account, [sign up for free](https://dashboard.fingerprintjs.com/signup/)).
+More info about the API key you can find on the [documentation page](https://dev.fingerprintjs.com/docs/js-agent#agent-initialization).
 
 ### Installing dependencies
-1. Go to the root of the project, install dependencies and build it (`cd ../../ && yarn install && yarn build`)
+1. Go to the root of the project, install dependencies with `yarn install` and build it with `yarn build`.
 2. Come back to the example folder (`cd examples/next`) and run `yarn install`.
 
 After you've completed all the steps and inserted the API key, you can run:
