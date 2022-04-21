@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Cache
         uses: actions/cache@v2
         with:
@@ -28,7 +28,7 @@ jobs:
       - name: Run tests
         run: yarn test
       - name: Publish if version has been updated
-        uses: pascalgn/npm-publish-action@e05dd3cd13412801d978714d8eac1cb922826da1
+        uses: pascalgn/npm-publish-action@99edcbddc04403efe904d1ad125c867d4dcabdcd
         with:
           tag_name: "v%s"
           tag_message: "v%s"
