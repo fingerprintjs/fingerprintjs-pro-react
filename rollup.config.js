@@ -27,7 +27,7 @@ const commonOutput = {
   sourcemap: true,
 }
 
-export default [
+const RollupConfig = [
   // NPM bundles. They have all the dependencies excluded for end code size optimization.
   {
     ...commonInput,
@@ -59,3 +59,5 @@ export default [
     },
   },
 ]
+
+export default RollupConfig

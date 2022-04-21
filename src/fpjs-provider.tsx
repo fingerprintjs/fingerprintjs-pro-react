@@ -2,6 +2,7 @@ import { PropsWithChildren, useCallback, useEffect, useMemo, useRef, useState } 
 import FpjsContext from './fpjs-context'
 import { FpjsClient, FpjsClientOptions, Agent } from '@fingerprintjs/fingerprintjs-pro-spa'
 import * as packageInfo from '../package.json'
+import { agentServerMock } from './agent-server-mock'
 
 interface FpjsProviderOptions extends FpjsClientOptions {
   /**
@@ -56,7 +57,15 @@ export function FpjsProvider<TExtended extends boolean>({
     }
   }, [forceRebuild, clientOptions])
 
-  const clientPromise = useRef<Promise<Agent>>(client.init())
+  const clientPromise = useRef<Promise<Agent>>(
+    new Promise((resolve) => {
+      if (typeof window !== 'undefined' && typeof window.document !== 'undefined') {
+        resolve(client.init())
+      } else {
+        resolve(agentServerMock)
+      }
+    })
+  )
   const firstRender = useRef(true)
 
   useEffect(() => {
