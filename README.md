@@ -21,7 +21,7 @@
   
 # FingerprintJS Pro React
 
-FingerprintJS Pro React is an easy-to-use React library for **[FingerprintJS Pro](https://fingerprintjs.com/)**. **This package works with FingerprintJS Pro, it is not compatible with [open-source FingerprintJS](https://github.com/fingerprintjs/fingerprintjs).** You can learn more about the difference between FingerprintJS Pro and open-source FingerprintJS in the [official documentation](https://dev.fingerprintjs.com/docs/pro-vs-open-source).
+FingerprintJS Pro React is an easy-to-use React library for **[FingerprintJS Pro](https://fingerprintjs.com/)**. It's also compatible with the Next.js framework. SPA and Next.js examples are located in the [examples](https://github.com/fingerprintjs/fingerprintjs-pro-react/tree/main/examples) folder.  **This package works with FingerprintJS Pro, it is not compatible with [open-source FingerprintJS](https://github.com/fingerprintjs/fingerprintjs).** You can learn more about the difference between FingerprintJS Pro and open-source FingerprintJS in the [official documentation](https://dev.fingerprintjs.com/docs/pro-vs-open-source).
 
 ## Table of contents
 
