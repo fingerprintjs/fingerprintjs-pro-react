@@ -1,3 +1,14 @@
+#### 1.0.1 (2022-05-16)
+
+##### Chores
+
+*  use production environment for npm publish ([1c814d00](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/1c814d006023c43128dff43fdb55b65458086f41))
+* **deps:**  update deps for spa example ([8f0c1ac6](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/8f0c1ac6f24d7ab6091fde3a9b3eb003060813bd))
+
+##### Documentation Changes
+
+*  mention Next.js in the readme ([f5df094f](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/f5df094f0795c3d84712919037aaf1da960bf3e8))
+
 ## 1.0.0 (2022-04-21)
 
 ##### Breaking Changes
