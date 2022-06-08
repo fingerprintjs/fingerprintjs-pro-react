@@ -1,4 +1,4 @@
-# Contributing to FingerprintJS Pro SPA integration
+# Contributing to FingerprintJS Pro React integration
 
 ## Working with code
 

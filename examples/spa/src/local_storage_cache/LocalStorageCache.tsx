@@ -20,7 +20,7 @@ function LocalStorageCache() {
       <div className='App'>
         <header className='header'>
           <h2>Solution with a local storage cache</h2>
-          <div className='subheader'>New PI call made after a key expires or is cleared from the local storage</div>
+          <div className='subheader'>New API call made after a key expires or is cleared from the local storage</div>
         </header>
         <Nav />
         <Outlet />
