@@ -1,6 +1,6 @@
 ## Setting up
 To try out these examples, you need to set your public API key as the value of the NEXT_PUBLIC_FPJS_PUBLIC_API_KEY variable\
-in the `.local.env`. You can just copy `.env` file located in this directory.
+in the `.env.local`. You can just copy `.env` file located in this directory.
 
 More info about the API key you can find on the [documentation page](https://dev.fingerprintjs.com/docs/js-agent#agent-initialization).
 
