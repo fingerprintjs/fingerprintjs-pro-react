@@ -1,3 +1,24 @@
+### 1.1.0 (2022-06-20)
+
+##### Chores
+
+*  add eslint-config-preact as main package devDependency ([4e8dc72e](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/4e8dc72e7606cd5e202e513801b9ccecc7a80ed4))
+*  update packages ([887d4d9f](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/887d4d9ffa344fc29067bd7805308f7383b38c6b))
+
+##### Documentation Changes
+
+*  add preact example description to the contributing instruction ([92f96c94](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/92f96c94ca66be26755de6b457e296a4d4038a58))
+*  fix typos ([009a418a](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/009a418ae33817fea52d278e4e24a6111b48716b))
+
+##### New Features
+
+*  add preact example ([f280bedf](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/f280bedf941cb6c30a52a7f053995eb205fd7081))
+*  remove react from peerDeps for better preact compatibility ([fd68db69](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/fd68db69f0cac7e7af9bd47d685c4c245e7165de))
+
+##### Bug Fixes
+
+*  fix next example readme ([75e96ad9](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/75e96ad9f591c61c26e656d72735eabb78bda2af))
+
 #### 1.0.1 (2022-05-16)
 
 ##### Chores
