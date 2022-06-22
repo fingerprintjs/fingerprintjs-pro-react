@@ -18,7 +18,7 @@ Open [http://localhost:8080](http://localhost:8080) to view it in the browser.
 
 ## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+To learn more about Preact, take a look at the following resources:
 
 - [Preact Documentation](https://preactjs.com/) - learn about Preact features and API.
 - [Preact CLI Readme](https://github.com/developit/preact-cli/blob/master/README.md) - detailed explanation on how things work.
