@@ -13,10 +13,11 @@ interface FpjsProviderOptions extends FpjsClientOptions {
 }
 
 /**
+ * @example
  * ```jsx
  * <FpjsProvider
  *   loadOptions = {{
- *     apiKey: your-fpjs-public-api-key
+ *     apiKey: "<your-fpjs-public-api-key>"
  *   }}
  *   cacheTime={60 * 10}
  *   cacheLocation={CacheLocation.LocalStorage}

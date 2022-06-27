@@ -2,8 +2,17 @@ import { createContext } from 'react'
 import { VisitorData, GetOptions } from '@fingerprintjs/fingerprintjs-pro-spa'
 
 export interface QueryResult<TData, TError = Error> {
+  /**
+   * Stores current query data
+   * */
   data?: TData
+  /**
+   * Is true while query is loading
+   * */
   isLoading?: boolean
+  /**
+   * Stores current query error
+   * */
   error?: TError
 }
 
@@ -12,6 +21,9 @@ export interface VisitorQueryResult<TExtended extends boolean> extends QueryResu
 }
 
 export interface GetDataOptions {
+  /**
+   * When set to true, the visitor data will always be fetched from our API.
+   * */
   ignoreCache?: boolean
 }
 
