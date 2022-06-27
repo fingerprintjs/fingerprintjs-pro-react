@@ -3,17 +3,17 @@ import { useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import { GetOptions, VisitorData } from '@fingerprintjs/fingerprintjs-pro-spa'
 
 /**
+ *  @example
  * ```js
- *  * const {
- *  *   // Request state
- *  *   data,
- *  *   isLoading,
- *  *   error,
- *  *   // A method to be called manually when the `immediate` field in the config is set to `false`:
- *  *   getData,
- *  * } = useVisitorData({ extended: true }, { immediate: false });
- *  * ```
- *  *
+ *  const {
+ *    // Request state
+ *    data,
+ *    isLoading,
+ *    error,
+ *    // A method to be called manually when the `immediate` field in the config is set to `false`:
+ *    getData,
+ *  } = useVisitorData({ extended: true }, { immediate: false });
+ * ```
  *  * Use the `useVisitorData` hook in your components to perform identification requests with the FingerprintJS API.
  *
  * @param getOptions options for the `fp.get()` request
