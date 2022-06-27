@@ -26,7 +26,8 @@
 		"test:dts": "tsc --noEmit --isolatedModules dist/fp-pro-react.d.ts",
 		"release:major": "changelog -M && git add CHANGELOG.md && yarn version --major --no-git-tag-version",
 		"release:minor": "changelog -m && git add CHANGELOG.md && yarn version --minor --no-git-tag-version",
-		"release:patch": "changelog -p && git add CHANGELOG.md && yarn version --patch --no-git-tag-version"
+		"release:patch": "changelog -p && git add CHANGELOG.md && yarn version --patch --no-git-tag-version",
+		"docs": "typedoc src/index.ts --out docs"
 	},
 	"files": [
 		"dist"
