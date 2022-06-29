@@ -212,6 +212,9 @@ Custom prefix for localStorage and sessionStorage cache keys. Will be ignored if
 - `data: VisitorData` Contains visitors data requested after `getData()` call.
 - `error: Error` Error information in case the request failed.
 
+### API Reference
+
+You can find API reference [here](https://fingerprintjs.github.io/fingerprintjs-pro-react/).
 
 ## Support and feedback
 For support or to provide feedback, please [raise an issue on our issue tracker](https://github.com/fingerprintjs/fingerprintjs-pro-react/issues). If you require private support, please email us at oss-support@fingerprintjs.com. If you'd like to have a similar React wrapper for the [open-source FingerprintJS](https://github.com/fingerprintjs/fingerprintjs), consider [raising an issue in our issue tracker](https://github.com/fingerprintjs/fingerprintjs-pro-react/issues).
