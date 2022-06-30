@@ -20,6 +20,7 @@
   "scripts": {
     "prepare": "husky install",
     "build": "rimraf dist && rollup -c rollup.config.js",
+  	"watch": "rollup -c rollup.config.js -w",
     "start:spa": "npm start --prefix=examples/spa",
     "lint": "eslint --ext .js,.ts --ignore-path .gitignore --max-warnings 0 .",
     "lint:fix": "yarn lint --fix",

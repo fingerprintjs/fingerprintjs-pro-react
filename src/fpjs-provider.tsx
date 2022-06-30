@@ -1,8 +1,10 @@
 import { PropsWithChildren, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import FpjsContext from './fpjs-context'
-import { FpjsClient, FpjsClientOptions, Agent } from '@fingerprintjs/fingerprintjs-pro-spa'
+import { Agent, FpjsClient, FpjsClientOptions } from '@fingerprintjs/fingerprintjs-pro-spa'
 import * as packageInfo from '../package.json'
 import { agentServerMock } from './agent-server-mock'
+import { detectEnvironment, EnvDetails } from './env'
+import { isSSR } from './ssr'
 
 interface FpjsProviderOptions extends FpjsClientOptions {
   /**
@@ -37,7 +39,15 @@ export function FpjsProvider<TExtended extends boolean>({
   cacheLocation,
   loadOptions,
 }: PropsWithChildren<FpjsProviderOptions>) {
+  const [env, setEnv] = useState<EnvDetails | undefined>()
+
   const clientOptions = useMemo(() => {
+    const integrationInfo = [...(loadOptions.integrationInfo || []), `fingerprintjs-pro-react/${packageInfo.version}`]
+
+    if (env) {
+      integrationInfo.push(env.version ? `${env.name}/${env.version}` : env.name)
+    }
+
     return {
       cache,
       cacheTimeInSeconds,
@@ -45,10 +55,10 @@ export function FpjsProvider<TExtended extends boolean>({
       cacheLocation,
       loadOptions: {
         ...loadOptions,
-        integrationInfo: [...(loadOptions.integrationInfo || []), `fingerprintjs-pro-react/${packageInfo.version}`],
+        integrationInfo,
       },
     }
-  }, [cache, cacheTimeInSeconds, cachePrefix, cacheLocation, loadOptions])
+  }, [cache, cacheTimeInSeconds, cachePrefix, cacheLocation, loadOptions, env])
 
   const [client, setClient] = useState<FpjsClient>(() => new FpjsClient(clientOptions))
 
@@ -60,7 +70,7 @@ export function FpjsProvider<TExtended extends boolean>({
 
   const clientPromise = useRef<Promise<Agent>>(
     new Promise((resolve) => {
-      if (typeof window !== 'undefined' && typeof window.document !== 'undefined') {
+      if (isSSR()) {
         resolve(client.init())
       } else {
         resolve(agentServerMock)
@@ -73,9 +83,17 @@ export function FpjsProvider<TExtended extends boolean>({
     if (firstRender) {
       firstRender.current = false
     } else {
+      setEnv(detectEnvironment())
+
       clientPromise.current = client.init()
     }
   }, [client])
+
+  useEffect(() => {
+    if (!isSSR()) {
+      setEnv(detectEnvironment())
+    }
+  }, [])
 
   const getVisitorData = useCallback(
     async (options, ignoreCache) => {
