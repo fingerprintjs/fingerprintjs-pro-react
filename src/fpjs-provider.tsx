@@ -3,8 +3,9 @@ import FpjsContext from './fpjs-context'
 import { Agent, FpjsClient, FpjsClientOptions } from '@fingerprintjs/fingerprintjs-pro-spa'
 import * as packageInfo from '../package.json'
 import { agentServerMock } from './agent-server-mock'
-import { detectEnvironment, EnvDetails } from './env'
 import { isSSR } from './ssr'
+import { EnvDetails } from './env.types'
+import { getEnvironment } from './get-env'
 
 interface FpjsProviderOptions extends FpjsClientOptions {
   /**
@@ -45,8 +46,11 @@ export function FpjsProvider<TExtended extends boolean>({
     const integrationInfo = [...(loadOptions.integrationInfo || []), `fingerprintjs-pro-react/${packageInfo.version}`]
 
     if (env) {
-      integrationInfo.push(env.version ? `${env.name}/${env.version}` : env.name)
+      const envInfo = env.version ? `${env.name}/${env.version}` : env.name
+      integrationInfo.push(`fingerprintjs-pro-react/${packageInfo.version}/${envInfo}`)
     }
+
+    console.log(integrationInfo)
 
     return {
       cache,
@@ -83,7 +87,7 @@ export function FpjsProvider<TExtended extends boolean>({
     if (firstRender) {
       firstRender.current = false
     } else {
-      setEnv(detectEnvironment())
+      setEnv(getEnvironment())
 
       clientPromise.current = client.init()
     }
@@ -91,7 +95,7 @@ export function FpjsProvider<TExtended extends boolean>({
 
   useEffect(() => {
     if (!isSSR()) {
-      setEnv(detectEnvironment())
+      setEnv(getEnvironment())
     }
   }, [])
 
