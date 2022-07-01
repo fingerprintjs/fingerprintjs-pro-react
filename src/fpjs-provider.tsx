@@ -1,11 +1,14 @@
-import { PropsWithChildren, useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { MouseEventHandler, PropsWithChildren, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import FpjsContext from './fpjs-context'
 import { Agent, FpjsClient, FpjsClientOptions } from '@fingerprintjs/fingerprintjs-pro-spa'
 import * as packageInfo from '../package.json'
 import { agentServerMock } from './agent-server-mock'
 import { isSSR } from './ssr'
-import { EnvDetails } from './env.types'
 import { getEnvironment } from './get-env'
+import { type DetectEnvContext } from './detect-env'
+import type { EnvDetails } from './env.types'
+
+const pkgName = packageInfo.name.split('/')[1]
 
 interface FpjsProviderOptions extends FpjsClientOptions {
   /**
@@ -42,15 +45,15 @@ export function FpjsProvider<TExtended extends boolean>({
 }: PropsWithChildren<FpjsProviderOptions>) {
   const [env, setEnv] = useState<EnvDetails | undefined>()
 
+  const [envContext, setEnvContext] = useState<DetectEnvContext | undefined>()
+
   const clientOptions = useMemo(() => {
-    const integrationInfo = [...(loadOptions.integrationInfo || []), `fingerprintjs-pro-react/${packageInfo.version}`]
+    const integrationInfo = [...(loadOptions.integrationInfo || []), `${pkgName}/${packageInfo.version}`]
 
     if (env) {
       const envInfo = env.version ? `${env.name}/${env.version}` : env.name
-      integrationInfo.push(`fingerprintjs-pro-react/${packageInfo.version}/${envInfo}`)
+      integrationInfo.push(`${pkgName}/${packageInfo.version}/${envInfo}`)
     }
-
-    console.log(integrationInfo)
 
     return {
       cache,
@@ -62,7 +65,7 @@ export function FpjsProvider<TExtended extends boolean>({
         integrationInfo,
       },
     }
-  }, [cache, cacheTimeInSeconds, cachePrefix, cacheLocation, loadOptions, env])
+  }, [loadOptions, env, cache, cacheTimeInSeconds, cachePrefix, cacheLocation])
 
   const [client, setClient] = useState<FpjsClient>(() => new FpjsClient(clientOptions))
 
@@ -74,7 +77,7 @@ export function FpjsProvider<TExtended extends boolean>({
 
   const clientPromise = useRef<Promise<Agent>>(
     new Promise((resolve) => {
-      if (isSSR()) {
+      if (!isSSR()) {
         resolve(client.init())
       } else {
         resolve(agentServerMock)
@@ -87,17 +90,9 @@ export function FpjsProvider<TExtended extends boolean>({
     if (firstRender) {
       firstRender.current = false
     } else {
-      setEnv(getEnvironment())
-
       clientPromise.current = client.init()
     }
   }, [client])
-
-  useEffect(() => {
-    if (!isSSR()) {
-      setEnv(getEnvironment())
-    }
-  }, [])
 
   const getVisitorData = useCallback(
     async (options, ignoreCache) => {
@@ -106,6 +101,19 @@ export function FpjsProvider<TExtended extends boolean>({
     },
     [client]
   )
+
+  const handleEnvSpanCheck = useCallback<MouseEventHandler>((event) => {
+    const isSyntheticEvent =
+      Boolean((event as Record<string, any>)['_reactName']) || event?.constructor?.name === 'SyntheticBaseEvent'
+
+    const context: DetectEnvContext = {
+      syntheticEventDetected: isSyntheticEvent,
+    }
+
+    setEnvContext(context)
+
+    setEnv(getEnvironment({ context }))
+  }, [])
 
   const clearCache = useCallback(async () => {
     await client.clearCache()
@@ -118,5 +126,20 @@ export function FpjsProvider<TExtended extends boolean>({
     }
   }, [clearCache, getVisitorData])
 
-  return <FpjsContext.Provider value={contextValue}>{children}</FpjsContext.Provider>
+  return (
+    <FpjsContext.Provider value={contextValue}>
+      {!envContext && (
+        <span
+          style={{ display: 'none' }}
+          onClick={handleEnvSpanCheck}
+          ref={(element) => {
+            if (element && !isSSR()) {
+              element.click()
+            }
+          }}
+        />
+      )}
+      {children}
+    </FpjsContext.Provider>
+  )
 }

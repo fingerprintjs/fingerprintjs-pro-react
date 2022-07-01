@@ -1,4 +1,12 @@
-import { Env, EnvDetails } from './env.types'
+import { Env, type EnvDetails } from './env.types'
+
+export interface DetectEnvContext {
+  syntheticEventDetected: boolean
+}
+
+export interface DetectEnvParams {
+  context: DetectEnvContext
+}
 
 type EnvCheckStrategy = () => unknown
 
@@ -22,8 +30,9 @@ function runEnvChecks(...strategies: EnvCheckStrategy[]) {
  * Runs checks that determine if user is using preact.
  * So far they are not ideal, as there is no consistent way to detect preact.
  * */
-function isPreact() {
+function isPreact(context: DetectEnvContext) {
   return runEnvChecks(
+    () => !context.syntheticEventDetected,
     () => document.querySelector('#preact_root'),
     () => 'preact' in window && Boolean((window as { preact?: unknown }).preact),
     () => document.querySelector('script[type="__PREACT_CLI_DATA__"]')
@@ -48,7 +57,7 @@ function getNextVersion() {
 /**
  * Attempts to determine user environment.
  * */
-export function detectEnvironment(): EnvDetails {
+export function detectEnvironment({ context }: DetectEnvParams): EnvDetails {
   if (isNext()) {
     return {
       name: Env.Next,
@@ -56,14 +65,19 @@ export function detectEnvironment(): EnvDetails {
     }
   }
 
-  if (isPreact()) {
+  if (isPreact(context)) {
     return {
       name: Env.Preact,
     }
   }
 
-  // Fallback to React as env
+  if (context.syntheticEventDetected) {
+    return {
+      name: Env.React,
+    }
+  }
+
   return {
-    name: Env.React,
+    name: Env.Unknown,
   }
 }
