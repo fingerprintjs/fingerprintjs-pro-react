@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://fingerprintjs.com">
+  <a href="https://fingerprint.com">
     <img src="https://user-images.githubusercontent.com/10922372/126062498-31921b6c-c7fd-47cb-bf85-9e172e08b664.png" alt="FingerprintJS" width="312px" />
   </a>
 <p align="center">
@@ -21,7 +21,7 @@
   
 # FingerprintJS Pro React
 
-FingerprintJS Pro React is an easy-to-use React library for **[FingerprintJS Pro](https://fingerprintjs.com/)**. It's also compatible with the Next.js framework. SPA and Next.js examples are located in the [examples](https://github.com/fingerprintjs/fingerprintjs-pro-react/tree/main/examples) folder.  **This package works with FingerprintJS Pro, it is not compatible with [open-source FingerprintJS](https://github.com/fingerprintjs/fingerprintjs).** You can learn more about the difference between FingerprintJS Pro and open-source FingerprintJS in the [official documentation](https://dev.fingerprintjs.com/docs/pro-vs-open-source).
+FingerprintJS Pro React is an easy-to-use React library for **[FingerprintJS Pro](https://fingerprint.com/)**. It's also compatible with the Next.js framework. SPA and Next.js examples are located in the [examples](https://github.com/fingerprintjs/fingerprintjs-pro-react/tree/main/examples) folder.  **This package works with FingerprintJS Pro, it is not compatible with [open-source FingerprintJS](https://github.com/fingerprintjs/fingerprintjs).** You can learn more about the difference between FingerprintJS Pro and open-source FingerprintJS in the [official documentation](https://dev.fingerprint.com/docs/pro-vs-open-source).
 
 ## Table of contents
 
@@ -48,11 +48,11 @@ yarn add @fingerprintjs/fingerprintjs-pro-react
 
 ## Getting started
 
-In order to identify visitors, you'll need a FingerprintJS Pro account (you can [sign up for free](https://dashboard.fingerprintjs.com/signup/)).
-You can learn more about API keys in the [official FingerprintJS Pro documentation](https://dev.fingerprintjs.com/docs/quick-start-guide).
+In order to identify visitors, you'll need a FingerprintJS Pro account (you can [sign up for free](https://dashboard.fingerprint.com/signup/)).
+You can learn more about API keys in the [official FingerprintJS Pro documentation](https://dev.fingerprint.com/docs/quick-start-guide).
 
 1. Wrap your application (or component) in `FpjsProvider`. You can specify multiple configuration options. \
-   Set a region if you have chosen a non-global region during registration. Please refer to the [Regions page](https://dev.fingerprintjs.com/docs/regions).
+   Set a region if you have chosen a non-global region during registration. Please refer to the [Regions page](https://dev.fingerprint.com/docs/regions).
   
 ```jsx
 // src/index.js
@@ -168,18 +168,18 @@ See the full code example in the [examples folder](https://github.com/fingerprin
 ## Caching strategy
 :warning: **WARNING** If you use data from `extendedResult`, please pay additional attention to caching strategy.
 
-FingerprintJS Pro uses API calls as the basis for billing. Our [best practices](https://dev.fingerprintjs.com/docs/caching-visitor-information) strongly recommend using cache to optimise API calls rate. The Library uses the SessionStorage cache strategy by default.
+FingerprintJS Pro uses API calls as the basis for billing. Our [best practices](https://dev.fingerprint.com/docs/caching-visitor-information) strongly recommend using cache to optimise API calls rate. The Library uses the SessionStorage cache strategy by default.
 
-Some fields from the [extendedResult](https://dev.fingerprintjs.com/docs/js-agent#extendedresult) (e.g `ip` or `lastSeenAt`) might change for the same visitor. If you need exact current data, it is recommended to pass `ignoreCache=true` inside [getData](#returned-object) function.
+Some fields from the [extendedResult](https://dev.fingerprint.com/docs/js-agent#extendedresult) (e.g `ip` or `lastSeenAt`) might change for the same visitor. If you need exact current data, it is recommended to pass `ignoreCache=true` inside [getData](#returned-object) function.
 
 ## Documentation
 
-This library uses [FingerprintJS Pro agent](https://fingerprintjs.com/github/) internally. The documentation for the FingerprintJS Pro agent is available on https://dev.fingerprintjs.com/docs.
+This library uses [FingerprintJS Pro agent](https://fingerprint.com/github/) internally. The documentation for the FingerprintJS Pro agent is available on https://dev.fingerprint.com/docs.
 
 ### FpjsProvider props
 `loadOptions: FingerprintJS.LoadOptions`
 
-Options for the FingerprintJS JS Pro agent `load()` method. Options follow [agent's initialisation properties](https://dev.fingerprintjs.com/docs/js-agent#agent-initialization).
+Options for the FingerprintJS JS Pro agent `load()` method. Options follow [agent's initialisation properties](https://dev.fingerprint.com/docs/js-agent#agent-initialization).
 
 `cacheLocation?: CacheLocation`
 
@@ -200,10 +200,10 @@ Custom prefix for localStorage and sessionStorage cache keys. Will be ignored if
 ### Hooks
 `useVisitorData(getOptions, config)`
 
-`useVisitorData` hook performs identification requests with the FingerprintJS Pro API. The returned object contains information about loading status, errors, and [visitor](https://dev.fingerprintjs.com/docs/js-agent#extendedresult).
+`useVisitorData` hook performs identification requests with the FingerprintJS Pro API. The returned object contains information about loading status, errors, and [visitor](https://dev.fingerprint.com/docs/js-agent#extendedresult).
 
 #### Params
-- `getOptions: GetOptions<TExtended>` parameter follows parameters of the FingerprintJS Pro's [`get` function](https://dev.fingerprintjs.com/docs/js-agent#parameters-reference).
+- `getOptions: GetOptions<TExtended>` parameter follows parameters of the FingerprintJS Pro's [`get` function](https://dev.fingerprint.com/docs/js-agent#parameters-reference).
 - `config: UseVisitorDataConfig`'s property `immediate` determines whether the `getData()` method will be called immediately after the hook mounts or not.
 
 #### Returned object
@@ -217,7 +217,7 @@ Custom prefix for localStorage and sessionStorage cache keys. Will be ignored if
 You can find API reference [here](https://fingerprintjs.github.io/fingerprintjs-pro-react/).
 
 ## Support and feedback
-For support or to provide feedback, please [raise an issue on our issue tracker](https://github.com/fingerprintjs/fingerprintjs-pro-react/issues). If you require private support, please email us at oss-support@fingerprintjs.com. If you'd like to have a similar React wrapper for the [open-source FingerprintJS](https://github.com/fingerprintjs/fingerprintjs), consider [raising an issue in our issue tracker](https://github.com/fingerprintjs/fingerprintjs-pro-react/issues).
+For support or to provide feedback, please [raise an issue on our issue tracker](https://github.com/fingerprintjs/fingerprintjs-pro-react/issues). If you require private support, please email us at oss-support@fingerprint.com. If you'd like to have a similar React wrapper for the [open-source FingerprintJS](https://github.com/fingerprintjs/fingerprintjs), consider [raising an issue in our issue tracker](https://github.com/fingerprintjs/fingerprintjs-pro-react/issues).
 
 
 ## License
