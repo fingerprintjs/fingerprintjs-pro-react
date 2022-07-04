@@ -1,6 +1,10 @@
 <p align="center">
   <a href="https://fingerprint.com">
-    <img src="https://user-images.githubusercontent.com/10922372/126062498-31921b6c-c7fd-47cb-bf85-9e172e08b664.png" alt="FingerprintJS" width="312px" />
+    <picture>
+     <source media="(prefers-color-scheme: dark)" srcset="resources/logo_light.svg" />
+     <source media="(prefers-color-scheme: light)" srcset="resources/logo_dark.svg" />
+     <img src="resources/logo_dark.svg" alt="Fingerprint logo" width="312px" />
+   </picture>
   </a>
 <p align="center">
 <a href="https://github.com/fingerprintjs/fingerprintjs-pro-react/actions/workflows/release.yml">
