@@ -2,7 +2,7 @@
 To try out these examples, you need to set your public API key as the value of the PREACT_APP_FPJS_PUBLIC_API_KEY variable\
 in the `.env`. You can just copy `.env.example` file located in this directory.
 
-More info about the API key you can find on the [documentation page](https://dev.fingerprintjs.com/docs/js-agent#agent-initialization).
+More info about the API key you can find on the [documentation page](https://dev.fingerprint.com/docs/js-agent#agent-initialization).
 
 ### Installing dependencies
 1. Go to the root of the project, install dependencies with `yarn install` and build it with `yarn build`.

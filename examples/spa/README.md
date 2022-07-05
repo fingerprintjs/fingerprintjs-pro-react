@@ -3,11 +3,11 @@ In order to try out these examples, you set your public API key as the value of 
 in the `.env` file, located in this directory.
 
 ### FingerprintJS public API key
-- Go to [FingerprintJS Dashboard](https://dashboard.fingerprintjs.com/)*
+- Go to [FingerprintJS Dashboard](https://dashboard.fingerprint.com/)*
 - Open the _API keys_ page from the sidebar
 - Find your _Public_ API key
 
-*If you don't have a FingerprintJS Pro account, [sign up for free](https://dashboard.fingerprintjs.com/signup/)).
+*If you don't have a FingerprintJS Pro account, [sign up for free](https://dashboard.fingerprint.com/signup/)).
 
 ### Installing dependencies
 1. Go to the root of the project, install dependencies and build it (`cd ../../ && yarn install && yarn build`)
