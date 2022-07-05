@@ -1,12 +1,13 @@
-import { MouseEventHandler, PropsWithChildren, useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import FpjsContext from './fpjs-context'
+import { PropsWithChildren, useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import FpjsContext from '../fpjs-context'
 import { Agent, FpjsClient, FpjsClientOptions } from '@fingerprintjs/fingerprintjs-pro-spa'
-import * as packageInfo from '../package.json'
-import { agentServerMock } from './agent-server-mock'
-import { isSSR } from './ssr'
-import { getEnvironment } from './get-env'
-import { type DetectEnvContext } from './detect-env'
-import type { EnvDetails } from './env.types'
+import * as packageInfo from '../../package.json'
+import { agentServerMock } from '../agent-server-mock'
+import { isSSR } from '../ssr'
+import { getEnvironment } from '../get-env'
+import { type DetectEnvContext } from '../detect-env'
+import type { EnvDetails } from '../env.types'
+import { SyntheticEventDetector } from './synthetic-event-detector'
 
 const pkgName = packageInfo.name.split('/')[1]
 
@@ -103,10 +104,7 @@ export function FpjsProvider<TExtended extends boolean>({
     [client]
   )
 
-  const handleEnvSpanCheck = useCallback<MouseEventHandler>((event) => {
-    const isSyntheticEvent =
-      Boolean((event as Record<string, any>)['_reactName']) || event?.constructor?.name === 'SyntheticBaseEvent'
-
+  const handleSyntheticEventResult = useCallback((isSyntheticEvent: boolean) => {
     const context: DetectEnvContext = {
       syntheticEventDetected: isSyntheticEvent,
     }
@@ -129,17 +127,7 @@ export function FpjsProvider<TExtended extends boolean>({
 
   return (
     <FpjsContext.Provider value={contextValue}>
-      {!envContext && (
-        <span
-          style={{ display: 'none' }}
-          onClick={handleEnvSpanCheck}
-          ref={(element) => {
-            if (element && !isSSR()) {
-              element.click()
-            }
-          }}
-        />
-      )}
+      {!envContext && <SyntheticEventDetector onResult={handleSyntheticEventResult} />}
       {children}
     </FpjsContext.Provider>
   )
