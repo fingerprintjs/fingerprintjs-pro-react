@@ -32,7 +32,8 @@
     "release": "semantic-release"
   },
   "files": [
-    "dist"
+    "dist",
+  	"scripts"
   ],
   "repository": {
     "type": "git",
@@ -79,8 +80,8 @@
     "jest": "^27.5.1",
     "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "rollup": "^2.75.7",
     "rollup-plugin-dts": "^4.2.2",
     "rollup-plugin-license": "^2.8.1",
