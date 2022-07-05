@@ -11,8 +11,12 @@
 <div class="tsd-page-title">
 <h2>@fingerprintjs/fingerprintjs-pro-react</h2></div>
 <div class="tsd-panel tsd-typography"><p align="center">
-  <a href="https://fingerprintjs.com">
-    <img src="https://user-images.githubusercontent.com/10922372/126062498-31921b6c-c7fd-47cb-bf85-9e172e08b664.png" alt="FingerprintJS" width="312px" />
+  <a href="https://fingerprint.com">
+    <picture>
+     <source media="(prefers-color-scheme: dark)" srcset="resources/logo_light.svg" />
+     <source media="(prefers-color-scheme: light)" srcset="resources/logo_dark.svg" />
+     <img src="https://raw.githubusercontent.com/fingerprintjs/fingerprintjs-pro-react/main/resources/logo_dark.svg" alt="Fingerprint logo" width="312px" />
+   </picture>
   </a>
 <p align="center">
 <a href="https://github.com/fingerprintjs/fingerprintjs-pro-react/actions/workflows/release.yml">
@@ -35,7 +39,7 @@
 <a href="#fingerprintjs-pro-react" id="fingerprintjs-pro-react" style="color: inherit; text-decoration: none;">
   <h1>FingerprintJS Pro React</h1>
 </a>
-<p>FingerprintJS Pro React is an easy-to-use React library for <strong><a href="https://fingerprintjs.com/">FingerprintJS Pro</a></strong>. It&#39;s also compatible with the Next.js framework. SPA and Next.js examples are located in the <a href="https://github.com/fingerprintjs/fingerprintjs-pro-react/tree/main/examples">examples</a> folder.  <strong>This package works with FingerprintJS Pro, it is not compatible with <a href="https://github.com/fingerprintjs/fingerprintjs">open-source FingerprintJS</a>.</strong> You can learn more about the difference between FingerprintJS Pro and open-source FingerprintJS in the <a href="https://dev.fingerprintjs.com/docs/pro-vs-open-source">official documentation</a>.</p>
+<p>FingerprintJS Pro React is an easy-to-use React library for <strong><a href="https://fingerprint.com/">FingerprintJS Pro</a></strong>. It&#39;s also compatible with the Next.js framework. SPA and Next.js examples are located in the <a href="https://github.com/fingerprintjs/fingerprintjs-pro-react/tree/main/examples">examples</a> folder.  <strong>This package works with FingerprintJS Pro, it is not compatible with <a href="https://github.com/fingerprintjs/fingerprintjs">open-source FingerprintJS</a>.</strong> You can learn more about the difference between FingerprintJS Pro and open-source FingerprintJS in the <a href="https://dev.fingerprint.com/docs/pro-vs-open-source">official documentation</a>.</p>
 
 <a href="#table-of-contents" id="table-of-contents" style="color: inherit; text-decoration: none;">
   <h2>Table of contents</h2>
@@ -62,10 +66,10 @@
 <a href="#getting-started" id="getting-started" style="color: inherit; text-decoration: none;">
   <h2>Getting started</h2>
 </a>
-<p>In order to identify visitors, you&#39;ll need a FingerprintJS Pro account (you can <a href="https://dashboard.fingerprintjs.com/signup/">sign up for free</a>).
-You can learn more about API keys in the <a href="https://dev.fingerprintjs.com/docs/quick-start-guide">official FingerprintJS Pro documentation</a>.</p>
+<p>In order to identify visitors, you&#39;ll need a FingerprintJS Pro account (you can <a href="https://dashboard.fingerprint.com/signup/">sign up for free</a>).
+You can learn more about API keys in the <a href="https://dev.fingerprint.com/docs/quick-start-guide">official FingerprintJS Pro documentation</a>.</p>
 <ol>
-<li>Wrap your application (or component) in <code>FpjsProvider</code>. You can specify multiple configuration options. <br>Set a region if you have chosen a non-global region during registration. Please refer to the <a href="https://dev.fingerprintjs.com/docs/regions">Regions page</a>.</li>
+<li>Wrap your application (or component) in <code>FpjsProvider</code>. You can specify multiple configuration options. <br>Set a region if you have chosen a non-global region during registration. Please refer to the <a href="https://dev.fingerprint.com/docs/regions">Regions page</a>.</li>
 </ol>
 <pre><code class="language-jsx"><span class="hl-1">// src/index.js</span><br/><span class="hl-2">import</span><span class="hl-0"> </span><span class="hl-3">React</span><span class="hl-0"> </span><span class="hl-2">from</span><span class="hl-0"> </span><span class="hl-4">&#39;react&#39;</span><span class="hl-0">;</span><br/><span class="hl-2">import</span><span class="hl-0"> </span><span class="hl-3">ReactDOM</span><span class="hl-0"> </span><span class="hl-2">from</span><span class="hl-0"> </span><span class="hl-4">&#39;react-dom&#39;</span><span class="hl-0">;</span><br/><span class="hl-2">import</span><span class="hl-0"> { </span><span class="hl-3">FpjsProvider</span><span class="hl-0"> } </span><span class="hl-2">from</span><span class="hl-0"> </span><span class="hl-4">&#39;@fingerprintjs/fingerprintjs-pro-react&#39;</span><span class="hl-0">;</span><br/><span class="hl-2">import</span><span class="hl-0"> </span><span class="hl-3">App</span><span class="hl-0"> </span><span class="hl-2">from</span><span class="hl-0"> </span><span class="hl-4">&#39;./App&#39;</span><span class="hl-0">;</span><br/><br/><span class="hl-3">ReactDOM</span><span class="hl-0">.</span><span class="hl-5">render</span><span class="hl-0">(</span><br/><span class="hl-0">  </span><span class="hl-6">&lt;</span><span class="hl-7">FpjsProvider</span><br/><span class="hl-0">    </span><span class="hl-8">loadOptions</span><span class="hl-0"> = </span><span class="hl-9">{</span><span class="hl-10">{</span><br/><span class="hl-10">      </span><span class="hl-3">apiKey:</span><span class="hl-10"> </span><span class="hl-4">&#39;your-fpjs-public-api-key&#39;</span><br/><span class="hl-10">    }</span><span class="hl-9">}</span><br/><span class="hl-0">  </span><span class="hl-6">&gt;</span><br/><span class="hl-0">    </span><span class="hl-6">&lt;</span><span class="hl-7">App</span><span class="hl-0"> </span><span class="hl-6">/&gt;</span><br/><span class="hl-0">  </span><span class="hl-6">&lt;/</span><span class="hl-7">FpjsProvider</span><span class="hl-6">&gt;</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-3">document</span><span class="hl-0">.</span><span class="hl-5">getElementById</span><span class="hl-0">(</span><span class="hl-4">&#39;app&#39;</span><span class="hl-0">)</span><br/><span class="hl-0">);</span>
 </code></pre>
@@ -83,19 +87,19 @@ You can learn more about API keys in the <a href="https://dev.fingerprintjs.com/
   <h2>Caching strategy</h2>
 </a>
 <p>:warning: <strong>WARNING</strong> If you use data from <code>extendedResult</code>, please pay additional attention to caching strategy.</p>
-<p>FingerprintJS Pro uses API calls as the basis for billing. Our <a href="https://dev.fingerprintjs.com/docs/caching-visitor-information">best practices</a> strongly recommend using cache to optimise API calls rate. The Library uses the SessionStorage cache strategy by default.</p>
-<p>Some fields from the <a href="https://dev.fingerprintjs.com/docs/js-agent#extendedresult">extendedResult</a> (e.g <code>ip</code> or <code>lastSeenAt</code>) might change for the same visitor. If you need exact current data, it is recommended to pass <code>ignoreCache=true</code> inside <a href="#returned-object">getData</a> function.</p>
+<p>FingerprintJS Pro uses API calls as the basis for billing. Our <a href="https://dev.fingerprint.com/docs/caching-visitor-information">best practices</a> strongly recommend using cache to optimise API calls rate. The Library uses the SessionStorage cache strategy by default.</p>
+<p>Some fields from the <a href="https://dev.fingerprint.com/docs/js-agent#extendedresult">extendedResult</a> (e.g <code>ip</code> or <code>lastSeenAt</code>) might change for the same visitor. If you need exact current data, it is recommended to pass <code>ignoreCache=true</code> inside <a href="#returned-object">getData</a> function.</p>
 
 <a href="#documentation" id="documentation" style="color: inherit; text-decoration: none;">
   <h2>Documentation</h2>
 </a>
-<p>This library uses <a href="https://fingerprintjs.com/github/">FingerprintJS Pro agent</a> internally. The documentation for the FingerprintJS Pro agent is available on <a href="https://dev.fingerprintjs.com/docs">https://dev.fingerprintjs.com/docs</a>.</p>
+<p>This library uses <a href="https://fingerprint.com/github/">FingerprintJS Pro agent</a> internally. The documentation for the FingerprintJS Pro agent is available on <a href="https://dev.fingerprint.com/docs">https://dev.fingerprint.com/docs</a>.</p>
 
 <a href="#fpjsprovider-props" id="fpjsprovider-props" style="color: inherit; text-decoration: none;">
   <h3>FpjsProvider props</h3>
 </a>
 <p><code>loadOptions: FingerprintJS.LoadOptions</code></p>
-<p>Options for the FingerprintJS JS Pro agent <code>load()</code> method. Options follow <a href="https://dev.fingerprintjs.com/docs/js-agent#agent-initialization">agent&#39;s initialisation properties</a>.</p>
+<p>Options for the FingerprintJS JS Pro agent <code>load()</code> method. Options follow <a href="https://dev.fingerprint.com/docs/js-agent#agent-initialization">agent&#39;s initialisation properties</a>.</p>
 <p><code>cacheLocation?: CacheLocation</code></p>
 <p>Defines which built-in cache mechanism the client should use. Caching options follow properties defined in <a href="https://github.com/fingerprintjs/fingerprintjs-pro-spa#caching">fingerprintjs-pro-spa repository</a>.</p>
 <p><code>cache?: ICache</code></p>
@@ -109,13 +113,13 @@ You can learn more about API keys in the <a href="https://dev.fingerprintjs.com/
   <h3>Hooks</h3>
 </a>
 <p><code>useVisitorData(getOptions, config)</code></p>
-<p><code>useVisitorData</code> hook performs identification requests with the FingerprintJS Pro API. The returned object contains information about loading status, errors, and <a href="https://dev.fingerprintjs.com/docs/js-agent#extendedresult">visitor</a>.</p>
+<p><code>useVisitorData</code> hook performs identification requests with the FingerprintJS Pro API. The returned object contains information about loading status, errors, and <a href="https://dev.fingerprint.com/docs/js-agent#extendedresult">visitor</a>.</p>
 
 <a href="#params" id="params" style="color: inherit; text-decoration: none;">
   <h4>Params</h4>
 </a>
 <ul>
-<li><code>getOptions: GetOptions&lt;TExtended&gt;</code> parameter follows parameters of the FingerprintJS Pro&#39;s <a href="https://dev.fingerprintjs.com/docs/js-agent#parameters-reference"><code>get</code> function</a>.</li>
+<li><code>getOptions: GetOptions&lt;TExtended&gt;</code> parameter follows parameters of the FingerprintJS Pro&#39;s <a href="https://dev.fingerprint.com/docs/js-agent#parameters-reference"><code>get</code> function</a>.</li>
 <li><code>config: UseVisitorDataConfig</code>&#39;s property <code>immediate</code> determines whether the <code>getData()</code> method will be called immediately after the hook mounts or not.</li>
 </ul>
 
@@ -137,7 +141,7 @@ You can learn more about API keys in the <a href="https://dev.fingerprintjs.com/
 <a href="#support-and-feedback" id="support-and-feedback" style="color: inherit; text-decoration: none;">
   <h2>Support and feedback</h2>
 </a>
-<p>For support or to provide feedback, please <a href="https://github.com/fingerprintjs/fingerprintjs-pro-react/issues">raise an issue on our issue tracker</a>. If you require private support, please email us at <a href="mailto:oss-support@fingerprintjs.com">oss-support@fingerprintjs.com</a>. If you&#39;d like to have a similar React wrapper for the <a href="https://github.com/fingerprintjs/fingerprintjs">open-source FingerprintJS</a>, consider <a href="https://github.com/fingerprintjs/fingerprintjs-pro-react/issues">raising an issue in our issue tracker</a>.</p>
+<p>For support or to provide feedback, please <a href="https://github.com/fingerprintjs/fingerprintjs-pro-react/issues">raise an issue on our issue tracker</a>. If you require private support, please email us at <a href="mailto:oss-support@fingerprint.com">oss-support@fingerprint.com</a>. If you&#39;d like to have a similar React wrapper for the <a href="https://github.com/fingerprintjs/fingerprintjs">open-source FingerprintJS</a>, consider <a href="https://github.com/fingerprintjs/fingerprintjs-pro-react/issues">raising an issue in our issue tracker</a>.</p>
 
 <a href="#license" id="license" style="color: inherit; text-decoration: none;">
   <h2>License</h2>
