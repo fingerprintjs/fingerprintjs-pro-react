@@ -48,11 +48,12 @@ export function FpjsProvider<TExtended extends boolean>({
   const [envContext, setEnvContext] = useState<DetectEnvContext | undefined>()
 
   const clientOptions = useMemo(() => {
-    const integrationInfo = [...(loadOptions.integrationInfo || []), `${pkgName}/${packageInfo.version}`]
+    let integrationInfo = `${pkgName}/${packageInfo.version}`
 
     if (env) {
       const envInfo = env.version ? `${env.name}/${env.version}` : env.name
-      integrationInfo.push(`${pkgName}/${packageInfo.version}/${envInfo}`)
+
+      integrationInfo += `/${envInfo}`
     }
 
     return {
@@ -62,7 +63,7 @@ export function FpjsProvider<TExtended extends boolean>({
       cacheLocation,
       loadOptions: {
         ...loadOptions,
-        integrationInfo,
+        integrationInfo: [...(loadOptions.integrationInfo || []), integrationInfo],
       },
     }
   }, [loadOptions, env, cache, cacheTimeInSeconds, cachePrefix, cacheLocation])
