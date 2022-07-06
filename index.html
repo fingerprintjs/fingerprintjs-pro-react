@@ -86,9 +86,9 @@ You can learn more about API keys in the <a href="https://dev.fingerprint.com/do
 <a href="#caching-strategy" id="caching-strategy" style="color: inherit; text-decoration: none;">
   <h2>Caching strategy</h2>
 </a>
+<p>When you use FingerprintJS Pro, you pay for each API call. Our <a href="https://dev.fingerprint.com/docs/caching-visitor-information">best practices</a> recommend using cache to reduce the API call rate. The Library uses the SessionStorage cache strategy by default.</p>
 <p>:warning: <strong>WARNING</strong> If you use data from <code>extendedResult</code>, please pay additional attention to caching strategy.</p>
-<p>FingerprintJS Pro uses API calls as the basis for billing. Our <a href="https://dev.fingerprint.com/docs/caching-visitor-information">best practices</a> strongly recommend using cache to optimise API calls rate. The Library uses the SessionStorage cache strategy by default.</p>
-<p>Some fields from the <a href="https://dev.fingerprint.com/docs/js-agent#extendedresult">extendedResult</a> (e.g <code>ip</code> or <code>lastSeenAt</code>) might change for the same visitor. If you need exact current data, it is recommended to pass <code>ignoreCache=true</code> inside <a href="#returned-object">getData</a> function.</p>
+<p>Some fields from the <a href="https://dev.fingerprint.com/docs/js-agent#extendedresult">extendedResult</a> (e.g <code>ip</code> or <code>lastSeenAt</code>) might change for the same visitor. If you need to get the current data, it is recommended to pass <code>ignoreCache=true</code> inside <a href="#returned-object">getData</a> function.</p>
 
 <a href="#documentation" id="documentation" style="color: inherit; text-decoration: none;">
   <h2>Documentation</h2>
