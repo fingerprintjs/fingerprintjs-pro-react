@@ -18,6 +18,7 @@
     "privacy"
   ],
   "scripts": {
+    "prepare": "husky install",
     "build": "rimraf dist && rollup -c rollup.config.js",
     "start:spa": "npm start --prefix=examples/spa",
     "lint": "eslint --ext .js,.ts --ignore-path .gitignore --max-warnings 0 .",
@@ -46,7 +47,18 @@
   "dependencies": {
     "@fingerprintjs/fingerprintjs-pro-spa": "^0.4.0"
   },
+  "lint-staged": {
+    "*.ts": "yarn run lint:fix",
+    "*.tsx": "yarn run lint:fix"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
   "devDependencies": {
+    "@commitlint/cli": "^17.0.3",
+    "@commitlint/config-conventional": "^17.0.3",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-typescript": "^8.3.3",
     "@semantic-release/changelog": "^6.0.1",
@@ -60,6 +72,8 @@
     "@types/react-dom": "^17.0.11",
     "@typescript-eslint/eslint-plugin": "^5.28.0",
     "@typescript-eslint/parser": "^5.28.0",
+    "commitizen": "^4.2.4",
+    "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.18.0",
     "eslint-config-next": "12.1.6",
     "eslint-config-preact": "^1.1.1",
@@ -68,7 +82,9 @@
     "eslint-plugin-react": "7.30.1",
     "eslint-plugin-react-hooks": "^4.6.0",
     "generate-changelog": "^1.8.0",
+    "husky": "^8.0.1",
     "jest": "^27.5.1",
+    "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -103,12 +119,7 @@
       ],
       "@semantic-release/release-notes-generator",
       "@semantic-release/changelog",
-      [
-        "@semantic-release/npm",
-        {
-          "npmPublish": false
-        }
-      ],
+      "@semantic-release/npm",
       [
         "@semantic-release/git",
         {
