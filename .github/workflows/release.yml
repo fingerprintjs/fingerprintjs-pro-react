@@ -15,7 +15,14 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Install dependencies
+      - name: Cache
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: nodemodules-${{ hashFiles('yarn.lock') }}
+          restore-keys: nodemodules-
+
+      - name: Install Node packages
         run: yarn install
 
       - name: Build library
