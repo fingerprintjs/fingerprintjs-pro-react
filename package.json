@@ -42,7 +42,8 @@
   },
   "homepage": "https://github.com/fingerprintjs/fingerprintjs-pro-react#readme",
   "dependencies": {
-    "@fingerprintjs/fingerprintjs-pro-spa": "^0.4.0"
+    "@fingerprintjs/fingerprintjs-pro-spa": "^0.4.0",
+    "tslib": "2.4.0"
   },
   "lint-staged": {
     "*.ts": "yarn run lint:fix",
