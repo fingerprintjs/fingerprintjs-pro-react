@@ -28,6 +28,12 @@ jobs:
       - name: Build library
         run: yarn build
 
+      - name: Check the distributive TypeScript declarations
+        run: yarn test:dts
+
+      - name: Run tests
+        run: yarn test
+
       - name: Release
         run: yarn release
         env:
