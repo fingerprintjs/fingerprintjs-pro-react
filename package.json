@@ -44,15 +44,6 @@
   "dependencies": {
     "@fingerprintjs/fingerprintjs-pro-spa": "^0.4.0"
   },
-  "lint-staged": {
-    "*.ts": "yarn run lint:fix",
-    "*.tsx": "yarn run lint:fix"
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
-  },
   "devDependencies": {
     "@commitlint/cli": "^17.0.3",
     "@commitlint/config-conventional": "^17.0.3",
@@ -96,6 +87,15 @@
     "ts-jest": "^27.1.3",
     "typedoc": "^0.23.1",
     "typescript": "^4.7.3"
+  },
+  "lint-staged": {
+    "*.ts": "yarn run lint:fix",
+    "*.tsx": "yarn run lint:fix"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   },
   "release": {
     "branches": [
