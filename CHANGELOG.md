@@ -1,3 +1,17 @@
+# [1.3.0-test.2](https://github.com/fingerprintjs/fingerprintjs-pro-react/compare/v1.3.0-test.1...v1.3.0-test.2) (2022-07-13)
+
+
+### Bug Fixes
+
+* use correct cwd in post-install script ([7b8e96c](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/7b8e96ca0581f3b8ae9a30f2080e23c15885e2d2))
+
+# [1.3.0-test.1](https://github.com/fingerprintjs/fingerprintjs-pro-react/compare/v1.2.0...v1.3.0-test.1) (2022-07-13)
+
+
+### Features
+
+* add contextual information for the JS agent about the library ([d55e164](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/d55e16409b8987c57904962a538fce0d4f142414))
+
 # [1.2.0](https://github.com/fingerprintjs/fingerprintjs-pro-react/compare/v1.1.0...v1.2.0) (2022-07-11)
 
 
