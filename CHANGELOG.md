@@ -1,3 +1,10 @@
+# [1.3.0-test.1](https://github.com/fingerprintjs/fingerprintjs-pro-react/compare/v1.2.0...v1.3.0-test.1) (2022-07-13)
+
+
+### Features
+
+* add contextual information for the JS agent about the library ([d55e164](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/d55e16409b8987c57904962a538fce0d4f142414))
+
 # [1.2.0](https://github.com/fingerprintjs/fingerprintjs-pro-react/compare/v1.1.0...v1.2.0) (2022-07-11)
 
 
