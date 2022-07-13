@@ -1,7 +1,7 @@
 const fs = require('fs')
 const pkg = require('../package.json')
 const path = require('path')
-const cwd = process.cwd()
+const cwd = process.env.INIT_CWD || path.resolve('../../', __dirname)
 
 const token = '%DETECTED_ENV%'
 
