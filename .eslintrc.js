@@ -44,6 +44,7 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     'prettier/prettier': 'error',
     '@typescript-eslint/no-unused-vars': ['error'],
+    '@next/next/no-html-link-for-pages': 'off',
     curly: [2, 'all'],
   },
 }
