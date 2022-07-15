@@ -1,13 +1,13 @@
 import { PropsWithChildren, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import FpjsContext from '../fpjs-context'
-import { Agent, FpjsClient, FpjsClientOptions } from '@fingerprintjs/fingerprintjs-pro-spa'
+import { FpjsClient, FpjsClientOptions } from '@fingerprintjs/fingerprintjs-pro-spa'
 import * as packageInfo from '../../package.json'
-import { agentServerMock } from '../agent-server-mock'
 import { isSSR } from '../ssr'
 import { getEnvironment } from '../get-env'
 import { type DetectEnvContext } from '../detect-env'
 import type { EnvDetails } from '../env.types'
 import { SyntheticEventDetector } from './synthetic-event-detector'
+import { waitUntil } from '../utils/wait-until'
 
 const pkgName = packageInfo.name.split('/')[1]
 
@@ -45,10 +45,22 @@ export function FpjsProvider<TExtended extends boolean>({
   loadOptions,
 }: PropsWithChildren<FpjsProviderOptions>) {
   const [env, setEnv] = useState<EnvDetails | undefined>()
-
   const [envContext, setEnvContext] = useState<DetectEnvContext | undefined>()
 
+  const clientInitPromiseRef = useRef<Promise<unknown>>()
+  const clientRef = useRef<FpjsClient>()
+
   const clientOptions = useMemo(() => {
+    return {
+      cache,
+      cacheTimeInSeconds,
+      cachePrefix,
+      cacheLocation,
+      loadOptions,
+    }
+  }, [loadOptions, cache, cacheTimeInSeconds, cachePrefix, cacheLocation])
+
+  const createClient = useCallback(() => {
     let integrationInfo = `${pkgName}/${packageInfo.version}`
 
     if (env) {
@@ -57,51 +69,50 @@ export function FpjsProvider<TExtended extends boolean>({
       integrationInfo += `/${envInfo}`
     }
 
-    return {
-      cache,
-      cacheTimeInSeconds,
-      cachePrefix,
-      cacheLocation,
+    const parsedClientOptions = {
+      ...clientOptions,
       loadOptions: {
         ...loadOptions,
         integrationInfo: [...(loadOptions.integrationInfo || []), integrationInfo],
       },
     }
-  }, [loadOptions, env, cache, cacheTimeInSeconds, cachePrefix, cacheLocation])
 
-  const [client, setClient] = useState<FpjsClient>(() => new FpjsClient(clientOptions))
+    const createdClient = new FpjsClient(parsedClientOptions)
 
-  useEffect(() => {
-    if (forceRebuild) {
-      setClient(new FpjsClient(clientOptions))
+    clientInitPromiseRef.current = createdClient.init()
+
+    clientRef.current = createdClient
+  }, [clientOptions, env, loadOptions])
+
+  const getClient = useCallback(async () => {
+    if (isSSR()) {
+      throw new Error('FpjsProvider client cannot be used in SSR')
     }
-  }, [forceRebuild, clientOptions])
 
-  const clientPromise = useRef<Promise<Agent>>(
-    new Promise((resolve) => {
-      if (!isSSR()) {
-        resolve(client.init())
-      } else {
-        resolve(agentServerMock)
-      }
-    })
-  )
-  const firstRender = useRef(true)
-
-  useEffect(() => {
-    if (firstRender) {
-      firstRender.current = false
-    } else {
-      clientPromise.current = client.init()
+    if (!clientRef.current) {
+      await waitUntil({
+        checkCondition: () => Boolean(clientRef.current),
+      }).catch(async () => {
+        /**
+         * We did timeout waiting for ideal condition to create client (eg: env detection)
+         * Attempt to create client now, potentially without some additional information that might be useful but are not required.
+         * */
+        createClient()
+      })
     }
-  }, [client])
+
+    return clientRef.current!
+  }, [createClient])
 
   const getVisitorData = useCallback(
     async (options, ignoreCache) => {
-      await clientPromise.current
+      const client = await getClient()
+
+      await clientInitPromiseRef.current
+
       return client.getVisitorData<TExtended>(options, ignoreCache)
     },
-    [client]
+    [getClient]
   )
 
   const handleSyntheticEventResult = useCallback((isSyntheticEvent: boolean) => {
@@ -115,8 +126,10 @@ export function FpjsProvider<TExtended extends boolean>({
   }, [])
 
   const clearCache = useCallback(async () => {
+    const client = await getClient()
+
     await client.clearCache()
-  }, [client])
+  }, [getClient])
 
   const contextValue = useMemo(() => {
     return {
@@ -124,6 +137,18 @@ export function FpjsProvider<TExtended extends boolean>({
       getVisitorData,
     }
   }, [clearCache, getVisitorData])
+
+  useEffect(() => {
+    if (env) {
+      createClient()
+    }
+  }, [env, createClient])
+
+  useEffect(() => {
+    if (forceRebuild) {
+      createClient()
+    }
+  }, [forceRebuild, clientOptions, createClient])
 
   return (
     <FpjsContext.Provider value={contextValue}>
