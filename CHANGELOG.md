@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/fingerprintjs/fingerprintjs-pro-react/compare/v1.3.0...v1.3.1) (2022-07-15)
+
+
+### Bug Fixes
+
+* correctly provide contextual information when provider is mounted ([5d8f195](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/5d8f195cca2ed637f332a0e093f731bdacdd42fe))
+
 # [1.3.0](https://github.com/fingerprintjs/fingerprintjs-pro-react/compare/v1.2.0...v1.3.0) (2022-07-14)
 
 
