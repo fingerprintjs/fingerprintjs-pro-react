@@ -1,4 +1,4 @@
-import { FunctionalComponent, h } from 'preact'
+import { FunctionalComponent } from 'preact'
 import { useVisitorData } from '@fingerprintjs/fingerprintjs-pro-react'
 import { useState } from 'preact/hooks'
 import { TargetedEvent } from 'preact/compat'
