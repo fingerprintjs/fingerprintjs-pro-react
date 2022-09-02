@@ -61,19 +61,20 @@ You can learn more about API keys in the [official FingerprintJS Pro documentati
 ```jsx
 // src/index.js
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import { FpjsProvider } from '@fingerprintjs/fingerprintjs-pro-react';
 import App from './App';
 
-ReactDOM.render(
+const root = ReactDOM.createRoot(document.getElementById('app'))
+
+root.render(
   <FpjsProvider
     loadOptions = {{
       apiKey: 'your-fpjs-public-api-key'
     }}
   >
     <App />
-  </FpjsProvider>,
-  document.getElementById('app')
+  </FpjsProvider>
 );
 ```
 
