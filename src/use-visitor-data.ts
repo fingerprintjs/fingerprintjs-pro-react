@@ -1,7 +1,8 @@
-import FpjsContext, { FpjsContextInterface, QueryResult, VisitorQueryContext } from './fpjs-context'
+import FpjsContext, { FpjsContextInterface, GetDataOptions, QueryResult, VisitorQueryContext } from './fpjs-context'
 import { useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import { GetOptions, VisitorData } from '@fingerprintjs/fingerprintjs-pro-spa'
 
+export type UseVisitorDataOptions<TExtended extends boolean> = GetOptions<TExtended> & Partial<GetDataOptions>
 /**
  *  @example
  * ```js
@@ -20,7 +21,7 @@ import { GetOptions, VisitorData } from '@fingerprintjs/fingerprintjs-pro-spa'
  * @param config config for the hook
  */
 export function useVisitorData<TExtended extends boolean>(
-  getOptions: GetOptions<TExtended> = {},
+  getOptions: UseVisitorDataOptions<TExtended> = {},
   config: UseVisitorDataConfig = defaultUseVisitorDataConfig
 ): VisitorQueryContext<TExtended> {
   const { extendedResult, timeout, tag, linkedId } = getOptions ?? {}
@@ -35,7 +36,7 @@ export function useVisitorData<TExtended extends boolean>(
   const [state, setState] = useState<QueryResult<VisitorData<TExtended>>>(initialState)
 
   const getData = useCallback<VisitorQueryContext<TExtended>['getData']>(
-    async ({ ignoreCache = false } = {}) => {
+    async ({ ignoreCache = getOptions.ignoreCache } = {}) => {
       try {
         setState((state) => ({ ...state, isLoading: true }))
 
@@ -52,7 +53,7 @@ export function useVisitorData<TExtended extends boolean>(
         setState((state) => (state.isLoading ? { ...state, isLoading: false } : state))
       }
     },
-    [memoizedOptions, getVisitorData]
+    [getOptions.ignoreCache, getVisitorData, memoizedOptions]
   )
 
   useEffect(() => {
