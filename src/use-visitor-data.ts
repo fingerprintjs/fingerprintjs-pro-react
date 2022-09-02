@@ -15,7 +15,7 @@ export type UseVisitorDataOptions<TExtended extends boolean> = GetOptions<TExten
  *    getData,
  *  } = useVisitorData({ extended: true }, { immediate: false });
  * ```
- *  * Use the `useVisitorData` hook in your components to perform identification requests with the FingerprintJS API.
+ * Use the `useVisitorData` hook in your components to perform identification requests with the FingerprintJS API. The returned object contains information about loading status, errors, and visitor.
  *
  * @param getOptions options for the `fp.get()` request
  * @param config config for the hook

@@ -178,46 +178,6 @@ When you use FingerprintJS Pro, you pay for each API call. Our [best practices](
 
 Some fields from the [extendedResult](https://dev.fingerprint.com/docs/js-agent#extendedresult) (e.g `ip` or `lastSeenAt`) might change for the same visitor. If you need to get the current data, it is recommended to pass `ignoreCache=true` inside [getData](#returned-object) function.
 
-## Documentation
-
-This library uses [FingerprintJS Pro agent](https://fingerprint.com/github/) internally. The documentation for the FingerprintJS Pro agent is available on https://dev.fingerprint.com/docs.
-
-### FpjsProvider props
-`loadOptions: FingerprintJS.LoadOptions`
-
-Options for the FingerprintJS JS Pro agent `load()` method. Options follow [agent's initialisation properties](https://dev.fingerprint.com/docs/js-agent#agent-initialization).
-
-`cacheLocation?: CacheLocation`
-
-Defines which built-in cache mechanism the client should use. Caching options follow properties defined in [fingerprintjs-pro-spa repository](https://github.com/fingerprintjs/fingerprintjs-pro-spa#caching).
-
-`cache?: ICache`
-
-Custom cache implementation. Takes precedence over the `cacheLocation` property. Caching options follow properties defined in [fingerprintjs-pro-spa repository](https://github.com/fingerprintjs/fingerprintjs-pro-spa#caching).
-
-`cacheTimeInSeconds?: number`
-
-Duration in seconds for which data is stored in the cache. Cannot exceed 86_400 (24h) because caching data for longer than 24 hours can negatively affect identification accuracy. Caching options follow properties defined in [fingerprintjs-pro-spa repository](https://github.com/fingerprintjs/fingerprintjs-pro-spa#caching).
-
-`cachePrefix?: string`
-
-Custom prefix for localStorage and sessionStorage cache keys. Will be ignored if the `cache` is provided. Caching options follow properties defined in [fingerprintjs-pro-spa repository](https://github.com/fingerprintjs/fingerprintjs-pro-spa#caching).
-
-### Hooks
-`useVisitorData(getOptions, config)`
-
-`useVisitorData` hook performs identification requests with the FingerprintJS Pro API. The returned object contains information about loading status, errors, and [visitor](https://dev.fingerprint.com/docs/js-agent#extendedresult).
-
-#### Params
-- `getOptions: GetOptions<TExtended>` parameter follows parameters of the FingerprintJS Pro's [`get` function](https://dev.fingerprint.com/docs/js-agent#parameters-reference).
-- `config: UseVisitorDataConfig`'s property `immediate` determines whether the `getData()` method will be called immediately after the hook mounts or not.
-
-#### Returned object
-- `getData: ({ignoreCache?: boolean}) => Promise<VisitorData>` Performs identification request to server and returns visitors data.
-- `isLoading: boolean` Indicates `getData` request status.
-- `data: VisitorData` Contains visitors data requested after `getData()` call.
-- `error: Error` Error information in case the request failed.
-
 ### API Reference
 
 You can find API reference [here](https://fingerprintjs.github.io/fingerprintjs-pro-react/).

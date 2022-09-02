@@ -28,6 +28,9 @@ export interface GetDataOptions {
 }
 
 export interface VisitorQueryContext<TExtended extends boolean> extends VisitorQueryResult<TExtended> {
+  /**
+   * Performs identification request to server and returns visitors data.
+   * */
   getData: (getDataOptions?: GetDataOptions) => Promise<VisitorData<TExtended> | void>
 }
 
