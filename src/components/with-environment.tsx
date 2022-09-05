@@ -8,6 +8,19 @@ export interface WithEnvironmentProps {
   children: JSX.Element
 }
 
+/**
+ * Utility component that synchronously detects the current environment (React/Preact etc.) and
+ * provides it as a prop to the child element.
+ *
+ * @example
+ * ```jsx
+ * const App = ({ env }: { env: EnvDetails }) => `I'm running in ${env.name}!`
+ *
+ * <WithEnvironment>
+ *  <App />
+ * </WithEnvironment>
+ * ```
+ */
 class WithEnvironment extends Component<WithEnvironmentProps> {
   constructor(props: WithEnvironmentProps) {
     super(props)
