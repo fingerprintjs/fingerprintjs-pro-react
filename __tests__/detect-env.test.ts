@@ -14,10 +14,22 @@ describe('Detect user env', () => {
         name: Env.Preact,
       })
     })
+
+    it('should detect preact if class components receive any arguments in render', () => {
+      const env = detectEnvironment({
+        context: {
+          classRenderReceivesAnyArguments: true,
+        },
+      })
+
+      expect(env).toEqual({
+        name: Env.Preact,
+      })
+    })
   })
 
   describe('React', () => {
-    it('should detect react if synthetic event was detect', () => {
+    it('should detect react if synthetic event was detected', () => {
       const env = detectEnvironment({
         context: {
           syntheticEventDetected: true,

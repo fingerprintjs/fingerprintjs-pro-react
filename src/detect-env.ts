@@ -1,7 +1,8 @@
 import { Env, type EnvDetails } from './env.types'
 
 export interface DetectEnvContext {
-  syntheticEventDetected: boolean
+  syntheticEventDetected?: boolean
+  classRenderReceivesAnyArguments?: boolean
 }
 
 export interface DetectEnvParams {
@@ -32,7 +33,7 @@ function runEnvChecks(...strategies: EnvCheckStrategy[]) {
  * Right now the main determinant is if synthetic event was not detected.
  * */
 function isPreact(context: DetectEnvContext) {
-  return !context.syntheticEventDetected
+  return !context.syntheticEventDetected || context.classRenderReceivesAnyArguments
 }
 
 /**
