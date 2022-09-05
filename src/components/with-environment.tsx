@@ -2,6 +2,7 @@ import { Component, cloneElement } from 'react'
 
 import { getEnvironment } from '../get-env'
 import { type DetectEnvParams } from '../detect-env'
+import { type EnvDetails } from '../env.types'
 
 export interface WithEnvironmentProps {
   // exactly one element must be provided
@@ -26,18 +27,26 @@ class WithEnvironment extends Component<WithEnvironmentProps> {
     super(props)
   }
 
+  detectedEnv: EnvDetails | undefined
+
   render(...args: any[]) {
-    // unlike React, class components in Preact always receive `props` and `state` in render()
-    // this is true for both Preact 8.x and 10.x
-    const hasAnyArguments = args.length > 0
-    const detectParams: DetectEnvParams = {
-      context: { classRenderReceivesAnyArguments: hasAnyArguments },
+    if (!this.detectedEnv) {
+      // unlike React, class components in Preact always receive `props` and `state` in render()
+      // this is true for both Preact 8.x and 10.x
+      const hasAnyArguments = args.length > 0
+      const detectParams: DetectEnvParams = {
+        context: { classRenderReceivesAnyArguments: hasAnyArguments },
+      }
+
+      this.detectedEnv = getEnvironment(detectParams)
     }
 
-    const env = getEnvironment(detectParams)
-
     // passes the `env` down as a prop
-    return cloneElement(this.props.children, { env })
+    return cloneElement(this.props.children, { env: this.detectedEnv })
+  }
+
+  shouldComponentUpdate() {
+    return false
   }
 }
 
