@@ -1,13 +1,11 @@
-import { PropsWithChildren, useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { PropsWithChildren, useCallback, useEffect, useMemo, useRef } from 'react'
 import FpjsContext from '../fpjs-context'
 import { FpjsClient, FpjsClientOptions } from '@fingerprintjs/fingerprintjs-pro-spa'
 import * as packageInfo from '../../package.json'
 import { isSSR } from '../ssr'
-import { getEnvironment } from '../get-env'
-import { type DetectEnvContext } from '../detect-env'
-import type { EnvDetails } from '../env.types'
-import { SyntheticEventDetector } from './synthetic-event-detector'
 import { waitUntil } from '../utils/wait-until'
+import { WithEnvironment } from './with-environment'
+import type { EnvDetails } from '../env.types'
 
 const pkgName = packageInfo.name.split('/')[1]
 
@@ -34,8 +32,29 @@ interface FpjsProviderOptions extends FpjsClientOptions {
  * ```
  *
  * Provides the FpjsContext to its child components.
+ *
+ * @privateRemarks
+ * This is just a wrapper around the actual provider.
+ * For the implementation, see `ProviderWithEnv` component.
  */
-export function FpjsProvider<TExtended extends boolean>({
+export function FpjsProvider<T extends boolean>(props: PropsWithChildren<FpjsProviderOptions>) {
+  const propsWithEnv = props as PropsWithChildren<ProviderWithEnvProps>
+
+  return (
+    <WithEnvironment>
+      <ProviderWithEnv<T> {...propsWithEnv} />
+    </WithEnvironment>
+  )
+}
+
+interface ProviderWithEnvProps extends FpjsProviderOptions {
+  /**
+   * Contains details about the env we're currently running in (e.g. framework, version)
+   */
+  env: EnvDetails
+}
+
+function ProviderWithEnv<TExtended extends boolean>({
   children,
   forceRebuild,
   cache,
@@ -43,12 +62,10 @@ export function FpjsProvider<TExtended extends boolean>({
   cachePrefix,
   cacheLocation,
   loadOptions,
-}: PropsWithChildren<FpjsProviderOptions>) {
-  const [env, setEnv] = useState<EnvDetails | undefined>()
-  const [envContext, setEnvContext] = useState<DetectEnvContext | undefined>()
-
-  const clientInitPromiseRef = useRef<Promise<unknown>>()
+  env,
+}: PropsWithChildren<ProviderWithEnvProps>) {
   const clientRef = useRef<FpjsClient>()
+  const clientInitPromiseRef = useRef<Promise<unknown>>()
 
   const clientOptions = useMemo(() => {
     return {
@@ -81,7 +98,7 @@ export function FpjsProvider<TExtended extends boolean>({
 
     clientInitPromiseRef.current = createdClient.init()
 
-    clientRef.current = createdClient
+    return createdClient
   }, [clientOptions, env, loadOptions])
 
   const getClient = useCallback(async () => {
@@ -115,16 +132,6 @@ export function FpjsProvider<TExtended extends boolean>({
     [getClient]
   )
 
-  const handleSyntheticEventResult = useCallback((isSyntheticEvent: boolean) => {
-    const context: DetectEnvContext = {
-      syntheticEventDetected: isSyntheticEvent,
-    }
-
-    setEnvContext(context)
-
-    setEnv(getEnvironment({ context }))
-  }, [])
-
   const clearCache = useCallback(async () => {
     const client = await getClient()
 
@@ -139,21 +146,12 @@ export function FpjsProvider<TExtended extends boolean>({
   }, [clearCache, getVisitorData])
 
   useEffect(() => {
-    if (env) {
-      createClient()
-    }
-  }, [env, createClient])
-
-  useEffect(() => {
-    if (forceRebuild) {
-      createClient()
+    // By default, the client is always initialized once during the first render and won't be updated
+    // if the configuration changes. Use `forceRebuilt` flag to disable this behaviour.
+    if (!clientRef.current || forceRebuild) {
+      clientRef.current = createClient()
     }
   }, [forceRebuild, clientOptions, createClient])
 
-  return (
-    <FpjsContext.Provider value={contextValue}>
-      {!envContext && <SyntheticEventDetector onResult={handleSyntheticEventResult} />}
-      {children}
-    </FpjsContext.Provider>
-  )
+  return <FpjsContext.Provider value={contextValue}>{children}</FpjsContext.Provider>
 }
