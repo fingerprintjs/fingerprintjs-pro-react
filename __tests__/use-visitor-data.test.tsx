@@ -1,6 +1,7 @@
 import { useVisitorData } from '../src'
-import { renderHook } from '@testing-library/react-hooks'
-import { createWrapper } from './helpers'
+import { renderHook } from '@testing-library/react'
+import { actWait, createWrapper } from './helpers'
+import { act } from 'react-dom/test-utils'
 
 const testData = {
   visitorId: 'abcdef123456',
@@ -30,9 +31,11 @@ describe('useVisitorData', () => {
     const wrapper = createWrapper()
     const {
       result: { current },
-      waitForNextUpdate,
+      rerender,
     } = renderHook(() => useVisitorData(), { wrapper })
-    await waitForNextUpdate()
+
+    rerender()
+
     expect(current).toBeDefined()
   })
 
@@ -40,14 +43,16 @@ describe('useVisitorData', () => {
     getVisitorData.mockImplementation(() => testData)
 
     const wrapper = createWrapper()
-    const { waitForNextUpdate, result } = renderHook(() => useVisitorData(), { wrapper })
+    const { result } = renderHook(() => useVisitorData({}, { immediate: true }), { wrapper })
     expect(result.current).toMatchObject(
       expect.objectContaining({
         isLoading: true,
         data: undefined,
       })
     )
-    await waitForNextUpdate()
+
+    await actWait(500)
+
     expect(init).toHaveBeenCalled()
     expect(getVisitorData).toHaveBeenCalled()
     expect(result.current).toMatchObject(
@@ -59,9 +64,37 @@ describe('useVisitorData', () => {
   })
 
   it("shouldn't call getData on mount if 'immediate' option is set to false", async () => {
+    getVisitorData.mockImplementation(() => testData)
+
     const wrapper = createWrapper()
-    const { waitForNextUpdate } = renderHook(() => useVisitorData({}, { immediate: false }), { wrapper })
-    expect(() => waitForNextUpdate()).rejects.toThrow()
+    const { rerender } = renderHook(() => useVisitorData({}, { immediate: false }), { wrapper })
+
     expect(getVisitorData).not.toHaveBeenCalled()
+
+    await rerender()
+
+    expect(getVisitorData).not.toHaveBeenCalled()
+  })
+
+  it('should support immediate fetch with cache disabled', async () => {
+    const wrapper = createWrapper()
+    renderHook(() => useVisitorData({ ignoreCache: true }, { immediate: true }), { wrapper })
+
+    await actWait(500)
+
+    expect(getVisitorData).toHaveBeenCalledWith({}, true)
+  })
+
+  it('should support overwriting default cache option in getData call', async () => {
+    const wrapper = createWrapper()
+    const hook = renderHook(() => useVisitorData({ ignoreCache: true }, { immediate: false }), { wrapper })
+
+    await act(async () => {
+      await hook.result.current.getData({
+        ignoreCache: false,
+      })
+    })
+
+    expect(getVisitorData).toHaveBeenCalledWith({}, false)
   })
 })

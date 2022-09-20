@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { renderHook } from '@testing-library/react-hooks'
+import { renderHook } from '@testing-library/react'
 import { FpjsContext } from '../src'
 import { createWrapper, getDefaultLoadOptions } from './helpers'
 import { CacheLocation, FpjsClient, FpjsClientOptions } from '@fingerprintjs/fingerprintjs-pro-spa'
