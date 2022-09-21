@@ -22,6 +22,10 @@
 <a href="https://discord.gg/39EpE2neBg">
   <img src="https://img.shields.io/discord/852099967190433792?style=logo&label=Discord&logo=Discord&logoColor=white" alt="Discord server">
 </a>
+<a href="https://fingerprintjs.github.io/fingerprintjs-pro-react/">
+  <img src="https://img.shields.io/badge/-Documentation-green" alt="Discord server">
+</a>
+
   
 # FingerprintJS Pro React
 
