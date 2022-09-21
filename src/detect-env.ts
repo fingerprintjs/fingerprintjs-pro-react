@@ -1,7 +1,7 @@
 import { Env, type EnvDetails } from './env.types'
 
 export interface DetectEnvContext {
-  classRenderReceivesAnyArguments?: boolean
+  classRenderReceivesAnyArguments: boolean
 }
 
 export interface DetectEnvParams {
@@ -38,7 +38,7 @@ function isPreact(context: DetectEnvContext) {
  * Checks if user is using react.
  * */
 function isReact(context: DetectEnvContext) {
-  return !isPreact(context)
+  return !context.classRenderReceivesAnyArguments
 }
 
 /**

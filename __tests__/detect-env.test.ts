@@ -38,7 +38,9 @@ describe('Detect user env', () => {
       document.head.appendChild(script)
 
       const env = detectEnvironment({
-        context: {},
+        context: {
+          classRenderReceivesAnyArguments: false,
+        },
       })
 
       expect(env).toEqual({
@@ -56,7 +58,7 @@ describe('Detect user env', () => {
       })
 
       const env = detectEnvironment({
-        context: {},
+        context: { classRenderReceivesAnyArguments: false },
       })
 
       expect(env).toEqual({
