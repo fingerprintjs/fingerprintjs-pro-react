@@ -1,3 +1,25 @@
+## [1.4.0](https://github.com/fingerprintjs/fingerprintjs-pro-react/compare/v1.3.1...v1.4.0) (2022-10-04)
+
+
+### Features
+
+* introduce synchronous env detection ([6ba1fd0](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/6ba1fd0f823cccb3295ccab8896b80501b189842))
+* support ignoring cache with "immediate" set to true ([d55bc4c](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/d55bc4c6502c51e47a79fed6aef5ad1ebc98aef9))
+
+
+### Build System
+
+* **deps:** bump terser from 4.8.0 to 4.8.1 in /examples/preact ([6947ad5](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/6947ad553a39107736affb43ad1e0bbfce5c09a9))
+* **deps:** bump terser from 5.13.1 to 5.14.2 in /examples/spa ([e94c1ce](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/e94c1ce1106795f88390545f1a76a979e77c2f20))
+* **deps:** update FingerprintJS Pro SPA to 0.5.0 ([e4f4039](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/e4f4039ef0e023003ee03f5dbe67b3e593f50a42))
+
+
+### Documentation
+
+* **README:** add documentation badge ([e4a8365](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/e4a83651aaf06dd58a19d01915314f852f035347))
+* **README:** remove manually written API reference from readme in favor of generated one ([f534021](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/f534021203f1dd0c491f99a44f8d47fd37c743ff))
+* **README:** update examples to use ReactDOM.createRoot ([ed69e26](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/ed69e26f94e40641cc6be00724f623d198636ada))
+
 ## [1.3.1](https://github.com/fingerprintjs/fingerprintjs-pro-react/compare/v1.3.0...v1.3.1) (2022-07-15)
 
 
