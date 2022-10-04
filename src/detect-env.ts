@@ -1,7 +1,7 @@
 import { Env, type EnvDetails } from './env.types'
 
 export interface DetectEnvContext {
-  syntheticEventDetected: boolean
+  classRenderReceivesAnyArguments: boolean
 }
 
 export interface DetectEnvParams {
@@ -29,18 +29,16 @@ function runEnvChecks(...strategies: EnvCheckStrategy[]) {
 /**
  * Runs checks that determine if user is using preact.
  * So far they are not ideal, as there is no consistent way to detect preact.
- * Right now the main determinant is if synthetic event was not detected.
  * */
 function isPreact(context: DetectEnvContext) {
-  return !context.syntheticEventDetected
+  return context.classRenderReceivesAnyArguments
 }
 
 /**
  * Checks if user is using react.
- * So far we are doing that by checking if synthetic event was detected.
  * */
 function isReact(context: DetectEnvContext) {
-  return context.syntheticEventDetected
+  return !context.classRenderReceivesAnyArguments
 }
 
 /**

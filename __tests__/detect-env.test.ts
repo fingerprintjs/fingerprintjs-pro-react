@@ -3,10 +3,10 @@ import { Env } from '../src/env.types'
 
 describe('Detect user env', () => {
   describe('Preact', () => {
-    it('should detect preact if synthetic event was not detected', () => {
+    it('should detect preact if class components receive any arguments in render', () => {
       const env = detectEnvironment({
         context: {
-          syntheticEventDetected: false,
+          classRenderReceivesAnyArguments: true,
         },
       })
 
@@ -17,10 +17,10 @@ describe('Detect user env', () => {
   })
 
   describe('React', () => {
-    it('should detect react if synthetic event was detect', () => {
+    it('should detect react if class component receives no args in render', () => {
       const env = detectEnvironment({
         context: {
-          syntheticEventDetected: true,
+          classRenderReceivesAnyArguments: false,
         },
       })
 
@@ -39,7 +39,7 @@ describe('Detect user env', () => {
 
       const env = detectEnvironment({
         context: {
-          syntheticEventDetected: true,
+          classRenderReceivesAnyArguments: false,
         },
       })
 
@@ -58,9 +58,7 @@ describe('Detect user env', () => {
       })
 
       const env = detectEnvironment({
-        context: {
-          syntheticEventDetected: true,
-        },
+        context: { classRenderReceivesAnyArguments: false },
       })
 
       expect(env).toEqual({
