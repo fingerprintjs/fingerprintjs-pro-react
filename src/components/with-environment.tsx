@@ -1,4 +1,4 @@
-import { Component, cloneElement } from 'react'
+import { cloneElement, Component } from 'react'
 
 import { getEnvironment } from '../get-env'
 import { type DetectEnvParams } from '../detect-env'
@@ -43,10 +43,6 @@ class WithEnvironment extends Component<WithEnvironmentProps> {
 
     // passes the `env` down as a prop
     return cloneElement(this.props.children, { env: this.detectedEnv })
-  }
-
-  shouldComponentUpdate() {
-    return false
   }
 }
 
