@@ -1,3 +1,10 @@
+## [1.4.1](https://github.com/fingerprintjs/fingerprintjs-pro-react/compare/v1.4.0...v1.4.1) (2022-10-25)
+
+
+### Bug Fixes
+
+* fix broken navigation when using <FpjsProvider /> ([e518cbc](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/e518cbc410a3ad00f0113bd23a53fce1d86aaf86))
+
 ## [1.4.0](https://github.com/fingerprintjs/fingerprintjs-pro-react/compare/v1.3.1...v1.4.0) (2022-10-04)
 
 
