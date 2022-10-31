@@ -1,7 +1,10 @@
 import { useVisitorData } from '../src'
-import { renderHook } from '@testing-library/react'
+import { render, renderHook } from '@testing-library/react'
 import { actWait, createWrapper } from './helpers'
 import { act } from 'react-dom/test-utils'
+import { useState } from 'react'
+import userEvent from '@testing-library/user-event'
+import { ERROR_CLIENT_TIMEOUT } from '@fingerprintjs/fingerprintjs-pro'
 
 const testData = {
   visitorId: 'abcdef123456',
@@ -82,6 +85,7 @@ describe('useVisitorData', () => {
 
     await actWait(500)
 
+    expect(getVisitorData).toHaveBeenCalledTimes(1)
     expect(getVisitorData).toHaveBeenCalledWith({}, true)
   })
 
@@ -95,6 +99,56 @@ describe('useVisitorData', () => {
       })
     })
 
+    expect(getVisitorData).toHaveBeenCalledTimes(1)
     expect(getVisitorData).toHaveBeenCalledWith({}, false)
+  })
+
+  it('should re-fetch data when options change if "immediate" is set to true', async () => {
+    const Component = () => {
+      const [extended, setExtended] = useState(false)
+      const { data } = useVisitorData({ extendedResult: extended }, { immediate: true })
+
+      return (
+        <>
+          <button onClick={() => setExtended((prev) => !prev)}>Change options</button>
+          <pre>{JSON.stringify(data)}</pre>
+        </>
+      )
+    }
+
+    const Wrapper = createWrapper()
+
+    const { container } = render(
+      <Wrapper>
+        <Component />
+      </Wrapper>
+    )
+
+    await actWait(1000)
+
+    act(() => {
+      userEvent.click(container.querySelector('button')!)
+    })
+
+    await actWait(1000)
+
+    expect(getVisitorData).toHaveBeenCalledTimes(2)
+    expect(getVisitorData).toHaveBeenNthCalledWith(1, { extendedResult: false }, undefined)
+    expect(getVisitorData).toHaveBeenNthCalledWith(2, { extendedResult: true }, undefined)
+  })
+
+  it('should correctly pass errors from SPA library', async () => {
+    getVisitorData.mockRejectedValueOnce(new Error(ERROR_CLIENT_TIMEOUT))
+
+    const wrapper = createWrapper()
+    const hook = renderHook(() => useVisitorData({ ignoreCache: true }, { immediate: false }), { wrapper })
+
+    await act(async () => {
+      await hook.result.current.getData({
+        ignoreCache: false,
+      })
+    })
+
+    expect(hook.result.current.error?.message).toBe(ERROR_CLIENT_TIMEOUT)
   })
 })
