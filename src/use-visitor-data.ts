@@ -4,6 +4,7 @@ import { GetOptions, VisitorData } from '@fingerprintjs/fingerprintjs-pro-spa'
 import { usePrevious } from './utils/use-previous'
 import deepEquals from 'fast-deep-equal'
 import { toError } from './utils/to-error'
+import { assertIsTruthy } from './utils/assert-is-truthy'
 
 export type UseVisitorDataOptions<TExtended extends boolean> = GetOptions<TExtended> & Partial<GetDataOptions>
 
@@ -28,6 +29,8 @@ export function useVisitorData<TExtended extends boolean>(
   getOptions: UseVisitorDataOptions<TExtended> = {},
   config: UseVisitorDataConfig = defaultUseVisitorDataConfig
 ): VisitorQueryContext<TExtended> {
+  assertIsTruthy(getOptions, 'getOptions')
+
   const previousGetOptions = usePrevious(getOptions)
 
   const { immediate } = config
@@ -37,7 +40,11 @@ export function useVisitorData<TExtended extends boolean>(
   const [state, setState] = useState<QueryResult<VisitorData<TExtended>>>(initialState)
 
   const getData = useCallback<VisitorQueryContext<TExtended>['getData']>(
-    async ({ ignoreCache } = {}) => {
+    async (params = {}) => {
+      assertIsTruthy(params, 'getDataParams')
+
+      const { ignoreCache } = params
+
       try {
         setState((state) => ({ ...state, isLoading: true }))
 

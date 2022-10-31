@@ -94,7 +94,7 @@
     "ts-jest": "^27.1.3",
     "tslib": "2.4.0",
     "typedoc": "^0.23.1",
-    "typescript": "^4.7.3"
+    "typescript": "^4.8.4"
   },
   "lint-staged": {
     "*.ts": "yarn run lint:fix",
