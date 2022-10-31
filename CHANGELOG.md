@@ -1,3 +1,16 @@
+## [1.5.0](https://github.com/fingerprintjs/fingerprintjs-pro-react/compare/v1.4.1...v1.5.0) (2022-10-31)
+
+
+### Features
+
+* throw error if params passed to "useVisitorData" or "getData" are null ([41e2068](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/41e20686c4a55aa0eeb7c46fd25b80d7a5a11c6b))
+
+
+### Bug Fixes
+
+* ensure that "products" parameter is correctly passed into the client ([5c0dbd4](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/5c0dbd421e1c0a93574eb33b4ff82576148d6ab9))
+* use correct errors messages from pro agent ([b2e1a7f](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/b2e1a7fd6c778a510ba458b162b98db23d60e98c))
+
 ## [1.4.1](https://github.com/fingerprintjs/fingerprintjs-pro-react/compare/v1.4.0...v1.4.1) (2022-10-25)
 
 
