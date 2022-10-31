@@ -3,6 +3,7 @@ import { useCallback, useContext, useEffect, useState } from 'react'
 import { GetOptions, VisitorData } from '@fingerprintjs/fingerprintjs-pro-spa'
 import { usePrevious } from './utils/use-previous'
 import deepEquals from 'fast-deep-equal'
+import { toError } from './utils/to-error'
 
 export type UseVisitorDataOptions<TExtended extends boolean> = GetOptions<TExtended> & Partial<GetDataOptions>
 
@@ -48,12 +49,12 @@ export function useVisitorData<TExtended extends boolean>(
         )
         setState((state) => ({ ...state, data: result, isLoading: false, error: undefined }))
         return result
-      } catch (error) {
-        if (error instanceof Error) {
-          error.message = `${error.name}: ${error.message}`
-          error.name = 'FPJSAgentError'
-          setState((state) => ({ ...state, data: undefined, error: error as Error }))
-        }
+      } catch (unknownError) {
+        const error = toError(unknownError)
+
+        error.name = 'FPJSAgentError'
+
+        setState((state) => ({ ...state, data: undefined, error }))
       } finally {
         setState((state) => (state.isLoading ? { ...state, isLoading: false } : state))
       }

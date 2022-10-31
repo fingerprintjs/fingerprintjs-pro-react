@@ -4,6 +4,7 @@ import { actWait, createWrapper } from './helpers'
 import { act } from 'react-dom/test-utils'
 import { useState } from 'react'
 import userEvent from '@testing-library/user-event'
+import { ERROR_CLIENT_TIMEOUT } from '@fingerprintjs/fingerprintjs-pro'
 
 const testData = {
   visitorId: 'abcdef123456',
@@ -134,5 +135,20 @@ describe('useVisitorData', () => {
     expect(getVisitorData).toHaveBeenCalledTimes(2)
     expect(getVisitorData).toHaveBeenNthCalledWith(1, { extendedResult: false }, undefined)
     expect(getVisitorData).toHaveBeenNthCalledWith(2, { extendedResult: true }, undefined)
+  })
+
+  it('should correctly pass errors from SPA library', async () => {
+    getVisitorData.mockRejectedValueOnce(new Error(ERROR_CLIENT_TIMEOUT))
+
+    const wrapper = createWrapper()
+    const hook = renderHook(() => useVisitorData({ ignoreCache: true }, { immediate: false }), { wrapper })
+
+    await act(async () => {
+      await hook.result.current.getData({
+        ignoreCache: false,
+      })
+    })
+
+    expect(hook.result.current.error?.message).toBe(ERROR_CLIENT_TIMEOUT)
   })
 })
