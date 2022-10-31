@@ -1,8 +1,11 @@
 import FpjsContext, { FpjsContextInterface, GetDataOptions, QueryResult, VisitorQueryContext } from './fpjs-context'
-import { useCallback, useContext, useEffect, useMemo, useState } from 'react'
+import { useCallback, useContext, useEffect, useState } from 'react'
 import { GetOptions, VisitorData } from '@fingerprintjs/fingerprintjs-pro-spa'
+import { usePrevious } from './utils/use-previous'
+import deepEquals from 'fast-deep-equal'
 
 export type UseVisitorDataOptions<TExtended extends boolean> = GetOptions<TExtended> & Partial<GetDataOptions>
+
 /**
  *  @example
  * ```js
@@ -24,11 +27,8 @@ export function useVisitorData<TExtended extends boolean>(
   getOptions: UseVisitorDataOptions<TExtended> = {},
   config: UseVisitorDataConfig = defaultUseVisitorDataConfig
 ): VisitorQueryContext<TExtended> {
-  const { extendedResult, timeout, tag, linkedId } = getOptions ?? {}
-  const memoizedOptions = useMemo(
-    () => ({ extendedResult, timeout, tag, linkedId }),
-    [extendedResult, timeout, tag, linkedId]
-  )
+  const previousGetOptions = usePrevious(getOptions)
+
   const { immediate } = config
   const { getVisitorData } = useContext<FpjsContextInterface<TExtended>>(FpjsContext)
 
@@ -36,11 +36,16 @@ export function useVisitorData<TExtended extends boolean>(
   const [state, setState] = useState<QueryResult<VisitorData<TExtended>>>(initialState)
 
   const getData = useCallback<VisitorQueryContext<TExtended>['getData']>(
-    async ({ ignoreCache = getOptions.ignoreCache } = {}) => {
+    async ({ ignoreCache } = {}) => {
       try {
         setState((state) => ({ ...state, isLoading: true }))
 
-        const result = await getVisitorData(memoizedOptions, ignoreCache)
+        const { ignoreCache: defaultIgnoreCache, ...getVisitorDataOptions } = getOptions
+
+        const result = await getVisitorData(
+          getVisitorDataOptions ?? {},
+          typeof ignoreCache === 'boolean' ? ignoreCache : defaultIgnoreCache
+        )
         setState((state) => ({ ...state, data: result, isLoading: false, error: undefined }))
         return result
       } catch (error) {
@@ -53,14 +58,16 @@ export function useVisitorData<TExtended extends boolean>(
         setState((state) => (state.isLoading ? { ...state, isLoading: false } : state))
       }
     },
-    [getOptions.ignoreCache, getVisitorData, memoizedOptions]
+    [getOptions, getVisitorData]
   )
 
   useEffect(() => {
-    if (immediate) {
-      getData()
+    if (immediate && (!previousGetOptions || !deepEquals(getOptions, previousGetOptions))) {
+      getData().catch((error) => {
+        console.error(`Failed to fetch visitor data on mount: ${error}`)
+      })
     }
-  }, [getData, immediate])
+  }, [immediate, getData, previousGetOptions, getOptions])
 
   const { isLoading, data, error } = state
 
