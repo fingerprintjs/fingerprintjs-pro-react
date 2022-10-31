@@ -1,3 +1,10 @@
+## [1.4.2-test.1](https://github.com/fingerprintjs/fingerprintjs-pro-react/compare/v1.4.1...v1.4.2-test.1) (2022-10-31)
+
+
+### Bug Fixes
+
+* ensure that "products" parameter is correctly passed into the client ([5c0dbd4](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/5c0dbd421e1c0a93574eb33b4ff82576148d6ab9))
+
 ## [1.4.1](https://github.com/fingerprintjs/fingerprintjs-pro-react/compare/v1.4.0...v1.4.1) (2022-10-25)
 
 
