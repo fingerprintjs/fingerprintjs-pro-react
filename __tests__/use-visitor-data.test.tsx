@@ -138,15 +138,17 @@ describe('useVisitorData', () => {
   })
 
   it('should correctly pass errors from SPA library', async () => {
-    getVisitorData.mockRejectedValueOnce(new Error(ERROR_CLIENT_TIMEOUT))
+    getVisitorData.mockRejectedValue(new Error(ERROR_CLIENT_TIMEOUT))
 
     const wrapper = createWrapper()
     const hook = renderHook(() => useVisitorData({ ignoreCache: true }, { immediate: false }), { wrapper })
 
     await act(async () => {
-      await hook.result.current.getData({
+      const promise = hook.result.current.getData({
         ignoreCache: false,
       })
+
+      await expect(promise).rejects.toThrow(ERROR_CLIENT_TIMEOUT)
     })
 
     expect(hook.result.current.error?.message).toBe(ERROR_CLIENT_TIMEOUT)
