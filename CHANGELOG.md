@@ -1,3 +1,14 @@
+## [2.0.0](https://github.com/fingerprintjs/fingerprintjs-pro-react/compare/v1.5.0...v2.0.0) (2022-11-02)
+
+
+### ⚠ BREAKING CHANGES
+
+* Previously "getData" was returning "undefined" when error occurred
+
+### Features
+
+* throw on error when calling "getData" manually ([3df14fc](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/3df14fc7dc1ca4f77b2759b396c1a8e7e67f0197))
+
 ## [1.5.0](https://github.com/fingerprintjs/fingerprintjs-pro-react/compare/v1.4.1...v1.5.0) (2022-10-31)
 
 
