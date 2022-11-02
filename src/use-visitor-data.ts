@@ -62,6 +62,8 @@ export function useVisitorData<TExtended extends boolean>(
         error.name = 'FPJSAgentError'
 
         setState((state) => ({ ...state, data: undefined, error }))
+
+        throw error
       } finally {
         setState((state) => (state.isLoading ? { ...state, isLoading: false } : state))
       }

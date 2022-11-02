@@ -122,16 +122,16 @@ The `useVisitorData` hook also returns a `getData` method which can make an API 
 
 ```jsx
 // src/App.js
-import React, { useState } from 'react';
-import { useVisitorData } from '@fingerprintjs/fingerprintjs-pro-react'
+import React, { useState } from "react";
+import { useVisitorData } from "@fingerprintjs/fingerprintjs-pro-react";
 
 function App() {
   const {
     isLoading,
     error,
-    getData,
-  } = useVisitorData({tag: 'subscription-form'}, { immediate: false });
-  const [email, setEmail] = useState('')
+    getData
+  } = useVisitorData({tag: "subscription-form"}, { immediate: false });
+  const [email, setEmail] = useState("");
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -144,26 +144,29 @@ function App() {
     <div>
       <form
         onSubmit={(e) => {
-          e.preventDefault()
-          getData().then((data) => {
-            if (data) {
-              // do something with the visitor data
-              // for example, append visitor data to the form data to send to your server
-              console.log(data)
-            }
-          })
+          e.preventDefault();
+           getData()
+             .then((data) => {
+                // do something with the visitor data
+                // for example, append visitor data to the form data to send to your server
+                console.log(data)
+             })
+             .catch((error) => {
+                // Handle error
+             })
+
         }}
       >
-        <label htmlFor='email'>Email:</label>
+        <label htmlFor="email">Email:</label>
         <input
-          id='email'
-          type='email'
-          name='email'
+          id="email"
+          type="email"
+          name="email"
           required
           value={email}
           onChange={(e) => setEmail(e.currentTarget.value)}
         />
-        <button type='submit'>Subscribe</button>
+        <button type="submit">Subscribe</button>
       </form>
     </div>
   );
@@ -181,6 +184,10 @@ When you use FingerprintJS Pro, you pay for each API call. Our [best practices](
 :warning: **WARNING** If you use data from `extendedResult`, please pay additional attention to caching strategy.
 
 Some fields from the [extendedResult](https://dev.fingerprint.com/docs/js-agent#extendedresult) (e.g `ip` or `lastSeenAt`) might change for the same visitor. If you need to get the current data, it is recommended to pass `ignoreCache=true` inside [getData](#returned-object) function.
+
+## Error handling
+
+`getData` throws errors directly from our Pro Agent without changing them. [Read more about error handling.](https://dev.fingerprint.com/docs/js-agent#error-handling)
 
 ### API Reference
 
