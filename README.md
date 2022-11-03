@@ -10,6 +10,9 @@
 <a href="https://github.com/fingerprintjs/fingerprintjs-pro-react/actions/workflows/release.yml">
   <img src="https://github.com/fingerprintjs/fingerprintjs-pro-react/actions/workflows/release.yml/badge.svg" alt="CI badge" />
 </a>
+<a href="https://fingerprintjs.github.io/fingerprintjs-pro-react/coverage/">
+ <img src="https://fingerprintjs.github.io/fingerprintjs-pro-react/coverage/badges.svg" alt="coverage">
+</a>
 <a href="https://www.npmjs.com/package/@fingerprintjs/fingerprintjs-pro-react">
   <img src="https://img.shields.io/npm/v/@fingerprintjs/fingerprintjs-pro-react.svg" alt="Current NPM version">
 </a>

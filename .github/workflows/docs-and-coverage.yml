@@ -1,0 +1,38 @@
+name: Generate docs and coverage report
+
+on:
+  push:
+    branches:
+      - main
+      - add-coverage-report # remove before release
+
+jobs:
+  generate-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Create the docs
+        run: yarn run docs
+
+      - name: Collect coverage report
+        run: yarn test:coverage
+
+      - name: Create Coverage Badges
+        uses: jaywcjlove/coverage-badges-cli@e07f25709cd25486855c1ba1b26da53576ff3620
+        with:
+          source: coverage/coverage-summary.json
+          output: coverage/lcov-report/badges.svg
+
+      - name: Prepare folder for gh-pages
+        run: mv coverage/lcov-report ./docs/coverage
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@8817a56e5bfec6e2b08345c81f4d422db53a2cdc
+        with:
+          branch: gh-pages
+          folder: docs
