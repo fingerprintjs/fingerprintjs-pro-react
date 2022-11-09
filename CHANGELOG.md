@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/fingerprintjs/fingerprintjs-pro-react/compare/v2.0.0...v2.0.1) (2022-11-09)
+
+
+### Build System
+
+* **deps:** bump loader-utils from 2.0.2 to 2.0.3 in /examples/spa ([32b6467](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/32b6467d5d0e46c5576358e5c8b04600c7d9eda7))
+
 ## [2.0.0](https://github.com/fingerprintjs/fingerprintjs-pro-react/compare/v1.5.0...v2.0.0) (2022-11-02)
 
 
