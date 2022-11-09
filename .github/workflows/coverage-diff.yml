@@ -1,0 +1,29 @@
+name: Check coverage for PR
+
+on:
+  pull_request:
+
+jobs:
+  run-tests-check-coverage:
+    runs-on: ubuntu-20.04
+    name: Run tests & check coverage
+    steps:
+      - uses: actions/checkout@v3
+      - name: Jest coverage comment
+        id: coverage
+        uses: ArtiomTr/jest-coverage-report-action@9f733792c44d05327cb371766bf78a5261e43936
+        with:
+          package-manager: yarn
+          output: report-markdown
+      - name: Read coverage text report
+        uses: fingerprintjs/action-coverage-report-md@v1
+        id: coverage-md
+      - uses: marocchino/sticky-pull-request-comment@adca94abcaf73c10466a71cc83ae561fd66d1a56
+        with:
+          message: |
+            ${{ steps.coverage.outputs.report }}
+            <details>
+              <summary>Show full coverage report</summary>
+
+              ${{ steps.coverage-md.outputs.markdownReport }}
+            </details>
