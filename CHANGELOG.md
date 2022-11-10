@@ -1,3 +1,10 @@
+## [2.1.0](https://github.com/fingerprintjs/fingerprintjs-pro-react/compare/v2.0.1...v2.1.0) (2022-11-10)
+
+
+### Features
+
+* bump SPA package to 0.6.0 ([b3fd55e](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/b3fd55e6afb2187207696208ede1694682ec7d3c))
+
 ## [2.0.1](https://github.com/fingerprintjs/fingerprintjs-pro-react/compare/v2.0.0...v2.0.1) (2022-11-09)
 
 
