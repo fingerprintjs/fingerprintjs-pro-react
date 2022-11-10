@@ -1161,20 +1161,18 @@
     strip-json-comments "^3.1.1"
 
 "@fingerprintjs/fingerprintjs-pro-react@link:../..":
-  version "2.0.0"
-  dependencies:
-    "@fingerprintjs/fingerprintjs-pro-spa" "^0.5.0"
-    fast-deep-equal "3.1.3"
+  version "0.0.0"
+  uid ""
 
-"@fingerprintjs/fingerprintjs-pro-spa@^0.5.0":
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/@fingerprintjs/fingerprintjs-pro-spa/-/fingerprintjs-pro-spa-0.5.0.tgz#7ba74a3dab7db3c8ba06334caf9499b0cbf79263"
-  integrity sha512-AUy8pJoDMivmwqv6VdBxw7p9md3MmBwSlA3GccUybu3jQWGMDa4UB/XaPfRePIO7riD1bNp9bhZXNqo+b6O7ag==
+"@fingerprintjs/fingerprintjs-pro-spa@^0.6.0":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@fingerprintjs/fingerprintjs-pro-spa/-/fingerprintjs-pro-spa-0.6.0.tgz#991f9d46143253e28b2877effa320ed0374f8ae4"
+  integrity sha512-cMww0FNh41H3eyL6pusXN65fNOz6U+mumQ5KHm2wx66iFvPWHLXMUufPWsUaXYE7EWHseuznuUcO+VSVN+ubyQ==
   dependencies:
-    "@fingerprintjs/fingerprintjs-pro" "^3.7.1"
+    "@fingerprintjs/fingerprintjs-pro" "^3.8.0"
     tslib "^2.2.0"
 
-"@fingerprintjs/fingerprintjs-pro@^3.7.1":
+"@fingerprintjs/fingerprintjs-pro@^3.8.0":
   version "3.8.0"
   resolved "https://registry.yarnpkg.com/@fingerprintjs/fingerprintjs-pro/-/fingerprintjs-pro-3.8.0.tgz#586bef92c6bca912c03b38ab23437c12628d871c"
   integrity sha512-ZSrpmkzIWk3UfArj/1QzTvFY30Q2sk2YbTaE9GvVvG5HZtHOEzv58FlClXpdmTl4Bkbzki6Fofc7t7R+P9ZDLg==
@@ -5872,7 +5870,7 @@ lodash@^4.17.15, lodash@^4.17.20, lodash@^4.17.21, lodash@^4.7.0:
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
 
-loose-envify@^1.4.0:
+loose-envify@^1.1.0, loose-envify@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/loose-envify/-/loose-envify-1.4.0.tgz#71ee51fa7be4caec1a63839f7e682d8132d30caf"
   integrity sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==
@@ -7188,6 +7186,7 @@ react-dev-utils@^12.0.1:
 
 "react-dom@link:../../node_modules/react-dom":
   version "0.0.0"
+  uid ""
 
 react-error-boundary@^3.1.0:
   version "3.1.4"
@@ -7293,6 +7292,7 @@ react-scripts@5.0.1:
 
 "react@link:../../node_modules/react":
   version "0.0.0"
+  uid ""
 
 readable-stream@^2.0.1:
   version "2.3.7"
@@ -7566,6 +7566,13 @@ saxes@^5.0.1:
   integrity sha512-5LBh1Tls8c9xgGjw3QrMwETmTMVk0oFgvrFSvWx62llR2hcEInrKNZ2GZCCuuy2lvWrdl5jhbpeqc5hRYKFOcw==
   dependencies:
     xmlchars "^2.2.0"
+
+scheduler@^0.23.0:
+  version "0.23.0"
+  resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.23.0.tgz#ba8041afc3d30eb206a487b6b384002e4e61fdfe"
+  integrity sha512-CtuThmgHNg7zIZWAXi3AsyIzA3n4xx7aNyjwC2VJldO2LMVDhFK+63xGqq6CsJH4rTAt6/M+N4GhZiDYPx9eUw==
+  dependencies:
+    loose-envify "^1.1.0"
 
 schema-utils@2.7.0:
   version "2.7.0"
