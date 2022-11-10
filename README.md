@@ -39,7 +39,8 @@ FingerprintJS Pro React is an easy-to-use React library for **[FingerprintJS Pro
 - [Installation](#installation)
 - [Getting started](#getting-started)
 - [Caching strategy](#caching-strategy)
-- [Documentation](#documentation)
+- [Error handling](#error-handling)
+- [API Reference](#api-reference)
 - [Support and feedback](#support-and-feedback)
 - [License](#license)
 
@@ -192,7 +193,7 @@ Some fields from the [extendedResult](https://dev.fingerprint.com/docs/js-agent#
 
 `getData` throws errors directly from our Pro Agent without changing them. [Read more about error handling.](https://dev.fingerprint.com/docs/js-agent#error-handling)
 
-### API Reference
+## API Reference
 
 You can find API reference [here](https://fingerprintjs.github.io/fingerprintjs-pro-react/).
 
