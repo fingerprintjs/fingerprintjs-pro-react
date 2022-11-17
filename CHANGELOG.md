@@ -1,3 +1,15 @@
+## [2.1.1](https://github.com/fingerprintjs/fingerprintjs-pro-react/compare/v2.1.0...v2.1.1) (2022-11-17)
+
+
+### Bug Fixes
+
+* update SPA library to 0.7.0 ([2018592](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/2018592f52fe78bf3870c8da992c2e1e4829ab88))
+
+
+### Build System
+
+* **deps:** bump loader-utils from 2.0.3 to 2.0.4 in /examples/spa ([5019ec9](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/5019ec9afab3d057640ce57e7708478c64c4e008))
+
 ## [2.1.0](https://github.com/fingerprintjs/fingerprintjs-pro-react/compare/v2.0.1...v2.1.0) (2022-11-10)
 
 
