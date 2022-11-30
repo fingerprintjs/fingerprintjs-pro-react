@@ -8,6 +8,7 @@ import LocalStorageCache from './local_storage_cache/LocalStorageCache'
 
 import HomePage from './shared/pages/HomePage'
 import SignInPage from './shared/pages/SignInPage'
+import ChecksPage from './shared/pages/ChecksPage'
 
 import './App.css'
 
@@ -22,21 +23,25 @@ function App() {
             <Route path='no-cache' element={<WithoutCache />}>
               <Route path='home' element={<HomePage />} />
               <Route path='signin' element={<SignInPage />} />
+              <Route path='checks' element={<ChecksPage />} />
             </Route>
 
             <Route path='memory-cache' element={<InMemoryCache />}>
               <Route path='home' element={<HomePage />} />
               <Route path='signin' element={<SignInPage />} />
+              <Route path='checks' element={<ChecksPage />} />
             </Route>
 
             <Route path='session-storage-cache' element={<SessionStorageCache />}>
               <Route path='home' element={<HomePage />} />
               <Route path='signin' element={<SignInPage />} />
+              <Route path='checks' element={<ChecksPage />} />
             </Route>
 
             <Route path='ls-cache' element={<LocalStorageCache />}>
               <Route path='home' element={<HomePage />} />
               <Route path='signin' element={<SignInPage />} />
+              <Route path='checks' element={<ChecksPage />} />
             </Route>
           </Route>
         </Routes>

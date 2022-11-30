@@ -5,6 +5,7 @@ export function Nav() {
     <nav className='nav'>
       <CustomLink to='home'>Home</CustomLink>
       <CustomLink to='signin'>Sign in</CustomLink>
+      <CustomLink to='checks'>Special checks</CustomLink>
     </nav>
   )
 }
