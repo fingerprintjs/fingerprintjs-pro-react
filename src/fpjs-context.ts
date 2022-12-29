@@ -31,7 +31,7 @@ export interface VisitorQueryContext<TExtended extends boolean> extends VisitorQ
   /**
    * Performs identification request to server and returns visitors data.
    * */
-  getData: (getDataOptions?: GetDataOptions) => Promise<VisitorData<TExtended> | void>
+  getData: (getDataOptions?: GetDataOptions) => Promise<VisitorData<TExtended>>
 }
 
 const stub = (): never => {
@@ -47,7 +47,7 @@ const initialContext = {
  * The FingerprintJS Context
  */
 export interface FpjsContextInterface<TExtended extends boolean> {
-  getVisitorData: (config?: GetOptions<TExtended>, ignoreCache?: boolean) => Promise<VisitorData<TExtended> | undefined>
+  getVisitorData: (config?: GetOptions<TExtended>, ignoreCache?: boolean) => Promise<VisitorData<TExtended>>
   clearCache: () => void
 }
 
