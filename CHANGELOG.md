@@ -1,3 +1,10 @@
+## [2.2.0](https://github.com/fingerprintjs/fingerprintjs-pro-react/compare/v2.1.1...v2.2.0) (2022-12-30)
+
+
+### Features
+
+* remove "undefined" and "void" from return type in getVisitorData ([c7dd49e](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/c7dd49e8e51f9aba60f628cd5087cf484823accf))
+
 ## [2.1.1](https://github.com/fingerprintjs/fingerprintjs-pro-react/compare/v2.1.0...v2.1.1) (2022-11-17)
 
 
