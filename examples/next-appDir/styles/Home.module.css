@@ -1,0 +1,34 @@
+.container {
+  padding: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.testArea {
+  border: 2px solid #FF5D22;
+  box-shadow: 2px 2px 4px rgba(255, 93, 34, 0.6);
+  border-radius: 16px;
+  padding: 20px;
+}
+
+.controls {
+  display: grid;
+  grid-auto-columns: 150px;
+  grid-auto-flow: column;
+  gap: 20px;
+  justify-items: start;
+  align-items: center;
+}
+
+.actionPoints > li + li {
+  margin-top: 4px;
+}
+
+.visitorId {
+  font-weight: normal;
+}
+
+.data {
+  overflow: scroll;
+}
