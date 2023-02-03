@@ -1,6 +1,6 @@
 import { PropsWithChildren, useCallback, useEffect, useMemo, useRef } from 'react'
-import FpjsContext from '../fpjs-context'
-import { FpjsClient, FpjsClientOptions } from '@fingerprintjs/fingerprintjs-pro-spa'
+import { FpjsContext } from '../fpjs-context'
+import { FpjsClient, FpjsClientOptions, GetOptions } from '@fingerprintjs/fingerprintjs-pro-spa'
 import * as packageInfo from '../../package.json'
 import { isSSR } from '../ssr'
 import { waitUntil } from '../utils/wait-until'
@@ -122,7 +122,7 @@ function ProviderWithEnv<TExtended extends boolean>({
   }, [createClient])
 
   const getVisitorData = useCallback(
-    async (options, ignoreCache) => {
+    async (options?: GetOptions<TExtended>, ignoreCache?: boolean) => {
       const client = await getClient()
 
       await clientInitPromiseRef.current
