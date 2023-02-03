@@ -87,6 +87,7 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.4.2",
     "rollup": "^2.75.7",
+    "rollup-plugin-banner2": "^1.2.2",
     "rollup-plugin-dts": "^4.2.2",
     "rollup-plugin-license": "^2.8.1",
     "rollup-plugin-peer-deps-external": "^2.2.4",
