@@ -3,6 +3,7 @@ import jsonPlugin from '@rollup/plugin-json'
 import external from 'rollup-plugin-peer-deps-external'
 import dtsPlugin from 'rollup-plugin-dts'
 import licensePlugin from 'rollup-plugin-license'
+import banner2 from 'rollup-plugin-banner2'
 import { join } from 'path'
 const { dependencies } = require('./package.json')
 
@@ -19,7 +20,7 @@ const commonBanner = licensePlugin({
 
 const commonInput = {
   input: inputFile,
-  plugins: [jsonPlugin(), typescript(), external(), commonBanner],
+  plugins: [jsonPlugin(), typescript(), external(), commonBanner, banner2(() => `'use client';\n`)],
 }
 
 const commonOutput = {

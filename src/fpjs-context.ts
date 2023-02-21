@@ -51,6 +51,4 @@ export interface FpjsContextInterface<TExtended extends boolean> {
   clearCache: () => void
 }
 
-const FpjsContext = createContext<FpjsContextInterface<any>>(initialContext)
-
-export default FpjsContext
+export const FpjsContext = createContext<FpjsContextInterface<any>>(initialContext)
