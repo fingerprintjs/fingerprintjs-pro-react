@@ -1,3 +1,21 @@
+## [2.3.0-test.1](https://github.com/fingerprintjs/fingerprintjs-pro-react/compare/v2.2.0...v2.3.0-test.1) (2023-02-21)
+
+
+### Features
+
+* add `use client` directive to the bundled code ([ae2bf8a](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/ae2bf8ad578772ca12b38311ed0c48ef23f01186))
+
+
+### Build System
+
+* **deps:** bump decode-uri-component from 0.2.0 to 0.2.2 ([140a9bc](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/140a9bc71a44ebe8570c433ea3decbb3bb0e478a))
+* **deps:** bump decode-uri-component in /examples/preact ([2dca013](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/2dca01379aaea4768b6cd887ac8d7229657d46ff))
+* **deps:** bump decode-uri-component in /examples/spa ([03e78fb](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/03e78fbc061684beed277075d5f6866a7b7a78de))
+* **deps:** bump http-cache-semantics from 4.1.0 to 4.1.1 ([43c0df1](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/43c0df14c0949b20c406b1ef4ee002cc97c4e9e8))
+* **deps:** bump http-cache-semantics in /examples/preact ([124cc38](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/124cc38402d2c160b724d1918d3ee8d031e167d1))
+* **deps:** bump json5 from 1.0.1 to 1.0.2 ([53fcf7e](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/53fcf7ee5a5fb960917572b19d0d10ae052714a4))
+* **deps:** bump json5 from 1.0.1 to 1.0.2 in /examples/spa ([8deef15](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/8deef155a55314d0d076bc49699c05a55fd3b5cf))
+
 ## [2.2.0](https://github.com/fingerprintjs/fingerprintjs-pro-react/compare/v2.1.1...v2.2.0) (2022-12-30)
 
 
