@@ -5,6 +5,9 @@
   "main": "dist/fp-pro-react.cjs.js",
   "module": "dist/fp-pro-react.esm.js",
   "types": "dist/fp-pro-react.d.ts",
+  "exports": {
+    "import": "dist/fp-pro-react.esm.js"
+  },
   "keywords": [
     "fraud",
     "fraud detection",

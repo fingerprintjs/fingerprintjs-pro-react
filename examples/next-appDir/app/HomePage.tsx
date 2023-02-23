@@ -1,8 +1,7 @@
 'use client'
 
 import styles from '../styles/Home.module.css'
-// @ts-ignore use direct path because of nextjs bug
-import { useVisitorData } from '@fingerprintjs/fingerprintjs-pro-react/dist/fp-pro-react.cjs'
+import { useVisitorData } from '@fingerprintjs/fingerprintjs-pro-react'
 import { useState } from 'react'
 
 const HomePage = () => {

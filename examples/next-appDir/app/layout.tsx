@@ -1,6 +1,5 @@
 import '../styles/globals.css'
-// @ts-ignore use direct path because of nextjs bug
-import { FpjsProvider } from '@fingerprintjs/fingerprintjs-pro-react/dist/fp-pro-react.cjs'
+import { FpjsProvider } from '@fingerprintjs/fingerprintjs-pro-react'
 import { PropsWithChildren } from 'react'
 
 const fpjsPublicApiKey = process.env.NEXT_PUBLIC_FPJS_PUBLIC_API_KEY as string
