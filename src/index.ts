@@ -1,4 +1,4 @@
-export { default as FpjsContext } from './fpjs-context'
+export * from './fpjs-context'
 export * from './components/fpjs-provider'
 export * from './use-visitor-data'
 

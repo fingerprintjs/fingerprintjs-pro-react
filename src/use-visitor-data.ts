@@ -1,4 +1,4 @@
-import FpjsContext, { FpjsContextInterface, GetDataOptions, QueryResult, VisitorQueryContext } from './fpjs-context'
+import { FpjsContextInterface, FpjsContext, GetDataOptions, QueryResult, VisitorQueryContext } from './fpjs-context'
 import { useCallback, useContext, useEffect, useState } from 'react'
 import { GetOptions, VisitorData } from '@fingerprintjs/fingerprintjs-pro-spa'
 import { usePrevious } from './utils/use-previous'
