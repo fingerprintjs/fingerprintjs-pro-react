@@ -1,4 +1,4 @@
-This example demonstrates the usage of Fingerprint Pro inside Next classic approach.
+This example demonstrates the usage of Fingerprint Pro inside the Next.js `pages` directory (classic approach).
 
 ## Setting up
 To try out this example, you need to get your public API key first.
