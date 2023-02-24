@@ -1,12 +1,13 @@
+This example demonstrates the usage of Fingerprint Pro inside Next classic approach.
+
 ## Setting up
-To try out these examples, you need to set your public API key as the value of the NEXT_PUBLIC_FPJS_PUBLIC_API_KEY variable\
-in the `.env.local`. You can just copy `.env` file located in this directory.
+To try out this example, you need to get your public API key first.
+You can find more information about the API key [in our documentation](https://dev.fingerprint.com/docs/js-agent#agent-initialization).
 
-More info about the API key you can find on the [documentation page](https://dev.fingerprint.com/docs/js-agent#agent-initialization).
-
-### Installing dependencies
-1. Go to the root of the project, install dependencies with `yarn install` and build it with `yarn build`.
-2. Come back to the example folder (`cd examples/next`) and run `yarn install`.
+1. In the example folder copy `.env` file to the new one `.env.local`.
+2. Set up your public API key in the `NEXT_PUBLIC_FPJS_PUBLIC_API_KEY` variable.
+3. In the root folder install dependencies with `yarn install` and build it with `yarn build`.
+4. In the example folder run `yarn install`.
 
 After you've completed all the steps and inserted the API key, you can run:
 ```shell
