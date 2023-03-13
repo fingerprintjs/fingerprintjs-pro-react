@@ -6,7 +6,12 @@
   "module": "dist/fp-pro-react.esm.js",
   "types": "dist/fp-pro-react.d.ts",
   "exports": {
-    "import": "dist/fp-pro-react.esm.js"
+    ".": {
+      "types": "./dist/fp-pro-react.d.ts",
+      "import": "./dist/fp-pro-react.esm.js",
+      "require": "./dist/fp-pro-react.cjs.js",
+      "node": "./dist/fp-pro-react.esm.js"
+    }
   },
   "keywords": [
     "fraud",
