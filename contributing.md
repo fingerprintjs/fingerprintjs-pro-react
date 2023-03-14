@@ -13,6 +13,7 @@ There are 4 demo pages for this integration:
 2. In `/examples/next` folder. It is a demo built with NextJS that allows testing SSR scenarios. You can find more info about configuration and starting demo in the [readme](examples/next/README.md).
 3. In `/examples/next-appDir` folder. It is the same demo built with NextJS, but with new `app` directory approach. You can find more info about configuration and starting demo in the [readme](examples/next-appDir/README.md).
 4. In `/examples/preact` folder. It is a demo built with Preact. You can find more info about configuration and starting demo in the [readme](examples/preact/README.md).
+5. In `/examples/webpack-based` folder. It is a simple demo built with raw webpack.
 
 If you want to test integration with [fingerprintjs-pro-spa](https://github.com/fingerprintjs/fingerprintjs-pro-spa), just [link the package](https://yarnpkg.com/cli/link) with the `yarn link`.
 
