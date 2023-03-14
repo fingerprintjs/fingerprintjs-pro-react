@@ -1,3 +1,17 @@
+## [2.3.1](https://github.com/fingerprintjs/fingerprintjs-pro-react/compare/v2.3.0...v2.3.1) (2023-03-14)
+
+
+### Bug Fixes
+
+* add webpack example ([8274ef2](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/8274ef2a82749181cf904b19f6951356cc2dfc79))
+* failed webpack builds [#97](https://github.com/fingerprintjs/fingerprintjs-pro-react/issues/97) ([8111970](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/8111970a26e57cf2fa7ca83168a4602f75317a85))
+* make webpack demo similar to our code snipper ([09e1021](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/09e10217307864ffb70fc1c246a95704b0200dee))
+
+
+### Build System
+
+* **deps:** bump dns-packet in /examples/create-react-app ([f07fcef](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/f07fcef05ff298aa49330af95c8f1adea39cd5d6))
+
 ## [2.3.0](https://github.com/fingerprintjs/fingerprintjs-pro-react/compare/v2.2.0...v2.3.0) (2023-02-24)
 
 
