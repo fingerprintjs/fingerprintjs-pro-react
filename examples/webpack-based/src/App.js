@@ -14,9 +14,8 @@ function App() {
   if (data) {
     // perform some logic based on the visitor data
     return <div>Welcome {data.visitorFound ? `back ${data.visitorId}` : ''}!</div>
-  } else {
-    return null
   }
+  return null
 }
 
 export default App
