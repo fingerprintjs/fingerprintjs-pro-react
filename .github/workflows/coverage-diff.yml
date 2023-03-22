@@ -7,14 +7,18 @@ jobs:
   run-tests-check-coverage:
     runs-on: ubuntu-20.04
     name: Run tests & check coverage
+    permissions:
+      checks: write
+      pull-requests: write
     steps:
       - uses: actions/checkout@v3
       - name: Jest coverage comment
         id: coverage
-        uses: ArtiomTr/jest-coverage-report-action@9f733792c44d05327cb371766bf78a5261e43936
+        uses: ArtiomTr/jest-coverage-report-action@df2b025553c31d68f84be6337843e277e2576844
         with:
           package-manager: yarn
           output: report-markdown
+      - run: yarn test:coverage
       - name: Read coverage text report
         uses: fingerprintjs/action-coverage-report-md@v1
         id: coverage-md
