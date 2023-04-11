@@ -827,10 +827,10 @@
     minimatch "^3.1.2"
     strip-json-comments "^3.1.1"
 
-"@fingerprintjs/fingerprintjs-pro-spa@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@fingerprintjs/fingerprintjs-pro-spa/-/fingerprintjs-pro-spa-1.0.0.tgz#151feb4be3b2c524479e3f10a305a6f3784f438b"
-  integrity sha512-OVYRVl3VFZEB3rh7x6SsKCQa+TuGpfsAHwrej7cv9Bw4V5nQo4P2hoIrYiqQNmuQ+8+zj3ZfjGZhhjUUV5uW2A==
+"@fingerprintjs/fingerprintjs-pro-spa@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@fingerprintjs/fingerprintjs-pro-spa/-/fingerprintjs-pro-spa-1.0.1.tgz#d95fd1981b1f2a998db18fda312a2a2ac7f975ee"
+  integrity sha512-JMjAYdnmcsseM9EsKFhXrJItnnxisTljR2225MaNCcHZgB2UDGx48NK+VQJPvAN4qfVZmqKAhpKgTu82KPyvjQ==
   dependencies:
     "@fingerprintjs/fingerprintjs-pro" "^3.8.2"
     tslib "^2.5.0"
