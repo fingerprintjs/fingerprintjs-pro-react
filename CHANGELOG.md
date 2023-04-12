@@ -1,3 +1,15 @@
+## [2.3.2](https://github.com/fingerprintjs/fingerprintjs-pro-react/compare/v2.3.1...v2.3.2) (2023-04-12)
+
+
+### Bug Fixes
+
+* update SPA package with fallback for `localStorage` and `sessionStorage` ([2f61ba8](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/2f61ba839cb38583db50abf1d7c82e022c3689f3))
+
+
+### Build System
+
+* **deps:** bump webpack in /examples/create-react-app ([fa6095f](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/fa6095f3ab78861bda456f3832855ac74683d202))
+
 ## [2.3.1](https://github.com/fingerprintjs/fingerprintjs-pro-react/compare/v2.3.0...v2.3.1) (2023-03-14)
 
 
