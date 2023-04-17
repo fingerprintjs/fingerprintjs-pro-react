@@ -1,3 +1,11 @@
+## [2.3.3](https://github.com/fingerprintjs/fingerprintjs-pro-react/compare/v2.3.2...v2.3.3) (2023-04-17)
+
+
+### Bug Fixes
+
+* bump `@fingerprintjs/fingerprintjs-pro-spa` package to 1.0.2 ([c59f303](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/c59f303c630fb516a8e5381a7778671d8c48b7c2))
+* fix release pipeline to have a correct version in `integrationInfo` ([5ed7ce6](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/5ed7ce6c89437699e7e5d167c2986857c34f56d6))
+
 ## [2.3.2](https://github.com/fingerprintjs/fingerprintjs-pro-react/compare/v2.3.1...v2.3.2) (2023-04-12)
 
 
