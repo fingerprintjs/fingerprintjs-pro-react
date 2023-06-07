@@ -20,7 +20,7 @@ export interface VisitorQueryResult<TExtended extends boolean> extends QueryResu
   data?: VisitorData<TExtended>
 }
 
-export interface GetDataOptions {
+export interface GetDataOptions<TExtended extends boolean> extends GetOptions<TExtended> {
   /**
    * When set to true, the visitor data will always be fetched from our API.
    * */
@@ -31,7 +31,7 @@ export interface VisitorQueryContext<TExtended extends boolean> extends VisitorQ
   /**
    * Performs identification request to server and returns visitors data.
    * */
-  getData: (getDataOptions?: GetDataOptions) => Promise<VisitorData<TExtended>>
+  getData: (getDataOptions?: GetDataOptions<TExtended>) => Promise<VisitorData<TExtended>>
 }
 
 const stub = (): never => {

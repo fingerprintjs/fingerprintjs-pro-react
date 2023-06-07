@@ -6,7 +6,7 @@ import deepEquals from 'fast-deep-equal'
 import { toError } from './utils/to-error'
 import { assertIsTruthy } from './utils/assert-is-truthy'
 
-export type UseVisitorDataOptions<TExtended extends boolean> = GetOptions<TExtended> & Partial<GetDataOptions>
+export type UseVisitorDataOptions<TExtended extends boolean> = GetDataOptions<TExtended>
 
 /**
  *  @example
@@ -43,15 +43,17 @@ export function useVisitorData<TExtended extends boolean>(
     async (params = {}) => {
       assertIsTruthy(params, 'getDataParams')
 
-      const { ignoreCache } = params
+      const { ignoreCache, ...getDataPassedOptions } = params
 
       try {
         setState((state) => ({ ...state, isLoading: true }))
 
         const { ignoreCache: defaultIgnoreCache, ...getVisitorDataOptions } = getOptions
 
+        const getDataOptions: GetOptions<TExtended> = { ...getVisitorDataOptions, ...getDataPassedOptions }
+
         const result = await getVisitorData(
-          getVisitorDataOptions ?? {},
+          getDataOptions,
           typeof ignoreCache === 'boolean' ? ignoreCache : defaultIgnoreCache
         )
         setState((state) => ({ ...state, data: result, isLoading: false, error: undefined }))
