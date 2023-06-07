@@ -7,11 +7,11 @@ const App: FunctionalComponent = () => {
   const [extendedResult, updateExtendedResult] = useState(false)
   const { isLoading, error, data, getData } = useVisitorData({ extendedResult }, { immediate: true })
 
-  const reloadData = () => {
+  const reloadData = (): void => {
     getData({ ignoreCache: true })
   }
 
-  const onChangeExtendedResult = (e: TargetedEvent<HTMLInputElement, Event>) => {
+  const onChangeExtendedResult = (e: TargetedEvent<HTMLInputElement, Event>): void => {
     updateExtendedResult((e.target as HTMLInputElement).checked)
   }
 
