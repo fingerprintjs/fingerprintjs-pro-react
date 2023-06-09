@@ -1,3 +1,15 @@
+## [2.4.0](https://github.com/fingerprintjs/fingerprintjs-pro-react/compare/v2.3.3...v2.4.0) (2023-06-09)
+
+
+### Features
+
+* extend `getData` options with `fingerprintjs-pro` `GetDataOptions`. [#108](https://github.com/fingerprintjs/fingerprintjs-pro-react/issues/108) ([fe2961e](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/fe2961e8527d2577bda51532b289aeb8c88e001d))
+
+
+### Build System
+
+* **deps:** update typedoc version to get improved documentation page design ([778bb4d](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/778bb4d4e4a787c3e20d36be6bc9e005cc34cf3b))
+
 ## [2.3.3](https://github.com/fingerprintjs/fingerprintjs-pro-react/compare/v2.3.2...v2.3.3) (2023-04-17)
 
 
