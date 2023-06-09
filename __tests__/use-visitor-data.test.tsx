@@ -153,4 +153,80 @@ describe('useVisitorData', () => {
 
     expect(hook.result.current.error?.message).toBe(ERROR_CLIENT_TIMEOUT)
   })
+
+  it('`getVisitorData` `getOptions` should be passed from `getVisitorData` `getOptions`', async () => {
+    const useVisitorDataId = 'useVisitorDataId'
+    const wrapper = createWrapper()
+    const hook = renderHook(
+      () =>
+        useVisitorData(
+          {
+            linkedId: useVisitorDataId,
+            tag: { tagA: useVisitorDataId },
+          },
+          { immediate: false }
+        ),
+      { wrapper }
+    )
+
+    await act(async () => {
+      await hook.result.current.getData()
+    })
+    expect(getVisitorData).toHaveBeenCalledTimes(1)
+    expect(getVisitorData).toHaveBeenCalledWith(
+      { linkedId: useVisitorDataId, tag: { tagA: useVisitorDataId } },
+      undefined
+    )
+  })
+
+  it('`getData` `getOptions` should be more important than `getVisitorData` `getOptions`', async () => {
+    const getDataId = 'getDataId'
+    const useVisitorDataId = 'useVisitorDataId'
+    const wrapper = createWrapper()
+    const hook = renderHook(
+      () =>
+        useVisitorData(
+          {
+            linkedId: useVisitorDataId,
+            tag: { tagA: useVisitorDataId },
+          },
+          { immediate: false }
+        ),
+      { wrapper }
+    )
+
+    await act(async () => {
+      await hook.result.current.getData({
+        linkedId: getDataId,
+        tag: { tagA: getDataId },
+      })
+    })
+    expect(getVisitorData).toHaveBeenCalledTimes(1)
+    expect(getVisitorData).toHaveBeenCalledWith({ linkedId: getDataId, tag: { tagA: getDataId } }, undefined)
+  })
+
+  it('`getData` `getOptions` should extend `getVisitorData` `getOptions`', async () => {
+    const getDataId = 'getDataId'
+    const useVisitorDataId = 'useVisitorDataId'
+    const wrapper = createWrapper()
+    const hook = renderHook(
+      () =>
+        useVisitorData(
+          {
+            linkedId: useVisitorDataId,
+            tag: { tagA: useVisitorDataId },
+          },
+          { immediate: false }
+        ),
+      { wrapper }
+    )
+
+    await act(async () => {
+      await hook.result.current.getData({
+        linkedId: getDataId,
+      })
+    })
+    expect(getVisitorData).toHaveBeenCalledTimes(1)
+    expect(getVisitorData).toHaveBeenCalledWith({ linkedId: getDataId, tag: { tagA: useVisitorDataId } }, undefined)
+  })
 })
