@@ -1,3 +1,15 @@
+## [2.5.0](https://github.com/fingerprintjs/fingerprintjs-pro-react/compare/v2.4.0...v2.5.0) (2023-07-06)
+
+
+### Features
+
+* add reexports of `defaultEndpoint`, `defaultScriptUrlPattern`, `defaultTlsEndpoint` ([b701883](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/b701883fe130955e869758b81ce9e028c887ea53))
+
+
+### Documentation
+
+* **README:** update a polish readme.md ([3e04a52](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/3e04a52d8c7faac53abafad8b6b574cc0f013798))
+
 ## [2.4.0](https://github.com/fingerprintjs/fingerprintjs-pro-react/compare/v2.3.3...v2.4.0) (2023-06-09)
 
 
