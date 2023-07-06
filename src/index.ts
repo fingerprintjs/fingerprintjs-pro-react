@@ -16,6 +16,9 @@ export {
   InMemoryCache,
   LocalStorageCache,
   SessionStorageCache,
+  defaultEndpoint,
+  defaultScriptUrlPattern,
+  defaultTlsEndpoint,
 } from '@fingerprintjs/fingerprintjs-pro-spa'
 export type {
   Agent,
