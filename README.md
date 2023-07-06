@@ -181,7 +181,7 @@ function App() {
 export default App;
 ```
 
-See the full code example in the [examples folder](https://github.com/fingerprintjs/fingerprintjs-pro-react/tree/main/examples/next).
+See the full code example in the [examples folder](https://github.com/fingerprintjs/fingerprintjs-pro-react/tree/main/examples/create-react-app).
 
 ## Caching strategy
 
