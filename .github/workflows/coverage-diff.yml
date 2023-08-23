@@ -5,39 +5,8 @@ on:
 
 jobs:
   run-tests-check-coverage:
-    runs-on: ubuntu-20.04
     name: Run tests & check coverage
     permissions:
       checks: write
       pull-requests: write
-    steps:
-      - uses: actions/checkout@v3
-      - name: Cache
-        uses: actions/cache@v2
-        with:
-          path: node_modules
-          key: nodemodules-${{ hashFiles('yarn.lock') }}
-          restore-keys: nodemodules-
-      - name: Install Node packages
-        run: yarn install
-      - name: Build
-        run: yarn build
-      - run: yarn test:coverage
-      - name: Read coverage text report
-        uses: fingerprintjs/action-coverage-report-md@v1
-        id: coverage-md
-      - name: Jest coverage comment
-        id: coverage
-        uses: ArtiomTr/jest-coverage-report-action@df2b025553c31d68f84be6337843e277e2576844
-        with:
-          package-manager: yarn
-          output: report-markdown
-      - uses: marocchino/sticky-pull-request-comment@adca94abcaf73c10466a71cc83ae561fd66d1a56
-        with:
-          message: |
-            ${{ steps.coverage.outputs.report }}
-            <details>
-              <summary>Show full coverage report</summary>
-
-              ${{ steps.coverage-md.outputs.markdownReport }}
-            </details>
+    uses: fingerprintjs/dx-team-toolkit/.github/workflows/coverage-diff.yml@v1
