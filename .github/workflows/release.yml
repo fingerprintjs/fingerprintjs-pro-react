@@ -1,5 +1,4 @@
-name: Release
-
+name: release
 on:
   push:
     branches:
@@ -7,37 +6,9 @@ on:
       - test
 
 jobs:
-  release:
-    environment: production
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          persist-credentials: false
-
-      - name: Cache
-        uses: actions/cache@v2
-        with:
-          path: node_modules
-          key: nodemodules-${{ hashFiles('yarn.lock') }}
-          restore-keys: nodemodules-
-
-      - name: Install Node packages
-        run: yarn install
-
-      - name: Build library
-        run: yarn build
-
-      - name: Check the distributive TypeScript declarations
-        run: yarn test:dts
-
-      - name: Run tests
-        run: yarn test
-
-      - name: Release
-        run: yarn release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_RELEASE_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
-          HUSKY: 0
+  build-and-release:
+    name: 'Build project, run CI checks and publish new release'
+    uses: fingerprintjs/dx-team-toolkit/.github/workflows/release-typescript-project.yml@v1
+    secrets:
+      GH_RELEASE_TOKEN: ${{ secrets.GH_RELEASE_TOKEN }}
+      NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}

@@ -1,33 +1,11 @@
 name: Analyze Commit Messages
-on: [pull_request]
+on:
+  pull_request:
 
 permissions:
   pull-requests: write
   contents: write
 jobs:
-  release-notes-comment:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-      - name: Collect semantic-release-info
-        id: semantic_release_info
-        uses: fingerprintjs/action-semantic-release-info@v1
-      - if: ${{ steps.semantic_release_info.outputs.no_release == 'false' }}
-        name: Add comment to the PR
-        uses: marocchino/sticky-pull-request-comment@3d60a5b2dae89d44e0c6ddc69dd7536aec2071cd
-        with:
-          header: ReleasePreview
-          recreate: true
-          message: |
-            ## This PR will create a ${{steps.semantic_release_info.outputs.type}} release :rocket:
-            ${{steps.semantic_release_info.outputs.notes}}
-      - if: ${{ steps.semantic_release_info.outputs.no_release == 'true' }}
-        name: Add comment to the PR
-        uses: marocchino/sticky-pull-request-comment@3d60a5b2dae89d44e0c6ddc69dd7536aec2071cd
-        with:
-          header: ReleasePreview
-          recreate: true
-          message: |
-            ## This PR will not create a new release :rocket:
+  analyze-commits:
+    name: Generate docs and coverage report
+    uses: fingerprintjs/dx-team-toolkit/.github/workflows/analyze-commits.yml@v1
