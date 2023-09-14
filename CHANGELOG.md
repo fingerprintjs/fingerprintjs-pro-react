@@ -1,3 +1,24 @@
+## [2.5.1](https://github.com/fingerprintjs/fingerprintjs-pro-react/compare/v2.5.0...v2.5.1) (2023-09-14)
+
+
+### Bug Fixes
+
+* add `CustomAgent` support ([01d5024](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/01d5024796d0ed8babb42b7e4e76f3967e2221f3))
+* bump spa package version to 1.1.2 ([6fdf561](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/6fdf561b539862f109f805ad3fac58abef246346))
+
+
+### Build System
+
+* **deps:** bump semver from 5.7.1 to 5.7.2 ([5f086bb](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/5f086bb58a1bc7c2878c8a0c83a7eafac0fa5b36))
+* **deps:** bump semver from 5.7.1 to 5.7.2 in /examples/preact ([909c868](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/909c868e936944771c7f6fd3c98759e3af52831c))
+* **deps:** bump semver from 6.3.0 to 6.3.1 in /examples/webpack-based ([25c9369](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/25c9369d443b9323700afb7c42c572ecb39fd1d3))
+* **deps:** bump semver in /examples/create-react-app ([e10dc7f](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/e10dc7f0aa51733eeb3c9b0036c7e361bb05097e))
+* **deps:** bump tough-cookie from 4.1.2 to 4.1.3 ([9a35428](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/9a35428725240443311243a1df3152c244737108))
+* **deps:** bump tough-cookie in /examples/create-react-app ([a3882fb](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/a3882fb958e87f9e29ead924fd3ef592d873d270))
+* **deps:** bump word-wrap from 1.2.3 to 1.2.4 ([85e43fc](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/85e43fc818a6c1c7bef26c179226593d3177530a))
+* **deps:** bump word-wrap from 1.2.3 to 1.2.5 in /examples/preact ([ce8d845](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/ce8d845cc2989662cab400e49336675cb99a9bde))
+* **deps:** bump word-wrap in /examples/create-react-app ([c74d026](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/c74d026ef5c22d2967bc1851334ae707ad11d0be))
+
 ## [2.5.0](https://github.com/fingerprintjs/fingerprintjs-pro-react/compare/v2.4.0...v2.5.0) (2023-07-06)
 
 
