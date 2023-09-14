@@ -1,6 +1,7 @@
 import { PropsWithChildren, useCallback, useEffect, useMemo, useRef } from 'react'
 import { FpjsContext } from '../fpjs-context'
 import { FpjsClient, FpjsClientOptions, GetOptions } from '@fingerprintjs/fingerprintjs-pro-spa'
+import * as FingerprintJS from '@fingerprintjs/fingerprintjs-pro'
 import * as packageInfo from '../../package.json'
 import { isSSR } from '../ssr'
 import { waitUntil } from '../utils/wait-until'
@@ -9,12 +10,16 @@ import type { EnvDetails } from '../env.types'
 
 const pkgName = packageInfo.name.split('/')[1]
 
+interface CustomAgent {
+  load: (options: FingerprintJS.LoadOptions) => Promise<FingerprintJS.Agent>
+}
 interface FpjsProviderOptions extends FpjsClientOptions {
   /**
    * If set to `true`, will force FpjsClient to be rebuilt with the new options. Should be used with caution
    * since it can be triggered too often (e.g. on every render) and negatively affect performance of the JS agent.
    */
   forceRebuild?: boolean
+  customAgent?: CustomAgent
 }
 
 /**
@@ -61,6 +66,7 @@ function ProviderWithEnv<TExtended extends boolean>({
   cacheTimeInSeconds,
   cachePrefix,
   cacheLocation,
+  customAgent,
   loadOptions,
   env,
 }: PropsWithChildren<ProviderWithEnvProps>) {
@@ -73,9 +79,10 @@ function ProviderWithEnv<TExtended extends boolean>({
       cacheTimeInSeconds,
       cachePrefix,
       cacheLocation,
+      customAgent,
       loadOptions,
     }
-  }, [loadOptions, cache, cacheTimeInSeconds, cachePrefix, cacheLocation])
+  }, [loadOptions, cache, cacheTimeInSeconds, cachePrefix, cacheLocation, customAgent])
 
   const createClient = useCallback(() => {
     let integrationInfo = `${pkgName}/${packageInfo.version}`
