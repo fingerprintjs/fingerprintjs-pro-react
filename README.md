@@ -37,6 +37,7 @@ Fingerprint Pro React SDK is an easy way to integrate **[Fingerprint Pro](https:
 ## Table of contents
 
 - [Installation](#installation)
+- [Requirements](#requirements)
 - [Getting started](#getting-started)
 - [Caching strategy](#caching-strategy)
 - [Error handling](#error-handling)
@@ -57,6 +58,20 @@ Using [yarn](https://yarnpkg.com):
 ```sh
 yarn add @fingerprintjs/fingerprintjs-pro-react
 ```
+
+Using [pnpm](https://pnpm.js.org):
+
+```sh
+pnpm add @fingerprintjs/fingerprintjs-pro-react
+```
+
+## Requirements
+
+- React 18 or higher
+- For Preact users: Preact 10.3 or higher
+- For Next.js users: Next.js 13.1 or higher
+- For Typescript users: Typescript 4.8 or higher
+
 
 ## Getting started
 
