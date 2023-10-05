@@ -51,6 +51,8 @@ Fingerprint is a device intelligence platform offering 99.5% accurate visitor id
 - For Next.js users: Next.js 13.1 or higher
 - For Typescript users: Typescript 4.8 or higher
 
+Note: This package assumes you have a Fingerprint Pro subscription or trial, it is not compatible with the [source-available FingerprintJS](https://github.com/fingerprintjs/fingerprintjs). See our documentation to learn more about the [differences between Fingerprint Pro and FingerprintJS](https://dev.fingerprint.com/docs/identification-vs-fingerprintjs).
+
 ## Installation
 
 Using [npm](https://npmjs.org):
