@@ -35,14 +35,21 @@ Fingerprint is a device intelligence platform offering 99.5% accurate visitor id
 
 ## Table of contents
 
-- [Installation](#installation)
 - [Requirements](#requirements)
+- [Installation](#installation)
 - [Getting started](#getting-started)
 - [Caching strategy](#caching-strategy)
 - [Error handling](#error-handling)
 - [API Reference](#api-reference)
 - [Support and feedback](#support-and-feedback)
 - [License](#license)
+
+## Requirements
+
+- React 18 or higher
+- For Preact users: Preact 10.3 or higher
+- For Next.js users: Next.js 13.1 or higher
+- For Typescript users: Typescript 4.8 or higher
 
 ## Installation
 
@@ -63,13 +70,6 @@ Using [pnpm](https://pnpm.js.org):
 ```sh
 pnpm add @fingerprintjs/fingerprintjs-pro-react
 ```
-
-## Requirements
-
-- React 18 or higher
-- For Preact users: Preact 10.3 or higher
-- For Next.js users: Next.js 13.1 or higher
-- For Typescript users: Typescript 4.8 or higher
 
 
 ## Getting started
