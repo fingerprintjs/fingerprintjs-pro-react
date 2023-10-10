@@ -19,6 +19,7 @@ export {
   defaultEndpoint,
   defaultScriptUrlPattern,
   defaultTlsEndpoint,
+  FingerprintJSPro,
 } from '@fingerprintjs/fingerprintjs-pro-spa'
 export type {
   Agent,
