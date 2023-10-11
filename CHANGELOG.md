@@ -1,3 +1,10 @@
+## [2.6.0](https://github.com/fingerprintjs/fingerprintjs-pro-react/compare/v2.5.1...v2.6.0) (2023-10-11)
+
+
+### Features
+
+* update @fingerprintjs/fingerprintjs-pro-spa to 1.2.0, add FingerprintJSPro export ([8066afe](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/8066afe0a285f1b8ace4c1debe74860034752655))
+
 ## [2.5.1](https://github.com/fingerprintjs/fingerprintjs-pro-react/compare/v2.5.0...v2.5.1) (2023-09-14)
 
 
