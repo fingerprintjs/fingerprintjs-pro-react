@@ -1,9 +1,9 @@
 <p align="center">
   <a href="https://fingerprint.com">
-    <picture>
-     <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/fingerprintjs/fingerprintjs-pro-react/main/resources/logo_light.svg" />
-     <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/fingerprintjs/fingerprintjs-pro-react/main/resources/logo_dark.svg" />
-     <img src="https://raw.githubusercontent.com/fingerprintjs/fingerprintjs-pro-react/main/resources/logo_dark.svg" alt="Fingerprint logo" width="312px" />
+   <picture>
+     <source media="(prefers-color-scheme: dark)" srcset="https://fingerprintjs.github.io/home/resources/logo_light.svg" />
+     <source media="(prefers-color-scheme: light)" srcset="https://fingerprintjs.github.io/home/resources/logo_dark.svg" />
+     <img src="https://fingerprintjs.github.io/home/resources/logo_dark.svg" alt="Fingerprint logo" width="312px" />
    </picture>
   </a>
 <p align="center">
@@ -31,11 +31,11 @@
 
   
 # Fingerprint Pro React
-
-Fingerprint Pro React SDK is an easy way to integrate **[Fingerprint Pro](https://fingerprint.com/)** into your React application. It's also compatible with Next.js and Preact. See application demos in the [examples](https://github.com/fingerprintjs/fingerprintjs-pro-react/tree/main/examples) folder.  **This package works with Fingerprint Pro, it is not compatible with [open-source FingerprintJS](https://github.com/fingerprintjs/fingerprintjs).** You can learn more about the difference between Fingerprint Pro and open-source FingerprintJS in the [official documentation](https://dev.fingerprint.com/docs/pro-vs-open-source).
+Fingerprint is a device intelligence platform offering 99.5% accurate visitor identification. Fingerprint Pro React SDK is an easy way to integrate **[Fingerprint Pro](https://fingerprint.com/)** into your React application. It's also compatible with Next.js and Preact. See application demos in the [examples](https://github.com/fingerprintjs/fingerprintjs-pro-react/tree/main/examples) folder. 
 
 ## Table of contents
 
+- [Requirements](#requirements)
 - [Installation](#installation)
 - [Getting started](#getting-started)
 - [Caching strategy](#caching-strategy)
@@ -43,6 +43,15 @@ Fingerprint Pro React SDK is an easy way to integrate **[Fingerprint Pro](https:
 - [API Reference](#api-reference)
 - [Support and feedback](#support-and-feedback)
 - [License](#license)
+
+## Requirements
+
+- React 18 or higher
+- For Preact users: Preact 10.3 or higher
+- For Next.js users: Next.js 13.1 or higher
+- For Typescript users: Typescript 4.8 or higher
+
+Note: This package assumes you have a Fingerprint Pro subscription or trial, it is not compatible with the [source-available FingerprintJS](https://github.com/fingerprintjs/fingerprintjs). See our documentation to learn more about the [differences between Fingerprint Pro and FingerprintJS](https://dev.fingerprint.com/docs/identification-vs-fingerprintjs).
 
 ## Installation
 
@@ -57,6 +66,13 @@ Using [yarn](https://yarnpkg.com):
 ```sh
 yarn add @fingerprintjs/fingerprintjs-pro-react
 ```
+
+Using [pnpm](https://pnpm.js.org):
+
+```sh
+pnpm add @fingerprintjs/fingerprintjs-pro-react
+```
+
 
 ## Getting started
 
