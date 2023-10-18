@@ -14,10 +14,10 @@
 <h2>@fingerprintjs/fingerprintjs-pro-react</h2></div>
 <div class="tsd-panel tsd-typography"><p align="center">
   <a href="https://fingerprint.com">
-    <picture>
-     <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/fingerprintjs/fingerprintjs-pro-react/main/resources/logo_light.svg" />
-     <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/fingerprintjs/fingerprintjs-pro-react/main/resources/logo_dark.svg" />
-     <img src="https://raw.githubusercontent.com/fingerprintjs/fingerprintjs-pro-react/main/resources/logo_dark.svg" alt="Fingerprint logo" width="312px" />
+   <picture>
+     <source media="(prefers-color-scheme: dark)" srcset="https://fingerprintjs.github.io/home/resources/logo_light.svg" />
+     <source media="(prefers-color-scheme: light)" srcset="https://fingerprintjs.github.io/home/resources/logo_dark.svg" />
+     <img src="https://fingerprintjs.github.io/home/resources/logo_dark.svg" alt="Fingerprint logo" width="312px" />
    </picture>
   </a>
 <p align="center">
@@ -44,8 +44,9 @@
 </a>
 
   
-<a id="md:fingerprint-pro-react" class="tsd-anchor"></a><h1><a href="#md:fingerprint-pro-react">Fingerprint Pro React</a></h1><p>Fingerprint Pro React SDK is an easy way to integrate <strong><a href="https://fingerprint.com/">Fingerprint Pro</a></strong> into your React application. It&#39;s also compatible with Next.js and Preact. See application demos in the <a href="https://github.com/fingerprintjs/fingerprintjs-pro-react/tree/main/examples">examples</a> folder.  <strong>This package works with Fingerprint Pro, it is not compatible with <a href="https://github.com/fingerprintjs/fingerprintjs">open-source FingerprintJS</a>.</strong> You can learn more about the difference between Fingerprint Pro and open-source FingerprintJS in the <a href="https://dev.fingerprint.com/docs/pro-vs-open-source">official documentation</a>.</p>
+<a id="md:fingerprint-pro-react" class="tsd-anchor"></a><h1><a href="#md:fingerprint-pro-react">Fingerprint Pro React</a></h1><p>Fingerprint is a device intelligence platform offering 99.5% accurate visitor identification. Fingerprint Pro React SDK is an easy way to integrate <strong><a href="https://fingerprint.com/">Fingerprint Pro</a></strong> into your React application. It&#39;s also compatible with Next.js and Preact. See application demos in the <a href="https://github.com/fingerprintjs/fingerprintjs-pro-react/tree/main/examples">examples</a> folder. </p>
 <a id="md:table-of-contents" class="tsd-anchor"></a><h2><a href="#md:table-of-contents">Table of contents</a></h2><ul>
+<li><a href="#requirements">Requirements</a></li>
 <li><a href="#installation">Installation</a></li>
 <li><a href="#getting-started">Getting started</a></li>
 <li><a href="#caching-strategy">Caching strategy</a></li>
@@ -54,11 +55,21 @@
 <li><a href="#support-and-feedback">Support and feedback</a></li>
 <li><a href="#license">License</a></li>
 </ul>
+<a id="md:requirements" class="tsd-anchor"></a><h2><a href="#md:requirements">Requirements</a></h2><ul>
+<li>React 18 or higher</li>
+<li>For Preact users: Preact 10.3 or higher</li>
+<li>For Next.js users: Next.js 13.1 or higher</li>
+<li>For Typescript users: Typescript 4.8 or higher</li>
+</ul>
+<p>Note: This package assumes you have a Fingerprint Pro subscription or trial, it is not compatible with the <a href="https://github.com/fingerprintjs/fingerprintjs">source-available FingerprintJS</a>. See our documentation to learn more about the <a href="https://dev.fingerprint.com/docs/identification-vs-fingerprintjs">differences between Fingerprint Pro and FingerprintJS</a>.</p>
 <a id="md:installation" class="tsd-anchor"></a><h2><a href="#md:installation">Installation</a></h2><p>Using <a href="https://npmjs.org">npm</a>:</p>
 <pre><code class="language-sh"><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-2">install</span><span class="hl-1"> </span><span class="hl-2">@fingerprintjs/fingerprintjs-pro-react</span>
 </code><button>Copy</button></pre>
 <p>Using <a href="https://yarnpkg.com">yarn</a>:</p>
 <pre><code class="language-sh"><span class="hl-0">yarn</span><span class="hl-1"> </span><span class="hl-2">add</span><span class="hl-1"> </span><span class="hl-2">@fingerprintjs/fingerprintjs-pro-react</span>
+</code><button>Copy</button></pre>
+<p>Using <a href="https://pnpm.js.org">pnpm</a>:</p>
+<pre><code class="language-sh"><span class="hl-0">pnpm</span><span class="hl-1"> </span><span class="hl-2">add</span><span class="hl-1"> </span><span class="hl-2">@fingerprintjs/fingerprintjs-pro-react</span>
 </code><button>Copy</button></pre>
 <a id="md:getting-started" class="tsd-anchor"></a><h2><a href="#md:getting-started">Getting started</a></h2><p>In order to identify visitors, you&#39;ll need a Fingerprint Pro account (you can <a href="https://dashboard.fingerprint.com/signup/">sign up for free</a>).
 To get your API key and get started, see the <a href="https://dev.fingerprint.com/docs/quick-start-guide">official Fingerprint Pro documentation</a>.</p>
@@ -109,6 +120,7 @@ To get your API key and get started, see the <a href="https://dev.fingerprint.co
 <li>
 <ul>
 <li><a href="#md:table-of-contents"><span>Table of contents</span></a></li>
+<li><a href="#md:requirements"><span>Requirements</span></a></li>
 <li><a href="#md:installation"><span>Installation</span></a></li>
 <li><a href="#md:getting-started"><span>Getting started</span></a></li>
 <li><a href="#md:caching-strategy"><span>Caching strategy</span></a></li>
