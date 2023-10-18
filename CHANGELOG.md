@@ -1,3 +1,10 @@
+## [2.6.1](https://github.com/fingerprintjs/fingerprintjs-pro-react/compare/v2.6.0...v2.6.1) (2023-10-18)
+
+
+### Documentation
+
+* **README:** add requirements section ([fddd22f](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/fddd22f20a9bf58309998656703d564430a2ddd9))
+
 ## [2.6.0](https://github.com/fingerprintjs/fingerprintjs-pro-react/compare/v2.5.1...v2.6.0) (2023-10-11)
 
 
