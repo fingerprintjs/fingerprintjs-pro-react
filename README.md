@@ -204,7 +204,7 @@ See the full code example in the [examples folder](https://github.com/fingerprin
 Fingerprint Pro usage is billed per API call. To avoid unnecessary API calls, it is a good practice to cache identification results. By default, the SDK uses `sessionStorage` to cache results. 
 
 * Specify the `cacheLocation` prop on `<FpjsProvider>` to instead store results in `memory` or  `localStorage`. Use `none` to disable caching completely.
-* Specify the `cache` prop on `<FpjsProvider>` to use your custom cache mechanism instead. For more details, see [Creating a custom cache](https://github.com/fingerprintjs/fingerprintjs-pro-spa#creating-a-custom-cache)
+* Specify the `cache` prop on `<FpjsProvider>` to use your custom cache implementation instead. For more details, see [Creating a custom cache](https://github.com/fingerprintjs/fingerprintjs-pro-spa#creating-a-custom-cache)
  in the Fingerprint Pro SPA repository (a lower-level Fingerprint library used by this SDK).
 * Pass `{ignoreCache: true}` to the `getData()` function to ignore cached results for that specific API call. 
 
