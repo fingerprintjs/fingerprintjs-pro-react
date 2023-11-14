@@ -126,7 +126,7 @@ function App() {
   }
 
   if (data) {
-    // perform some logic based on the visitor data
+    // Perform some logic based on the visitor data
     return (
       <div>
         Welcome {data.visitorFound ? 'back' : ''}, {data.visitorId}!
@@ -169,8 +169,8 @@ function App() {
           e.preventDefault();
            getData()
              .then((data) => {
-                // do something with the visitor data
-                // for example, append visitor data to the form data to send to your server
+                // Do something with the visitor data, for example,
+                // append visitor data to the form data to send to your server
                 console.log(data)
              })
              .catch((error) => {
@@ -210,7 +210,7 @@ Fingerprint Pro usage is billed per API call. To avoid unnecessary API calls, it
 
 > [!NOTE]
 > If you use data from [`extendedResult`](https://dev.fingerprint.com/docs/js-agent#extendedresult), pay additional attention to your caching strategy.
-> Some fields, for example, `ip` or `lastSeenAt`, might change over time for the same visitor. Use `getData({ ignoreCache: true })` to fetch latest identification results.
+> Some fields, for example, `ip` or `lastSeenAt`, might change over time for the same visitor. Use `getData({ ignoreCache: true })` to fetch the latest identification results.
 
 ## Error handling
 
