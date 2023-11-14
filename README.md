@@ -6,28 +6,16 @@
      <img src="https://fingerprintjs.github.io/home/resources/logo_dark.svg" alt="Fingerprint logo" width="312px" />
    </picture>
   </a>
+</p>
 <p align="center">
-<a href="https://github.com/fingerprintjs/fingerprintjs-pro-react/actions/workflows/release.yml">
-  <img src="https://github.com/fingerprintjs/fingerprintjs-pro-react/actions/workflows/release.yml/badge.svg" alt="CI badge" />
-</a>
-<a href="https://fingerprintjs.github.io/fingerprintjs-pro-react/coverage/">
- <img src="https://fingerprintjs.github.io/fingerprintjs-pro-react/coverage/badges.svg" alt="coverage">
-</a>
-<a href="https://www.npmjs.com/package/@fingerprintjs/fingerprintjs-pro-react">
-  <img src="https://img.shields.io/npm/v/@fingerprintjs/fingerprintjs-pro-react.svg" alt="Current NPM version">
-</a>
-<a href="https://www.npmjs.com/package/@fingerprintjs/fingerprintjs-pro-react">
-  <img src="https://img.shields.io/npm/dm/@fingerprintjs/fingerprintjs-pro-react.svg" alt="Monthly downloads from NPM">
-</a>
-<a href="https://opensource.org/licenses/MIT">
-  <img src="https://img.shields.io/:license-mit-blue.svg" alt="MIT license">
-</a>
-<a href="https://discord.gg/39EpE2neBg">
-  <img src="https://img.shields.io/discord/852099967190433792?style=logo&label=Discord&logo=Discord&logoColor=white" alt="Discord server">
-</a>
-<a href="https://fingerprintjs.github.io/fingerprintjs-pro-react/">
-  <img src="https://img.shields.io/badge/-Documentation-green" alt="Discord server">
-</a>
+  <a href="https://github.com/fingerprintjs/fingerprintjs-pro-react/actions/workflows/release.yml"><img src="https://github.com/fingerprintjs/fingerprintjs-pro-react/actions/workflows/release.yml/badge.svg" alt="CI badge" /></a>
+  <a href="https://fingerprintjs.github.io/fingerprintjs-pro-react/coverage/"><img src="https://fingerprintjs.github.io/fingerprintjs-pro-react/coverage/badges.svg" alt="coverage"></a>
+  <a href="https://www.npmjs.com/package/@fingerprintjs/fingerprintjs-pro-react"><img src="https://img.shields.io/npm/v/@fingerprintjs/fingerprintjs-pro-react.svg" alt="Current NPM version"></a>
+  <a href="https://www.npmjs.com/package/@fingerprintjs/fingerprintjs-pro-react"><img src="https://img.shields.io/npm/dm/@fingerprintjs/fingerprintjs-pro-react.svg" alt="Monthly downloads from NPM"></a>
+  <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/:license-mit-blue.svg" alt="MIT license"></a>
+  <a href="https://discord.gg/39EpE2neBg"><img src="https://img.shields.io/discord/852099967190433792?style=logo&label=Discord&logo=Discord&logoColor=white" alt="Discord server"></a>
+  <a href="https://fingerprintjs.github.io/fingerprintjs-pro-react/"><img src="https://img.shields.io/badge/-Documentation-green" alt="Discord server"></a>
+</p>
 
   
 # Fingerprint Pro React
