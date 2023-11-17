@@ -6,28 +6,16 @@
      <img src="https://fingerprintjs.github.io/home/resources/logo_dark.svg" alt="Fingerprint logo" width="312px" />
    </picture>
   </a>
+</p>
 <p align="center">
-<a href="https://github.com/fingerprintjs/fingerprintjs-pro-react/actions/workflows/release.yml">
-  <img src="https://github.com/fingerprintjs/fingerprintjs-pro-react/actions/workflows/release.yml/badge.svg" alt="CI badge" />
-</a>
-<a href="https://fingerprintjs.github.io/fingerprintjs-pro-react/coverage/">
- <img src="https://fingerprintjs.github.io/fingerprintjs-pro-react/coverage/badges.svg" alt="coverage">
-</a>
-<a href="https://www.npmjs.com/package/@fingerprintjs/fingerprintjs-pro-react">
-  <img src="https://img.shields.io/npm/v/@fingerprintjs/fingerprintjs-pro-react.svg" alt="Current NPM version">
-</a>
-<a href="https://www.npmjs.com/package/@fingerprintjs/fingerprintjs-pro-react">
-  <img src="https://img.shields.io/npm/dm/@fingerprintjs/fingerprintjs-pro-react.svg" alt="Monthly downloads from NPM">
-</a>
-<a href="https://opensource.org/licenses/MIT">
-  <img src="https://img.shields.io/:license-mit-blue.svg" alt="MIT license">
-</a>
-<a href="https://discord.gg/39EpE2neBg">
-  <img src="https://img.shields.io/discord/852099967190433792?style=logo&label=Discord&logo=Discord&logoColor=white" alt="Discord server">
-</a>
-<a href="https://fingerprintjs.github.io/fingerprintjs-pro-react/">
-  <img src="https://img.shields.io/badge/-Documentation-green" alt="Discord server">
-</a>
+  <a href="https://github.com/fingerprintjs/fingerprintjs-pro-react/actions/workflows/release.yml"><img src="https://github.com/fingerprintjs/fingerprintjs-pro-react/actions/workflows/release.yml/badge.svg" alt="CI badge" /></a>
+  <a href="https://fingerprintjs.github.io/fingerprintjs-pro-react/coverage/"><img src="https://fingerprintjs.github.io/fingerprintjs-pro-react/coverage/badges.svg" alt="coverage"></a>
+  <a href="https://www.npmjs.com/package/@fingerprintjs/fingerprintjs-pro-react"><img src="https://img.shields.io/npm/v/@fingerprintjs/fingerprintjs-pro-react.svg" alt="Current NPM version"></a>
+  <a href="https://www.npmjs.com/package/@fingerprintjs/fingerprintjs-pro-react"><img src="https://img.shields.io/npm/dm/@fingerprintjs/fingerprintjs-pro-react.svg" alt="Monthly downloads from NPM"></a>
+  <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/:license-mit-blue.svg" alt="MIT license"></a>
+  <a href="https://discord.gg/39EpE2neBg"><img src="https://img.shields.io/discord/852099967190433792?style=logo&label=Discord&logo=Discord&logoColor=white" alt="Discord server"></a>
+  <a href="https://fingerprintjs.github.io/fingerprintjs-pro-react/"><img src="https://img.shields.io/badge/-Documentation-green" alt="Discord server"></a>
+</p>
 
   
 # Fingerprint Pro React
@@ -126,7 +114,7 @@ function App() {
   }
 
   if (data) {
-    // perform some logic based on the visitor data
+    // Perform some logic based on the visitor data
     return (
       <div>
         Welcome {data.visitorFound ? 'back' : ''}, {data.visitorId}!
@@ -169,8 +157,8 @@ function App() {
           e.preventDefault();
            getData()
              .then((data) => {
-                // do something with the visitor data
-                // for example, append visitor data to the form data to send to your server
+                // Do something with the visitor data, for example,
+                // append visitor data to the form data to send to your server
                 console.log(data)
              })
              .catch((error) => {
@@ -201,11 +189,16 @@ See the full code example in the [examples folder](https://github.com/fingerprin
 
 ## Caching strategy
 
-Fingerprint Pro usage is billed per API call. To reduce API calls, it is a good practice to [cache identification results](https://dev.fingerprint.com/docs/caching-visitor-information). The SDK uses SessionStorage to cache results by default.
+Fingerprint Pro usage is billed per API call. To avoid unnecessary API calls, it is a good practice to cache identification results. By default, the SDK uses `sessionStorage` to cache results. 
 
-> :warning: **WARNING** If you use data from `extendedResult`, pay additional attention to caching strategy. 
->
-> Some fields from the [extendedResult](https://dev.fingerprint.com/docs/js-agent#extendedresult) (e.g., `ip` or `lastSeenAt`) might change over time for the same visitor. If you need to get the latest results, pass `{ignoreCache: true}` to the `getData()` function.
+* Specify the `cacheLocation` prop on `<FpjsProvider>` to instead store results in `memory` or  `localStorage`. Use `none` to disable caching completely.
+* Specify the `cache` prop on `<FpjsProvider>` to use your custom cache implementation instead. For more details, see [Creating a custom cache](https://github.com/fingerprintjs/fingerprintjs-pro-spa#creating-a-custom-cache)
+ in the Fingerprint Pro SPA repository (a lower-level Fingerprint library used by this SDK).
+* Pass `{ignoreCache: true}` to the `getData()` function to ignore cached results for that specific API call. 
+
+> [!NOTE]
+> If you use data from [`extendedResult`](https://dev.fingerprint.com/docs/js-agent#extendedresult), pay additional attention to your caching strategy.
+> Some fields, for example, `ip` or `lastSeenAt`, might change over time for the same visitor. Use `getData({ ignoreCache: true })` to fetch the latest identification results.
 
 ## Error handling
 
