@@ -1,3 +1,13 @@
+## [2.6.2](https://github.com/fingerprintjs/fingerprintjs-pro-react/compare/v2.6.1...v2.6.2) (2023-11-17)
+
+
+### Documentation
+
+* **README:** fix badge underlines ([0699feb](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/0699feb290570a76f23284698e0ff0c3ab8b67e2))
+* **README:** improve caching explanation ([9e109d4](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/9e109d40547e2fad9ee2cbdbf4ae3672539c8591))
+* **README:** phrasing tweaks ([2b954e6](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/2b954e6b5bccbd8b33ac758b948175c9f92bdec2))
+* **README:** small grammar fixes ([93ed29e](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/93ed29e2f55299f3b0c69548665b7ecab9d94ebf))
+
 ## [2.6.1](https://github.com/fingerprintjs/fingerprintjs-pro-react/compare/v2.6.0...v2.6.1) (2023-10-18)
 
 
