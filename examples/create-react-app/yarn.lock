@@ -1161,23 +1161,23 @@
     strip-json-comments "^3.1.1"
 
 "@fingerprintjs/fingerprintjs-pro-react@link:../..":
-  version "2.5.0"
+  version "2.6.2"
   dependencies:
-    "@fingerprintjs/fingerprintjs-pro-spa" "^1.1.0"
+    "@fingerprintjs/fingerprintjs-pro-spa" "^1.2.0"
     fast-deep-equal "3.1.3"
 
-"@fingerprintjs/fingerprintjs-pro-spa@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@fingerprintjs/fingerprintjs-pro-spa/-/fingerprintjs-pro-spa-1.1.0.tgz#3a1924c4bdc91599ecc41971d01b9e38ec1b18d5"
-  integrity sha512-mj+8zl70lwtibQYdZUN5yUO6Bhw8/MxhbzNolBOp8asCdsXCEEx5DYzRADijQ73vJgimb+ys5zrQ9sZ8O7W0iw==
+"@fingerprintjs/fingerprintjs-pro-spa@^1.2.0":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@fingerprintjs/fingerprintjs-pro-spa/-/fingerprintjs-pro-spa-1.3.0.tgz#97ce1bac6155cdd77b2b60bfeb55b00b28fa2cf2"
+  integrity sha512-XNZiA9kyuzfBZtCCr7B4x24pkp7WCpxzjAQbH87Iq89yWn48Auxc8Xh4a5q2Bpj9velFp1cdp76h3C0KaUsdwQ==
   dependencies:
-    "@fingerprintjs/fingerprintjs-pro" "^3.8.4"
+    "@fingerprintjs/fingerprintjs-pro" "^3.8.5"
     tslib "^2.5.0"
 
-"@fingerprintjs/fingerprintjs-pro@^3.8.4":
-  version "3.8.5"
-  resolved "https://registry.yarnpkg.com/@fingerprintjs/fingerprintjs-pro/-/fingerprintjs-pro-3.8.5.tgz#9e14b5fadd14a90490be66ddd0d2678f56ac39e1"
-  integrity sha512-07bkz/BrQYIHh0FIQ8rMKx62IKu+gkZrUzNsoT1fLwYfnM0uk+s+XQXLeaDXGMGpHgkZSP4nPMAn+nkRfWy6ww==
+"@fingerprintjs/fingerprintjs-pro@^3.8.5":
+  version "3.8.6"
+  resolved "https://registry.yarnpkg.com/@fingerprintjs/fingerprintjs-pro/-/fingerprintjs-pro-3.8.6.tgz#32add2697ee8efb6f9d548dcd2fe6b28482c9324"
+  integrity sha512-PlUGx8HeCtE0cvIcD9r/C61p0xWw7A+9ah10r8tHlmuzjP9EjbpWEa7OSUKCO3QsYBrrKG0pS4W8HhBqzj05rg==
   dependencies:
     tslib "^2.4.1"
 
@@ -4379,9 +4379,9 @@ flatted@^3.1.0:
   integrity sha512-WIWGi2L3DyTUvUrwRKgGi9TwxQMUEqPOPQBVi71R96jZXJdFskXEmf54BoZaS1kknGODoIGASGEzBUYdyMCBJg==
 
 follow-redirects@^1.0.0:
-  version "1.15.0"
-  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.15.0.tgz#06441868281c86d0dda4ad8bdaead2d02dca89d4"
-  integrity sha512-aExlJShTV4qOUOL7yF1U5tvLCB0xQuudbf6toyYA0E/acBNw71mvjFTnLaRp50aQaYocMR0a/RMMBIHeZnGyjQ==
+  version "1.15.4"
+  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.15.4.tgz#cdc7d308bf6493126b17ea2191ea0ccf3e535adf"
+  integrity sha512-Cr4D/5wlrb0z9dgERpUL3LrmPKVDsETIJhaCMeDfuFYcqa5bldGV6wBsAN6X/vxlXQtFBMrXdXxdL8CbDTGniw==
 
 fork-ts-checker-webpack-plugin@^6.5.0:
   version "6.5.2"
