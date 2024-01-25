@@ -94,6 +94,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.4.2",
+    "rimraf": "^5.0.5",
     "rollup": "^2.75.7",
     "rollup-plugin-banner2": "^1.2.2",
     "rollup-plugin-dts": "^5.1.1",
