@@ -19,8 +19,10 @@
     "webpack-dev-server": "^4.11.1"
   },
   "dependencies": {
-    "@fingerprintjs/fingerprintjs-pro-react": "link:../../",
-    "react": "link:../../node_modules/react",
-    "react-dom": "link:../../node_modules/react-dom"
+    "@fingerprintjs/fingerprintjs-pro-react": "workspace:*"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-dom": "*"
   }
 }

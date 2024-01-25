@@ -9,10 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@fingerprintjs/fingerprintjs-pro-react": "link:../../",
-    "next": "13.1.6",
-    "react": "link:../../node_modules/react",
-    "react-dom": "link:../../node_modules/react-dom"
+    "@fingerprintjs/fingerprintjs-pro-react": "workspace:*",
+    "next": "13.1.6"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-dom": "*"
   },
   "devDependencies": {
     "@types/node": "18.11.18",

@@ -30,7 +30,7 @@
     "prepare": "husky install",
     "watch": "rollup -c rollup.config.js -w",
     "build": "rimraf dist && rollup -c rollup.config.js",
-    "start:spa": "npm start --prefix=examples/spa",
+    "start:spa": "pnpm start --prefix=examples/spa",
     "lint": "eslint --ext .js,.ts,.tsx --ignore-path .gitignore --max-warnings 0 .",
     "lint:fix": "yarn lint --fix",
     "test": "jest",
