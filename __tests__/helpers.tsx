@@ -9,12 +9,11 @@ export const getDefaultLoadOptions = () => ({
 
 export const createWrapper =
   ({ loadOptions = getDefaultLoadOptions(), ...options }: Partial<FpjsClientOptions> = {}) =>
-  ({ children }: PropsWithChildren<{}>): JSX.Element =>
-    (
-      <FpjsProvider loadOptions={loadOptions} {...options}>
-        {children}
-      </FpjsProvider>
-    )
+  ({ children }: PropsWithChildren<{}>): JSX.Element => (
+    <FpjsProvider loadOptions={loadOptions} {...options}>
+      {children}
+    </FpjsProvider>
+  )
 
 export const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
 

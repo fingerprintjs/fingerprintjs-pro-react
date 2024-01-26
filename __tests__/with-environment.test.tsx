@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import { FunctionComponent } from 'react'
 import { act, render } from '@testing-library/react'
 import { WithEnvironment } from '../src/components/with-environment'
 import { Link, MemoryRouter, Route, Routes } from 'react-router-dom'
