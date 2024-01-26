@@ -1,4 +1,5 @@
 module.exports = {
+  ignorePatterns: ['dist/', 'build/'],
   extends: [
     'next/core-web-vitals',
     '@fingerprintjs/eslint-config-dx-team',
