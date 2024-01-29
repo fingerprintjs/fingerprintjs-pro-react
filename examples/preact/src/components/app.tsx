@@ -1,7 +1,7 @@
-import { FunctionalComponent, h } from 'preact'
+import { FunctionalComponent } from 'preact'
 import { useVisitorData } from '@fingerprintjs/fingerprintjs-pro-react'
 import { useState } from 'preact/hooks'
-import { TargetedEvent } from 'preact/compat'
+import { JSX } from 'preact/compat'
 
 const App: FunctionalComponent = () => {
   const [extendedResult, updateExtendedResult] = useState(false)
@@ -11,7 +11,7 @@ const App: FunctionalComponent = () => {
     getData({ ignoreCache: true })
   }
 
-  const onChangeExtendedResult = (e: TargetedEvent<HTMLInputElement, Event>): void => {
+  const onChangeExtendedResult = (e: JSX.TargetedEvent<HTMLInputElement, Event>): void => {
     updateExtendedResult((e.target as HTMLInputElement).checked)
   }
 

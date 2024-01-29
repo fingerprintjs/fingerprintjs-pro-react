@@ -1,4 +1,4 @@
-import { FunctionalComponent, h } from 'preact'
+import { FunctionalComponent } from 'preact'
 import './style/index.css'
 import App from './components/app'
 import { FpjsProvider } from '@fingerprintjs/fingerprintjs-pro-react'
