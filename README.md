@@ -189,9 +189,9 @@ export default App;
 See the full code example in the [examples folder](https://github.com/fingerprintjs/fingerprintjs-pro-react/tree/main/examples/create-react-app).
 
 ## Linking and tagging information
-The visitorId provided by Fingerprint Identification is especially useful when combined with information you already know about your users, for example, account IDs, order IDs, etc. To learn more about various applications of the linkedId and tags, see [Linking and tagging information](https://dev.fingerprint.com/docs/tagging-information).
+The `visitorId` provided by Fingerprint Identification is especially useful when combined with information you already know about your users, for example, account IDs, order IDs, etc. To learn more about various applications of the `linkedId` and `tag`, see [Linking and tagging information](https://dev.fingerprint.com/docs/tagging-information).
 
-Associate your data with a visitorId using the linkedId or tag parameter of the options that are passed into the `useVisitorData()` hook:
+Associate your data with a visitor ID using the `linkedId` or `tag` parameter of the options object passed into the `useVisitorData()` hook or the `getData` function:
 ```jsx
 // ...
 
