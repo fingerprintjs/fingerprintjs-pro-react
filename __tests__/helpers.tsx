@@ -2,7 +2,6 @@ import { PropsWithChildren } from 'react'
 import { FpjsClientOptions } from '@fingerprintjs/fingerprintjs-pro-spa'
 import { FpjsProvider } from '../src'
 import { act } from 'react-dom/test-utils'
-import React from 'react'
 
 export const getDefaultLoadOptions = () => ({
   apiKey: 'test_api_key',
