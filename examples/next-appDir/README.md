@@ -6,7 +6,7 @@ See [../next](../next/README.md) for an example using the classic `pages` approa
 
 ### Fingerprint Public API key
 
-In order to try out these examples: 
+In order to try out this example: 
 1. Create a `.env` (or `.env.local`) file in this directory.
 2. Set the `NEXT_PUBLIC_FPJS_PUBLIC_API_KEY` environment variable to the value of your Fingerprint Public API key. 
 
