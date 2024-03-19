@@ -3,10 +3,10 @@ import { useState } from 'react'
 import { Outlet } from 'react-router-dom'
 import { FPJS_API_KEY } from '../shared/utils/env'
 import { Nav } from '../shared/components/Nav'
-import { CacheLocation, LoadOptions } from '@fingerprintjs/fingerprintjs-pro-spa'
+import { CacheLocation, FingerprintJSPro } from '@fingerprintjs/fingerprintjs-pro-spa'
 
 function InMemoryCache() {
-  const [loadOptions] = useState<LoadOptions>({
+  const [loadOptions] = useState<FingerprintJSPro.LoadOptions>({
     apiKey: FPJS_API_KEY,
   })
 

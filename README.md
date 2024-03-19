@@ -17,9 +17,9 @@
   <a href="https://fingerprintjs.github.io/fingerprintjs-pro-react/"><img src="https://img.shields.io/badge/-Documentation-green" alt="Discord server"></a>
 </p>
 
-  
 # Fingerprint Pro React
-Fingerprint is a device intelligence platform offering 99.5% accurate visitor identification. Fingerprint Pro React SDK is an easy way to integrate **[Fingerprint Pro](https://fingerprint.com/)** into your React application. It's also compatible with Next.js and Preact. See application demos in the [examples](https://github.com/fingerprintjs/fingerprintjs-pro-react/tree/main/examples) folder. 
+
+Fingerprint is a device intelligence platform offering 99.5% accurate visitor identification. Fingerprint Pro React SDK is an easy way to integrate **[Fingerprint Pro](https://fingerprint.com/)** into your React application. It's also compatible with Next.js and Preact. See application demos in the [examples](https://github.com/fingerprintjs/fingerprintjs-pro-react/tree/main/examples) folder.
 
 ## Table of contents
 
@@ -40,7 +40,8 @@ Fingerprint is a device intelligence platform offering 99.5% accurate visitor id
 - For Next.js users: Next.js 13.1 or higher
 - For Typescript users: Typescript 4.8 or higher
 
-Note: This package assumes you have a Fingerprint Pro subscription or trial, it is not compatible with the [source-available FingerprintJS](https://github.com/fingerprintjs/fingerprintjs). See our documentation to learn more about the [differences between Fingerprint Pro and FingerprintJS](https://dev.fingerprint.com/docs/identification-vs-fingerprintjs).
+> [!NOTE]
+> This package assumes you have a Fingerprint Pro subscription or trial, it is not compatible with the [source-available FingerprintJS](https://github.com/fingerprintjs/fingerprintjs). See our documentation to learn more about the [differences between Fingerprint Pro and FingerprintJS](https://dev.fingerprint.com/docs/identification-vs-fingerprintjs).
 
 ## Installation
 
@@ -62,56 +63,55 @@ Using [pnpm](https://pnpm.js.org):
 pnpm add @fingerprintjs/fingerprintjs-pro-react
 ```
 
-
 ## Getting started
 
 In order to identify visitors, you'll need a Fingerprint Pro account (you can [sign up for free](https://dashboard.fingerprint.com/signup/)).
-To get your API key and get started, see the [official Fingerprint Pro documentation](https://dev.fingerprint.com/docs/quick-start-guide).
+To get your API key and get started, see the [Fingerprint Pro Quick Start Guide](https://dev.fingerprint.com/docs/quick-start-guide).
 
-1. Wrap your application (or component) in `FpjsProvider`. You can specify multiple configuration options. Set a region if you have chosen a non-global region during registration. See [Regions](https://dev.fingerprint.com/docs/regions) in our documentation. Set `endpoint` and `scriptUrlPattern` if you are using [one of our proxy integrations to increase accuracy](https://dev.fingerprint.com/docs/protecting-the-javascript-agent-from-adblockers) and effectiveness of visitor identification.
-  
+### 1. Wrap your application (or component) in `<FpjsProvider>`.
+
+- Set `apiKey` to your Fingerprint [Public API Key](https://dashboard.fingerprint.com/api-keys).
+- Set `region` if you have chosen a non-global [region](ttps://dev.fingerprint.com/docs/regions) during registration.
+- Set `endpoint` and `scriptUrlPattern` if you are using [one of our proxy integrations to increase accuracy](https://dev.fingerprint.com/docs/protecting-the-javascript-agent-from-adblockers) and effectiveness of visitor identification.
+
 ```jsx
 // src/index.js
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { FpjsProvider, /* defaultEndpoint, defaultScriptUrlPattern */ } from '@fingerprintjs/fingerprintjs-pro-react';
-import App from './App';
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import { FpjsProvider /*, FingerprintJSPro */ } from '@fingerprintjs/fingerprintjs-pro-react'
+import App from './App'
 
 const root = ReactDOM.createRoot(document.getElementById('app'))
 
 root.render(
   <FpjsProvider
     loadOptions={{
-      apiKey: 'your-fpjs-public-api-key',
+      apiKey: 'your-public-api-key',
       // region: 'eu',
-      // endpoint: ['metrics.yourwebsite.com', defaultEndpoint],
-      // scriptUrlPattern: ['metrics.yourwebsite.com/agent-path', defaultScriptUrlPattern],
+      // endpoint: ['metrics.yourwebsite.com', FingerprintJSPro.defaultEndpoint],
+      // scriptUrlPattern: ['metrics.yourwebsite.com/agent-path', FingerprintJSPro.defaultScriptUrlPattern],
     }}
   >
     <App />
   </FpjsProvider>
-);
+)
 ```
 
-2. Use the `useVisitorData` hook in your components to identify visitors and get the result data. 
+### 2. Use the `useVisitorData()` hook in your components to identify visitors
 
 ```jsx
 // src/App.js
-import React from 'react';
+import React from 'react'
 import { useVisitorData } from '@fingerprintjs/fingerprintjs-pro-react'
 
 function App() {
-  const {
-    isLoading,
-    error,
-    data,
-  } = useVisitorData();
+  const { isLoading, error, data } = useVisitorData()
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div>Loading...</div>
   }
   if (error) {
-    return <div>An error occured: {error.message}</div>;
+    return <div>An error occured: {error.message}</div>
   }
 
   if (data) {
@@ -120,78 +120,69 @@ function App() {
       <div>
         Welcome {data.visitorFound ? 'back' : ''}, {data.visitorId}!
       </div>
-    );
+    )
   } else {
-    return null;
+    return null
   }
 }
 
-export default App;
+export default App
 ```
 
 The `useVisitorData` hook also returns a `getData` method you can use to make an API call on command.
 
 ```jsx
 // src/App.js
-import React, { useState } from "react";
-import { useVisitorData } from "@fingerprintjs/fingerprintjs-pro-react";
+import React, { useState } from 'react'
+import { useVisitorData } from '@fingerprintjs/fingerprintjs-pro-react'
 
 function App() {
-  const {
-    isLoading,
-    error,
-    getData
-  } = useVisitorData({tag: "subscription-form"}, { immediate: false });
-  const [email, setEmail] = useState("");
+  const { isLoading, error, getData } = useVisitorData({ tag: 'subscription-form' }, { immediate: false })
+  const [email, setEmail] = useState('')
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div>Loading...</div>
   }
   if (error) {
-    return <div>An error occurred: {error.message}</div>;
+    return <div>An error occurred: {error.message}</div>
   }
 
   return (
     <div>
       <form
         onSubmit={(e) => {
-          e.preventDefault();
-           getData()
-             .then((data) => {
-                // Do something with the visitor data, for example,
-                // append visitor data to the form data to send to your server
-                console.log(data)
-             })
-             .catch((error) => {
-                // Handle error
-             })
-
+          e.preventDefault()
+          getData()
+            .then((data) => {
+              // Do something with the visitor data, for example,
+              // append visitor data to the form data to send to your server
+              console.log(data)
+            })
+            .catch((error) => {
+              // Handle error
+            })
         }}
       >
-        <label htmlFor="email">Email:</label>
-        <input
-          id="email"
-          type="email"
-          name="email"
-          required
-          value={email}
-          onChange={(e) => setEmail(e.currentTarget.value)}
-        />
-        <button type="submit">Subscribe</button>
+        <label htmlFor='email'>Email:</label>
+        <input type='email' value={email} onChange={(e) => setEmail(e.currentTarget.value)} />
+        <button type='submit'>Subscribe</button>
       </form>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
 ```
 
-See the full code example in the [examples folder](https://github.com/fingerprintjs/fingerprintjs-pro-react/tree/main/examples/create-react-app).
+- See the full code example in the [examples folder](./examples/).
+- See our [Use cases](https://demo.fingerprint.com) page for [open-source](https://github.com/fingerprintjs/fingerprintjs-pro-use-cases) real-world examples of using Fingerprint to detect fraud and streamline user experiences.
 
 ## Linking and tagging information
+
 The `visitorId` provided by Fingerprint Identification is especially useful when combined with information you already know about your users, for example, account IDs, order IDs, etc. To learn more about various applications of the `linkedId` and `tag`, see [Linking and tagging information](https://dev.fingerprint.com/docs/tagging-information).
 
-Associate your data with a visitor ID using the `linkedId` or `tag` parameter of the options object passed into the `useVisitorData()` hook or the `getData` function:
+Associate the visitor ID with your data using the `linkedId` or `tag` parameter of the options object passed into the `useVisitorData()` hook or the `getData` function:
+
 ```jsx
 // ...
 
@@ -213,12 +204,12 @@ function App() {
 
 ## Caching strategy
 
-Fingerprint Pro usage is billed per API call. To avoid unnecessary API calls, it is a good practice to cache identification results. By default, the SDK uses `sessionStorage` to cache results. 
+Fingerprint Pro usage is billed per API call. To avoid unnecessary API calls, it is a good practice to cache identification results. By default, the SDK uses `sessionStorage` to cache results.
 
-* Specify the `cacheLocation` prop on `<FpjsProvider>` to instead store results in `memory` or  `localStorage`. Use `none` to disable caching completely.
-* Specify the `cache` prop on `<FpjsProvider>` to use your custom cache implementation instead. For more details, see [Creating a custom cache](https://github.com/fingerprintjs/fingerprintjs-pro-spa#creating-a-custom-cache)
- in the Fingerprint Pro SPA repository (a lower-level Fingerprint library used by this SDK).
-* Pass `{ignoreCache: true}` to the `getData()` function to ignore cached results for that specific API call. 
+- Specify the `cacheLocation` prop on `<FpjsProvider>` to instead store results in `memory` or `localStorage`. Use `none` to disable caching completely.
+- Specify the `cache` prop on `<FpjsProvider>` to use your custom cache implementation instead. For more details, see [Creating a custom cache](https://github.com/fingerprintjs/fingerprintjs-pro-spa#creating-a-custom-cache)
+  in the Fingerprint Pro SPA repository (a lower-level Fingerprint library used by this SDK).
+- Pass `{ignoreCache: true}` to the `getData()` function to ignore cached results for that specific API call.
 
 > [!NOTE]
 > If you use data from [`extendedResult`](https://dev.fingerprint.com/docs/js-agent#extendedresult), pay additional attention to your caching strategy.
@@ -233,8 +224,8 @@ The `getData` function throws errors directly from the JS Agent without changing
 See the full [generated API reference](https://fingerprintjs.github.io/fingerprintjs-pro-react/).
 
 ## Support and feedback
-To ask questions or provide feedback, use [Issues](https://github.com/fingerprintjs/fingerprintjs-pro-react/issues). If you need private support, please email us at `oss-support@fingerprint.com`. If you'd like to have a similar React wrapper for the [open-source FingerprintJS](https://github.com/fingerprintjs/fingerprintjs), consider creating an issue in the main [FingerprintJS repository](https://github.com/fingerprintjs/fingerprintjs/issues).
 
+To ask questions or provide feedback, use [Issues](https://github.com/fingerprintjs/fingerprintjs-pro-react/issues). If you need private support, please email us at `oss-support@fingerprint.com`. If you'd like to have a similar React wrapper for the [open-source FingerprintJS](https://github.com/fingerprintjs/fingerprintjs), consider creating an issue in the main [FingerprintJS repository](https://github.com/fingerprintjs/fingerprintjs/issues).
 
 ## License
 

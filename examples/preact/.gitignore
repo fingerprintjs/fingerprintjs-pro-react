@@ -2,4 +2,5 @@ node_modules
 /build
 /*.log
 .env
+.env.local
 /size-plugin.json
