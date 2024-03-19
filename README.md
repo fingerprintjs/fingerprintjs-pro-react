@@ -174,7 +174,8 @@ function App() {
 export default App
 ```
 
-See the full code example in the [examples folder](./examples/).
+- See the full code example in the [examples folder](./examples/).
+- See our [Use cases](https://demo.fingerprint.com) page for [open-source](https://github.com/fingerprintjs/fingerprintjs-pro-use-cases) real-world examples of using Fingerprint to detect fraud and streamline user experiences.
 
 ## Linking and tagging information
 
