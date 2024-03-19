@@ -1,3 +1,15 @@
+## [2.6.3-test.1](https://github.com/fingerprintjs/fingerprintjs-pro-react/compare/v2.6.2...v2.6.3-test.1) (2024-03-19)
+
+
+### Bug Fixes
+
+* review ([951860c](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/951860c1682e3f9cc8efb946fc154a7b50c2b4d4))
+
+
+### Build System
+
+* **deps:** update dependencies to latest versions ([763b247](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/763b24721b2c4319ea9789200dab2e9eaa3ed088))
+
 ## [2.6.2](https://github.com/fingerprintjs/fingerprintjs-pro-react/compare/v2.6.1...v2.6.2) (2023-11-17)
 
 
