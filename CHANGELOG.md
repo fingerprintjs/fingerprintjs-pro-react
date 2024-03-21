@@ -1,3 +1,10 @@
+## [2.6.3-test.2](https://github.com/fingerprintjs/fingerprintjs-pro-react/compare/v2.6.3-test.1...v2.6.3-test.2) (2024-03-21)
+
+
+### Bug Fixes
+
+* set initials isLoading according to config.immediate ([bf52bd1](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/bf52bd13290d95b36d4a5ebd7e12c09d9a13f4b3))
+
 ## [2.6.3-test.1](https://github.com/fingerprintjs/fingerprintjs-pro-react/compare/v2.6.2...v2.6.3-test.1) (2024-03-19)
 
 
