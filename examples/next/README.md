@@ -1,25 +1,28 @@
-This example demonstrates the usage of Fingerprint Pro inside the Next.js `pages` directory (classic approach).
+This example demonstrates the usage of Fingerprint Pro inside the Next.js `pages` directory (classic approach). For an example using the `app` directory, see [../next-appDir](../next-appDir/README.md).
 
 ## Setting up
-To try out this example, you need to get your public API key first.
-You can find more information about the API key [in our documentation](https://dev.fingerprint.com/docs/js-agent#agent-initialization).
 
-1. In the example folder copy `.env` file to the new one `.env.local`.
-2. Set up your public API key in the `NEXT_PUBLIC_FPJS_PUBLIC_API_KEY` variable.
-3. In the root folder install dependencies with `yarn install` and build it with `yarn build`.
-4. In the example folder run `yarn install`.
+### Fingerprint Public API key
+
+In order to try out this example:
+
+1. Create a `.env` (or `.env.local`) file in this directory.
+2. Set the `NEXT_PUBLIC_FPJS_PUBLIC_API_KEY` environment variable to the value of your Fingerprint Public API key. 
+
+To get the API key:
+
+- Go to Fingerprint Dashboard > [API Keys](https://dashboard.fingerprint.com/api-keys) and find it there.
+- If you don't have a Fingerprint Pro account, [sign up for free](https://dashboard.fingerprint.com/signup/).
+
+### Installing dependencies
+
+1. Go to the root of the project, install dependencies and build it (`cd ../../ && pnpm install && pnpm build`)
+2. Come back to the example folder (`cd examples/next`) and run `pnpm install`.
 
 After you've completed all the steps and inserted the API key, you can run:
-```shell
-yarn dev
-```
+
+### `pnpm dev`
 
 Runs the app in the development mode.\
 Open [http://localhost:3002](http://localhost:3002) to view it in the browser.
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
