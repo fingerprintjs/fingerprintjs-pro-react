@@ -1,3 +1,16 @@
+## [2.6.3](https://github.com/fingerprintjs/fingerprintjs-pro-react/compare/v2.6.2...v2.6.3) (2024-03-21)
+
+
+### Bug Fixes
+
+* review ([951860c](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/951860c1682e3f9cc8efb946fc154a7b50c2b4d4))
+* set initial `isLoading` according to config.immediate ([3194f33](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/3194f33c317680468ef344d455711cf60bd7d753))
+
+
+### Build System
+
+* **deps:** update dependencies to latest version, now using @fingerprintjs/fingerprintjs-pro-spa@1.3.1 ([275e234](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/275e234875662d145a5b24d095c6fc36347fbc12))
+
 ## [2.6.2](https://github.com/fingerprintjs/fingerprintjs-pro-react/compare/v2.6.1...v2.6.2) (2023-11-17)
 
 
