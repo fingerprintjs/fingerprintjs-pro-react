@@ -78,7 +78,9 @@ To get your API key and get started, see the [Fingerprint Pro Quick Start Guide]
 // src/index.js
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { FpjsProvider /*, FingerprintJSPro */ } from '@fingerprintjs/fingerprintjs-pro-react'
+import {
+  FpjsProvider /*, FingerprintJSPro */,
+} from '@fingerprintjs/fingerprintjs-pro-react'
 import App from './App'
 
 const root = ReactDOM.createRoot(document.getElementById('app'))
@@ -131,13 +133,19 @@ export default App
 
 The `useVisitorData` hook also returns a `getData` method you can use to make an API call on command.
 
+- You can pass `{ ignoreCache: true }` to `useVisitorData` to force a fresh identification request.
+- You can pass `{ immediate: false }` to `useVisitorData` to disable automatic visitor identification on render.
+
 ```jsx
 // src/App.js
 import React, { useState } from 'react'
 import { useVisitorData } from '@fingerprintjs/fingerprintjs-pro-react'
 
 function App() {
-  const { isLoading, error, getData } = useVisitorData({ tag: 'subscription-form' }, { immediate: false })
+  const { isLoading, error, getData } = useVisitorData(
+    { ignoreCache: true },
+    { immediate: false }
+  )
   const [email, setEmail] = useState('')
 
   if (isLoading) {
@@ -164,7 +172,11 @@ function App() {
         }}
       >
         <label htmlFor='email'>Email:</label>
-        <input type='email' value={email} onChange={(e) => setEmail(e.currentTarget.value)} />
+        <input
+          type='email'
+          value={email}
+          onChange={(e) => setEmail(e.currentTarget.value)}
+        />
         <button type='submit'>Subscribe</button>
       </form>
     </div>
@@ -185,20 +197,15 @@ Associate the visitor ID with your data using the `linkedId` or `tag` parameter 
 
 ```jsx
 // ...
-
 function App() {
-  const {
-    isLoading,
-    error,
-    getData
-  } = useVisitorData({
-    linkedId: "user_1234",
+  const { isLoading, error, getData } = useVisitorData({
+    linkedId: 'user_1234',
     tag: {
-      userAction: "login",
-      analyticsId: "UA-5555-1111-1"
-    }
-  });
-
+      userAction: 'login',
+      analyticsId: 'UA-5555-1111-1',
+    },
+  })
+}
 // ...
 ```
 
