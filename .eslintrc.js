@@ -1,3 +1,8 @@
+/**
+ * Note: This config format is [deprecated](https://eslint.org/docs/latest/use/configure/configuration-files-deprecated)
+ * So running eslint might require setting the env variable ESLINT_USE_FLAT_CONFIG=false (especially inside GitHub actions etc.)
+ */
+
 module.exports = {
   ignorePatterns: ['dist/', 'build/'],
   extends: [
