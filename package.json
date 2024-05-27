@@ -31,7 +31,7 @@
     "watch": "rollup -c rollup.config.js -w",
     "build": "rimraf dist && rollup -c rollup.config.js --bundleConfigAsCjs",
     "start:spa": "pnpm start --prefix=examples/spa",
-    "lint": "ESLINT_USE_FLAT_CONFIG=false eslint --ext .js,.ts,.tsx --ignore-path .gitignore --max-warnings 0 .",
+    "lint": "eslint --ext .js,.ts,.tsx --ignore-path .gitignore --max-warnings 0 .",
     "lint:fix": "pnpm lint --fix",
     "test": "jest",
     "test:coverage": "jest --coverage",
