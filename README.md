@@ -79,7 +79,8 @@ To get your API key and get started, see the [Fingerprint Pro Quick Start Guide]
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import {
-  FpjsProvider /*, FingerprintJSPro */,
+  FpjsProvider,
+  FingerprintJSPro,
 } from '@fingerprintjs/fingerprintjs-pro-react'
 import App from './App'
 
@@ -90,8 +91,14 @@ root.render(
     loadOptions={{
       apiKey: 'your-public-api-key',
       // region: 'eu',
-      // endpoint: ['metrics.yourwebsite.com', FingerprintJSPro.defaultEndpoint],
-      // scriptUrlPattern: ['metrics.yourwebsite.com/agent-path', FingerprintJSPro.defaultScriptUrlPattern],
+      endpoint: [
+        // 'metrics.yourwebsite.com',
+        FingerprintJSPro.defaultEndpoint,
+      ],
+      scriptUrlPattern: [
+        // 'https://metrics.yourwebsite.com/web/v<version>/<apiKey>/loader_v<loaderVersion>.js',
+        FingerprintJSPro.defaultScriptUrlPattern,
+      ],
     }}
   >
     <App />
