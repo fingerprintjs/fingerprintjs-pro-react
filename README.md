@@ -71,7 +71,7 @@ To get your API key and get started, see the [Fingerprint Pro Quick Start Guide]
 ### 1. Wrap your application (or component) in `<FpjsProvider>`.
 
 - Set `apiKey` to your Fingerprint [Public API Key](https://dashboard.fingerprint.com/api-keys).
-- Set `region` if you have chosen a non-global [region](ttps://dev.fingerprint.com/docs/regions) during registration.
+- Set `region` if you have chosen a non-global [region](https://dev.fingerprint.com/docs/regions) during registration.
 - Set `endpoint` and `scriptUrlPattern` if you are using [one of our proxy integrations to increase accuracy](https://dev.fingerprint.com/docs/protecting-the-javascript-agent-from-adblockers) and effectiveness of visitor identification.
 
 ```jsx
