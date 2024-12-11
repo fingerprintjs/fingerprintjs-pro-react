@@ -9,10 +9,10 @@ import type { EnvDetails } from '../env.types'
 
 const pkgName = packageInfo.name.split('/')[1]
 
-interface CustomAgent {
+export interface CustomAgent {
   load: (options: FingerprintJSPro.LoadOptions) => Promise<FingerprintJSPro.Agent>
 }
-interface FpjsProviderOptions extends FpjsClientOptions {
+export interface FpjsProviderOptions extends FpjsClientOptions {
   /**
    * If set to `true`, will force FpjsClient to be rebuilt with the new options. Should be used with caution
    * since it can be triggered too often (e.g. on every render) and negatively affect performance of the JS agent.

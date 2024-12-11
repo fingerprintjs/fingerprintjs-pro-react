@@ -1,5 +1,5 @@
 import { createContext } from 'react'
-import { VisitorData, GetOptions } from '@fingerprintjs/fingerprintjs-pro-spa'
+import { VisitorData, GetOptions, FingerprintJSPro } from '@fingerprintjs/fingerprintjs-pro-spa'
 
 export interface QueryResult<TData, TError = Error> {
   /**
@@ -20,7 +20,7 @@ export interface VisitorQueryResult<TExtended extends boolean> extends QueryResu
   data?: VisitorData<TExtended>
 }
 
-export interface GetDataOptions<TExtended extends boolean> extends GetOptions<TExtended> {
+export interface GetDataOptions<TExtended extends boolean> extends FingerprintJSPro.GetOptions<TExtended> {
   /**
    * When set to true, the visitor data will always be fetched from our API.
    * */

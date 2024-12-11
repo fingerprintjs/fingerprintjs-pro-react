@@ -1,6 +1,6 @@
 import { FpjsContextInterface, FpjsContext, GetDataOptions, QueryResult, VisitorQueryContext } from './fpjs-context'
 import { useCallback, useContext, useEffect, useState } from 'react'
-import { GetOptions, VisitorData } from '@fingerprintjs/fingerprintjs-pro-spa'
+import { VisitorData, FingerprintJSPro } from '@fingerprintjs/fingerprintjs-pro-spa'
 import { usePrevious } from './utils/use-previous'
 import deepEquals from 'fast-deep-equal'
 import { toError } from './utils/to-error'
@@ -50,7 +50,10 @@ export function useVisitorData<TExtended extends boolean>(
 
         const { ignoreCache: defaultIgnoreCache, ...getVisitorDataOptions } = getOptions
 
-        const getDataOptions: GetOptions<TExtended> = { ...getVisitorDataOptions, ...getDataPassedOptions }
+        const getDataOptions: FingerprintJSPro.GetOptions<TExtended> = {
+          ...getVisitorDataOptions,
+          ...getDataPassedOptions,
+        }
 
         const result = await getVisitorData(
           getDataOptions,
