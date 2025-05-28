@@ -1,7 +1,6 @@
 import { FpjsContextInterface, FpjsContext, GetDataOptions, QueryResult, VisitorQueryContext } from './fpjs-context'
 import { useCallback, useContext, useEffect, useState } from 'react'
 import { VisitorData, FingerprintJSPro } from '@fingerprintjs/fingerprintjs-pro-spa'
-import { usePrevious } from './utils/use-previous'
 import deepEquals from 'fast-deep-equal'
 import { toError } from './utils/to-error'
 import { assertIsTruthy } from './utils/assert-is-truthy'
@@ -31,13 +30,14 @@ export function useVisitorData<TExtended extends boolean>(
 ): VisitorQueryContext<TExtended> {
   assertIsTruthy(getOptions, 'getOptions')
 
-  const previousGetOptions = usePrevious(getOptions)
-
   const { immediate } = config
   const { getVisitorData } = useContext<FpjsContextInterface<TExtended>>(FpjsContext)
 
-  const initialState = { isLoading: config.immediate ? true : false }
-  const [state, setState] = useState<QueryResult<VisitorData<TExtended>>>(initialState)
+  const initialState: QueryResult<VisitorData<TExtended>> & { getOptions: UseVisitorDataOptions<TExtended> } = {
+    isLoading: config.immediate ? true : false,
+    getOptions,
+  }
+  const [state, setState] = useState(initialState)
 
   const getData = useCallback<VisitorQueryContext<TExtended>['getData']>(
     async (params = {}) => {
@@ -48,7 +48,7 @@ export function useVisitorData<TExtended extends boolean>(
       try {
         setState((state) => ({ ...state, isLoading: true }))
 
-        const { ignoreCache: defaultIgnoreCache, ...getVisitorDataOptions } = getOptions
+        const { ignoreCache: defaultIgnoreCache, ...getVisitorDataOptions } = state.getOptions
 
         const getDataOptions: FingerprintJSPro.GetOptions<TExtended> = {
           ...getVisitorDataOptions,
@@ -73,16 +73,20 @@ export function useVisitorData<TExtended extends boolean>(
         setState((state) => (state.isLoading ? { ...state, isLoading: false } : state))
       }
     },
-    [getOptions, getVisitorData]
+    [state.getOptions, getVisitorData]
   )
 
   useEffect(() => {
-    if (immediate && (!previousGetOptions || !deepEquals(getOptions, previousGetOptions))) {
+    if (immediate) {
       getData().catch((error) => {
         console.error(`Failed to fetch visitor data on mount: ${error}`)
       })
     }
-  }, [immediate, getData, previousGetOptions, getOptions])
+  }, [immediate, getData])
+
+  if (!deepEquals(state.getOptions, getOptions)) {
+    setState((state) => ({ ...state, getOptions }))
+  }
 
   const { isLoading, data, error } = state
 

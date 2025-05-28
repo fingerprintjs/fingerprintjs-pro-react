@@ -1,8 +1,8 @@
-import { useVisitorData } from '../src'
+import { useVisitorData, VisitorQueryContext } from '../src'
 import { render, renderHook } from '@testing-library/react'
 import { actWait, createWrapper } from './helpers'
 import { act } from 'react-dom/test-utils'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import userEvent from '@testing-library/user-event'
 import { FingerprintJSPro } from '@fingerprintjs/fingerprintjs-pro-spa'
 
@@ -228,5 +228,64 @@ describe('useVisitorData', () => {
     })
     expect(getVisitorData).toHaveBeenCalledTimes(1)
     expect(getVisitorData).toHaveBeenCalledWith({ linkedId: getDataId, tag: { tagA: useVisitorDataId } }, undefined)
+  })
+
+  it('getData should only change if the getOptions semantically changes', async () => {
+    // This test will result in the component rendering four times:
+    // 1. The initial render - the getData callback is initially created
+    // 2. Count is incremented from 0 to 1 - the getData callback should not change because getOptions did not change
+    // 3. Count is incremented from 1 to 2 - getOptions changes but the getData callback does not change this render
+    // 4. useVisitorData updated its state during the previous render and the previous render is thrown away and
+    //    another render is triggered
+    // Notably, the effects for the component are not executed between 3 and 4.
+    //
+    // More information about this pattern can be found at:
+    // https://react.dev/reference/react/useState#storing-information-from-previous-renders
+
+    const getDataValues: VisitorQueryContext<false>['getData'][] = []
+    let effectCount = 0
+    const Component = () => {
+      const [count, setCount] = useState(0)
+      const { data, getData } = useVisitorData(count <= 1 ? { timeout: 1000 } : { timeout: 2000 }, { immediate: false })
+
+      useEffect(() => {
+        effectCount++
+      })
+
+      getDataValues.push(getData)
+      return (
+        <>
+          <button onClick={() => setCount((count) => count + 1)}>Increment count</button>
+          <pre>{JSON.stringify(data)}</pre>
+        </>
+      )
+    }
+
+    const Wrapper = createWrapper()
+
+    const { container } = render(
+      <Wrapper>
+        <Component />
+      </Wrapper>
+    )
+
+    await act(async () => {
+      await userEvent.click(container.querySelector('button')!)
+    })
+
+    await act(async () => {
+      // This second click needs to be in a separate act otherwise
+      // React will coalesce the state updates to the count into a
+      // a single update. Meaning that count will jump from 0 to 2
+      // in between renders if this click were in the previous act block.
+      // This ensures that the case is covered where the options
+      // object does not semantically change.
+      await userEvent.click(container.querySelector('button')!)
+    })
+
+    expect(getDataValues).toHaveLength(4)
+    expect(getDataValues[0]).toBe(getDataValues[1])
+    expect(getDataValues[2]).not.toBe(getDataValues[3])
+    expect(effectCount).toEqual(3)
   })
 })
