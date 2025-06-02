@@ -285,6 +285,7 @@ describe('useVisitorData', () => {
 
     expect(getDataValues).toHaveLength(4)
     expect(getDataValues[0]).toBe(getDataValues[1])
+    expect(getDataValues[1]).toBe(getDataValues[2])
     expect(getDataValues[2]).not.toBe(getDataValues[3])
     expect(effectCount).toEqual(3)
   })
