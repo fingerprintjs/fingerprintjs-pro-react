@@ -33,11 +33,10 @@ export function useVisitorData<TExtended extends boolean>(
   const { immediate } = config
   const { getVisitorData } = useContext<FpjsContextInterface<TExtended>>(FpjsContext)
 
-  const initialState: QueryResult<VisitorData<TExtended>> & { getOptions: UseVisitorDataOptions<TExtended> } = {
+  const [currentGetOptions, setCurrentGetOptions] = useState<UseVisitorDataOptions<TExtended>>(getOptions)
+  const [queryState, setQueryState] = useState<QueryResult<VisitorData<TExtended>>>({
     isLoading: config.immediate,
-    getOptions,
-  }
-  const [state, setState] = useState(initialState)
+  })
 
   const getData = useCallback<VisitorQueryContext<TExtended>['getData']>(
     async (params = {}) => {
@@ -46,9 +45,9 @@ export function useVisitorData<TExtended extends boolean>(
       const { ignoreCache, ...getDataPassedOptions } = params
 
       try {
-        setState((state) => ({ ...state, isLoading: true }))
+        setQueryState((state) => ({ ...state, isLoading: true }))
 
-        const { ignoreCache: defaultIgnoreCache, ...getVisitorDataOptions } = state.getOptions
+        const { ignoreCache: defaultIgnoreCache, ...getVisitorDataOptions } = currentGetOptions
 
         const getDataOptions: FingerprintJSPro.GetOptions<TExtended> = {
           ...getVisitorDataOptions,
@@ -59,21 +58,21 @@ export function useVisitorData<TExtended extends boolean>(
           getDataOptions,
           typeof ignoreCache === 'boolean' ? ignoreCache : defaultIgnoreCache
         )
-        setState((state) => ({ ...state, data: result, isLoading: false, error: undefined }))
+        setQueryState((state) => ({ ...state, data: result, isLoading: false, error: undefined }))
         return result
       } catch (unknownError) {
         const error = toError(unknownError)
 
         error.name = 'FPJSAgentError'
 
-        setState((state) => ({ ...state, data: undefined, error }))
+        setQueryState((state) => ({ ...state, data: undefined, error }))
 
         throw error
       } finally {
-        setState((state) => (state.isLoading ? { ...state, isLoading: false } : state))
+        setQueryState((state) => (state.isLoading ? { ...state, isLoading: false } : state))
       }
     },
-    [state.getOptions, getVisitorData]
+    [currentGetOptions, getVisitorData]
   )
 
   useEffect(() => {
@@ -84,11 +83,11 @@ export function useVisitorData<TExtended extends boolean>(
     }
   }, [immediate, getData])
 
-  if (!Object.is(state.getOptions, getOptions) && !deepEquals(state.getOptions, getOptions)) {
-    setState((state) => ({ ...state, getOptions }))
+  if (!Object.is(currentGetOptions, getOptions) && !deepEquals(currentGetOptions, getOptions)) {
+    setCurrentGetOptions(getOptions)
   }
 
-  const { isLoading, data, error } = state
+  const { isLoading, data, error } = queryState
 
   return {
     getData,
