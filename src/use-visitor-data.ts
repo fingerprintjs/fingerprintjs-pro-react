@@ -34,7 +34,7 @@ export function useVisitorData<TExtended extends boolean>(
   const { getVisitorData } = useContext<FpjsContextInterface<TExtended>>(FpjsContext)
 
   const initialState: QueryResult<VisitorData<TExtended>> & { getOptions: UseVisitorDataOptions<TExtended> } = {
-    isLoading: config.immediate ? true : false,
+    isLoading: config.immediate,
     getOptions,
   }
   const [state, setState] = useState(initialState)
