@@ -84,7 +84,7 @@ export function useVisitorData<TExtended extends boolean>(
     }
   }, [immediate, getData])
 
-  if (!deepEquals(state.getOptions, getOptions)) {
+  if (!Object.is(state.getOptions, getOptions) && !deepEquals(state.getOptions, getOptions)) {
     setState((state) => ({ ...state, getOptions }))
   }
 
