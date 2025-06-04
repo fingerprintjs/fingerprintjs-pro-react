@@ -35,7 +35,7 @@ export function useVisitorData<TExtended extends boolean>(
 
   const [currentGetOptions, setCurrentGetOptions] = useState<UseVisitorDataOptions<TExtended>>(getOptions)
   const [queryState, setQueryState] = useState<QueryResult<VisitorData<TExtended>>>({
-    isLoading: config.immediate,
+    isLoading: immediate,
   })
 
   const getData = useCallback<VisitorQueryContext<TExtended>['getData']>(
