@@ -1,7 +1,6 @@
 import { FpjsContextInterface, FpjsContext, GetDataOptions, QueryResult, VisitorQueryContext } from './fpjs-context'
 import { useCallback, useContext, useEffect, useState } from 'react'
 import { VisitorData, FingerprintJSPro } from '@fingerprintjs/fingerprintjs-pro-spa'
-import { usePrevious } from './utils/use-previous'
 import deepEquals from 'fast-deep-equal'
 import { toError } from './utils/to-error'
 import { assertIsTruthy } from './utils/assert-is-truthy'
@@ -31,13 +30,13 @@ export function useVisitorData<TExtended extends boolean>(
 ): VisitorQueryContext<TExtended> {
   assertIsTruthy(getOptions, 'getOptions')
 
-  const previousGetOptions = usePrevious(getOptions)
-
   const { immediate } = config
   const { getVisitorData } = useContext<FpjsContextInterface<TExtended>>(FpjsContext)
 
-  const initialState = { isLoading: config.immediate ? true : false }
-  const [state, setState] = useState<QueryResult<VisitorData<TExtended>>>(initialState)
+  const [currentGetOptions, setCurrentGetOptions] = useState<UseVisitorDataOptions<TExtended>>(getOptions)
+  const [queryState, setQueryState] = useState<QueryResult<VisitorData<TExtended>>>({
+    isLoading: immediate,
+  })
 
   const getData = useCallback<VisitorQueryContext<TExtended>['getData']>(
     async (params = {}) => {
@@ -46,9 +45,9 @@ export function useVisitorData<TExtended extends boolean>(
       const { ignoreCache, ...getDataPassedOptions } = params
 
       try {
-        setState((state) => ({ ...state, isLoading: true }))
+        setQueryState((state) => ({ ...state, isLoading: true }))
 
-        const { ignoreCache: defaultIgnoreCache, ...getVisitorDataOptions } = getOptions
+        const { ignoreCache: defaultIgnoreCache, ...getVisitorDataOptions } = currentGetOptions
 
         const getDataOptions: FingerprintJSPro.GetOptions<TExtended> = {
           ...getVisitorDataOptions,
@@ -59,32 +58,36 @@ export function useVisitorData<TExtended extends boolean>(
           getDataOptions,
           typeof ignoreCache === 'boolean' ? ignoreCache : defaultIgnoreCache
         )
-        setState((state) => ({ ...state, data: result, isLoading: false, error: undefined }))
+        setQueryState((state) => ({ ...state, data: result, isLoading: false, error: undefined }))
         return result
       } catch (unknownError) {
         const error = toError(unknownError)
 
         error.name = 'FPJSAgentError'
 
-        setState((state) => ({ ...state, data: undefined, error }))
+        setQueryState((state) => ({ ...state, data: undefined, error }))
 
         throw error
       } finally {
-        setState((state) => (state.isLoading ? { ...state, isLoading: false } : state))
+        setQueryState((state) => (state.isLoading ? { ...state, isLoading: false } : state))
       }
     },
-    [getOptions, getVisitorData]
+    [currentGetOptions, getVisitorData]
   )
 
   useEffect(() => {
-    if (immediate && (!previousGetOptions || !deepEquals(getOptions, previousGetOptions))) {
+    if (immediate) {
       getData().catch((error) => {
         console.error(`Failed to fetch visitor data on mount: ${error}`)
       })
     }
-  }, [immediate, getData, previousGetOptions, getOptions])
+  }, [immediate, getData])
 
-  const { isLoading, data, error } = state
+  if (!Object.is(currentGetOptions, getOptions) && !deepEquals(currentGetOptions, getOptions)) {
+    setCurrentGetOptions(getOptions)
+  }
+
+  const { isLoading, data, error } = queryState
 
   return {
     getData,
