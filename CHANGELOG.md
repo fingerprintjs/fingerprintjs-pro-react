@@ -1,3 +1,30 @@
+## [2.7.0](https://github.com/fingerprintjs/fingerprintjs-pro-react/compare/v2.6.3...v2.7.0) (2025-06-17)
+
+
+### Features
+
+* bump `@fingerprintjs/fingerprintjs-pro-spa` to `^1.3.2` ([d477427](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/d4774276649a6eaf6a068bf6784ce960fb862ccb))
+
+
+### Bug Fixes
+
+* `getData` function should only change when `getOptions` changes ([d02eac0](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/d02eac09dc0c24394188518636589e7092111f36)), closes [#132](https://github.com/fingerprintjs/fingerprintjs-pro-react/issues/132)
+
+
+### Performance Improvements
+
+* use Object.is comparison before doing deep equals ([cd1f70d](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/cd1f70de3d3c65654cc98cdbc760efb19d8ce905))
+
+
+### Documentation
+
+* **README:** mention immediate: false explicitly, improve formatting ([f1d03e2](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/f1d03e2c7c186bd6cbdcbd1011e6943eef2c7e1a))
+
+
+### Build System
+
+* **deps:** bump next ([b0f669a](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/b0f669a9d33d6e48e6b2198f7fc84e9f5efb3ba2))
+
 ## [2.6.3](https://github.com/fingerprintjs/fingerprintjs-pro-react/compare/v2.6.2...v2.6.3) (2024-03-21)
 
 
