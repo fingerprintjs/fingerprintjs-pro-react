@@ -7,8 +7,6 @@ import { waitUntil } from '../utils/wait-until'
 import { WithEnvironment } from './with-environment'
 import type { EnvDetails } from '../env.types'
 
-const pkgName = packageInfo.name.split('/')[1]
-
 export interface CustomAgent {
   load: (options: FingerprintJSPro.LoadOptions) => Promise<FingerprintJSPro.Agent>
 }
@@ -84,7 +82,7 @@ function ProviderWithEnv<TExtended extends boolean>({
   }, [loadOptions, cache, cacheTimeInSeconds, cachePrefix, cacheLocation, customAgent])
 
   const createClient = useCallback(() => {
-    let integrationInfo = `${pkgName}/${packageInfo.version}`
+    let integrationInfo = `react-sdk/${packageInfo.version}`
 
     if (env) {
       const envInfo = env.version ? `${env.name}/${env.version}` : env.name

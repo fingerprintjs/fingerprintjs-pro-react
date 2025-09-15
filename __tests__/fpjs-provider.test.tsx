@@ -31,7 +31,7 @@ describe(`FpjsProvider`, () => {
       expect.objectContaining({
         loadOptions: expect.objectContaining({
           ...loadOptions,
-          integrationInfo: [`fingerprintjs-pro-react/${packageInfo.version}/react`],
+          integrationInfo: [`react-sdk/${packageInfo.version}/react`],
         }),
         cacheLocation: CacheLocation.LocalStorage,
         cachePrefix: 'TEST_PREFIX',
