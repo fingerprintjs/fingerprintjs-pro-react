@@ -1,3 +1,16 @@
+## [2.7.1](https://github.com/fingerprintjs/fingerprintjs-pro-react/compare/v2.7.0...v2.7.1) (2025-09-15)
+
+
+### Bug Fixes
+
+* bump `@fingerprintjs/fingerprintjs-pro-spa` to `^1.3.3` ([923d78d](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/923d78d6fbba341d5a9919a01e49814c6014ea1a))
+* rename integration monitoring ([a431f58](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/a431f58dd6c7b58a3a2693c20f61d95989edd158))
+
+
+### Build System
+
+* **deps:** bump the npm_and_yarn group across 2 directories with 4 updates ([3dac3a4](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/3dac3a4f05c37745ce497f5067cf98648319875a))
+
 ## [2.7.0](https://github.com/fingerprintjs/fingerprintjs-pro-react/compare/v2.6.3...v2.7.0) (2025-06-17)
 
 
