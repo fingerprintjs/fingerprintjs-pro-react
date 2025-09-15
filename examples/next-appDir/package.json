@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@fingerprintjs/fingerprintjs-pro-react": "workspace:*",
-    "next": "14.2.30"
+    "next": "14.2.32"
   },
   "peerDependencies": {
     "@types/node": "*",
