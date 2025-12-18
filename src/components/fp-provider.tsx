@@ -76,7 +76,7 @@ function ProviderWithEnv({
 
   const getClient = useCallback(() => {
     if (isSSR()) {
-      throw new Error('FpjsProvider client cannot be used in SSR')
+      throw new Error('FpProvider client cannot be used in SSR')
     }
 
     return clientRef.current
