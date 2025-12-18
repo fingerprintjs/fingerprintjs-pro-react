@@ -1,11 +1,25 @@
-import { FpjsContextInterface, FpjsContext, GetDataOptions, QueryResult, VisitorQueryContext } from './fpjs-context'
-import { useCallback, useContext, useEffect, useState } from 'react'
-import { VisitorData, FingerprintJSPro } from '@fingerprintjs/fingerprintjs-pro-spa'
+import { FpContext, FpContextInterface, VisitorQueryResult } from './fp-context'
+import { useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import deepEquals from 'fast-deep-equal'
 import { toError } from './utils/to-error'
 import { assertIsTruthy } from './utils/assert-is-truthy'
+import { GetOptions, GetResult } from '@fingerprint/agent'
 
-export type UseVisitorDataOptions<TExtended extends boolean> = GetDataOptions<TExtended>
+export interface UseVisitorDataConfig {
+  /**
+   * Determines whether the `getData()` method will be called immediately after the hook mounts or not
+   */
+  immediate: boolean
+}
+
+export type UseVisitorDataOptions = GetOptions & UseVisitorDataConfig
+
+export type UseVisitorDataReturn = VisitorQueryResult & {
+  /**
+   * Performs identification request to server and returns visitors data.
+   * */
+  getData: (getDataOptions?: GetOptions) => Promise<GetResult>
+}
 
 /**
  *  @example
@@ -17,59 +31,66 @@ export type UseVisitorDataOptions<TExtended extends boolean> = GetDataOptions<TE
  *    error,
  *    // A method to be called manually when the `immediate` field in the config is set to `false`:
  *    getData,
- *  } = useVisitorData({ extended: true }, { immediate: false });
+ *  } = useVisitorData({ extended: true, immediate: false });
  * ```
- * Use the `useVisitorData` hook in your components to perform identification requests with the FingerprintJS API. The returned object contains information about loading status, errors, and visitor.
+ * Use the `useVisitorData` hook in your components to perform identification requests with the Fingerprint API. The returned object contains information about loading status, errors, and visitor.
  *
- * @param getOptions options for the `fp.get()` request
- * @param config config for the hook
+ * @param {UseVisitorDataOptions} options for the `fp.get()` request and for hook
  */
-export function useVisitorData<TExtended extends boolean>(
-  getOptions: UseVisitorDataOptions<TExtended> = {},
-  config: UseVisitorDataConfig = defaultUseVisitorDataConfig
-): VisitorQueryContext<TExtended> {
+export function useVisitorData(
+  { immediate, ...getOptions }: UseVisitorDataOptions = { immediate: true }
+): UseVisitorDataReturn {
   assertIsTruthy(getOptions, 'getOptions')
 
-  const { immediate } = config
-  const { getVisitorData } = useContext<FpjsContextInterface<TExtended>>(FpjsContext)
+  const { getVisitorData } = useContext<FpContextInterface>(FpContext)
 
-  const [currentGetOptions, setCurrentGetOptions] = useState<UseVisitorDataOptions<TExtended>>(getOptions)
-  const [queryState, setQueryState] = useState<QueryResult<VisitorData<TExtended>>>({
+  const [currentGetOptions, setCurrentGetOptions] = useState(getOptions)
+  const [queryState, setQueryState] = useState<VisitorQueryResult>({
     isLoading: immediate,
+    data: undefined,
+    isFetched: false,
+    error: undefined,
   })
 
-  const getData = useCallback<VisitorQueryContext<TExtended>['getData']>(
+  const getData = useCallback<UseVisitorDataReturn['getData']>(
     async (params = {}) => {
       assertIsTruthy(params, 'getDataParams')
 
-      const { ignoreCache, ...getDataPassedOptions } = params
-
       try {
-        setQueryState((state) => ({ ...state, isLoading: true }))
+        setQueryState({
+          isLoading: true,
+          isFetched: false,
+          data: undefined,
+          error: undefined,
+        })
 
-        const { ignoreCache: defaultIgnoreCache, ...getVisitorDataOptions } = currentGetOptions
-
-        const getDataOptions: FingerprintJSPro.GetOptions<TExtended> = {
-          ...getVisitorDataOptions,
-          ...getDataPassedOptions,
+        const getDataOptions: GetOptions = {
+          ...currentGetOptions,
+          ...params,
         }
 
-        const result = await getVisitorData(
-          getDataOptions,
-          typeof ignoreCache === 'boolean' ? ignoreCache : defaultIgnoreCache
-        )
-        setQueryState((state) => ({ ...state, data: result, isLoading: false, error: undefined }))
+        const result = await getVisitorData(getDataOptions)
+        setQueryState({
+          isLoading: false,
+          isFetched: true,
+          data: result,
+          error: undefined,
+        })
+
         return result
       } catch (unknownError) {
         const error = toError(unknownError)
 
-        error.name = 'FPJSAgentError'
+        error.name = 'FPAgentError'
 
-        setQueryState((state) => ({ ...state, data: undefined, error }))
+        setQueryState({
+          isLoading: false,
+          isFetched: false,
+          data: undefined,
+          error: error,
+        })
 
         throw error
-      } finally {
-        setQueryState((state) => (state.isLoading ? { ...state, isLoading: false } : state))
       }
     },
     [currentGetOptions, getVisitorData]
@@ -87,21 +108,11 @@ export function useVisitorData<TExtended extends boolean>(
     setCurrentGetOptions(getOptions)
   }
 
-  const { isLoading, data, error } = queryState
-
-  return {
-    getData,
-    isLoading,
-    data,
-    error,
-  }
+  return useMemo(
+    () => ({
+      ...queryState,
+      getData,
+    }),
+    [queryState, getData]
+  )
 }
-
-export interface UseVisitorDataConfig {
-  /**
-   * Determines whether the `getData()` method will be called immediately after the hook mounts or not
-   */
-  immediate: boolean
-}
-
-const defaultUseVisitorDataConfig = { immediate: true }

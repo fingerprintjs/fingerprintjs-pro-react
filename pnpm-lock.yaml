@@ -18,6 +18,9 @@ importers:
       '@commitlint/cli':
         specifier: ^19.2.0
         version: 19.2.0(@types/node@20.11.28)(typescript@5.4.2)
+      '@fingerprint/agent':
+        specifier: 4.0.0-beta.0
+        version: 4.0.0-beta.0
       '@fingerprintjs/commit-lint-dx-team':
         specifier: ^0.0.2
         version: 0.0.2
@@ -1256,6 +1259,9 @@ packages:
   '@eslint/js@8.57.0':
     resolution: {integrity: sha512-Ys+3g2TaW7gADOJzPt83SJtCDhMjndcDMFVQ/Tj9iA1BfJzFKD9mAUXT3OenpuPHbI6P/myECxRJrofUsDx/5g==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+
+  '@fingerprint/agent@4.0.0-beta.0':
+    resolution: {integrity: sha512-fzsJczCatkDJm5JaB2pt5RldO3HyENdM5AexpyFHD4FEpZBoyp5rmNIOvyFZCtKQAmy4S0YEKAwJnZ4tiN4/Pg==}
 
   '@fingerprintjs/commit-lint-dx-team@0.0.2':
     resolution: {integrity: sha512-8FDlPI+KhnWsfbf4Lo/TERdiHl9daMhnZb4MsV5nhrta13XXGRSxOvLPUnFmZA0FsxR4HHzpszlr7ZSoPVaLSg==}
@@ -3818,6 +3824,7 @@ packages:
 
   deepcopy@1.0.0:
     resolution: {integrity: sha512-WJrecobaoqqgQHtvRI2/VCzWoWXPAnFYyAkF/spmL46lZMnd0gW0gLGuyeFVSrqt2B3s0oEEj6i+j2L/2QiS4g==}
+    deprecated: No longer maintained. Use structuredClone instead.
 
   deepmerge@4.3.1:
     resolution: {integrity: sha512-3sUqbMEc77XqpdNO7FRyRog+eW3ph+GYCbj+rK+uYyRMuwsVy0rMiVtPn+QJlKFvWP/1PYpapqYn0Me2knFn+A==}
@@ -10740,6 +10747,8 @@ snapshots:
 
   '@eslint/js@8.57.0': {}
 
+  '@fingerprint/agent@4.0.0-beta.0': {}
+
   '@fingerprintjs/commit-lint-dx-team@0.0.2':
     dependencies:
       '@commitlint/config-conventional': 17.8.1
@@ -10750,7 +10759,7 @@ snapshots:
 
   '@fingerprintjs/eslint-config-dx-team@0.1.0(@types/eslint@9.6.1)(prettier@3.2.5)(typescript@5.4.2)':
     dependencies:
-      '@typescript-eslint/eslint-plugin': 6.19.1(@typescript-eslint/parser@6.19.1(eslint@8.57.0)(typescript@5.4.2))(eslint@8.56.0)(typescript@5.4.2)
+      '@typescript-eslint/eslint-plugin': 6.19.1(@typescript-eslint/parser@6.19.1(eslint@8.56.0)(typescript@5.4.2))(eslint@8.56.0)(typescript@5.4.2)
       '@typescript-eslint/parser': 6.19.1(eslint@8.56.0)(typescript@5.4.2)
       eslint: 8.56.0
       eslint-config-prettier: 9.1.0(eslint@8.56.0)
@@ -11727,7 +11736,7 @@ snapshots:
       - supports-color
     optional: true
 
-  '@typescript-eslint/eslint-plugin@6.19.1(@typescript-eslint/parser@6.19.1(eslint@8.57.0)(typescript@5.4.2))(eslint@8.56.0)(typescript@5.4.2)':
+  '@typescript-eslint/eslint-plugin@6.19.1(@typescript-eslint/parser@6.19.1(eslint@8.56.0)(typescript@5.4.2))(eslint@8.56.0)(typescript@5.4.2)':
     dependencies:
       '@eslint-community/regexpp': 4.10.0
       '@typescript-eslint/parser': 6.19.1(eslint@8.56.0)(typescript@5.4.2)
@@ -14388,7 +14397,7 @@ snapshots:
       eslint: 8.57.0
       eslint-import-resolver-node: 0.3.9
       eslint-import-resolver-typescript: 3.6.1(@typescript-eslint/parser@6.21.0(eslint@8.57.0)(typescript@5.4.2))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1(@typescript-eslint/parser@6.19.1(eslint@8.57.0)(typescript@5.4.2))(eslint@8.57.0))(eslint@8.57.0)
-      eslint-plugin-import: 2.29.1(@typescript-eslint/parser@6.21.0(eslint@8.57.0)(typescript@5.4.2))(eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@6.21.0(eslint@8.57.0)(typescript@5.4.2))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1(@typescript-eslint/parser@6.19.1(eslint@8.57.0)(typescript@5.4.2))(eslint@8.57.0))(eslint@8.57.0))(eslint@8.57.0)
+      eslint-plugin-import: 2.29.1(@typescript-eslint/parser@6.21.0(eslint@8.57.0)(typescript@5.4.2))(eslint-import-resolver-typescript@3.6.1)(eslint@8.57.0)
       eslint-plugin-jsx-a11y: 6.8.0(eslint@8.57.0)
       eslint-plugin-react: 7.34.0(eslint@8.57.0)
       eslint-plugin-react-hooks: 4.6.0(eslint@8.57.0)
@@ -14479,7 +14488,7 @@ snapshots:
       enhanced-resolve: 5.18.3
       eslint: 8.57.0
       eslint-module-utils: 2.8.1(@typescript-eslint/parser@6.21.0(eslint@8.57.0)(typescript@5.4.2))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@6.21.0(eslint@8.57.0)(typescript@5.4.2))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1(@typescript-eslint/parser@6.19.1(eslint@8.57.0)(typescript@5.4.2))(eslint@8.57.0))(eslint@8.57.0))(eslint@8.57.0)
-      eslint-plugin-import: 2.29.1(@typescript-eslint/parser@6.21.0(eslint@8.57.0)(typescript@5.4.2))(eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@6.21.0(eslint@8.57.0)(typescript@5.4.2))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1(@typescript-eslint/parser@6.19.1(eslint@8.57.0)(typescript@5.4.2))(eslint@8.57.0))(eslint@8.57.0))(eslint@8.57.0)
+      eslint-plugin-import: 2.29.1(@typescript-eslint/parser@6.21.0(eslint@8.57.0)(typescript@5.4.2))(eslint-import-resolver-typescript@3.6.1)(eslint@8.57.0)
       fast-glob: 3.3.2
       get-tsconfig: 4.7.3
       is-core-module: 2.13.1
@@ -14557,7 +14566,7 @@ snapshots:
       - eslint-import-resolver-webpack
       - supports-color
 
-  eslint-plugin-import@2.29.1(@typescript-eslint/parser@6.21.0(eslint@8.57.0)(typescript@5.4.2))(eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@6.21.0(eslint@8.57.0)(typescript@5.4.2))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1(@typescript-eslint/parser@6.19.1(eslint@8.57.0)(typescript@5.4.2))(eslint@8.57.0))(eslint@8.57.0))(eslint@8.57.0):
+  eslint-plugin-import@2.29.1(@typescript-eslint/parser@6.21.0(eslint@8.57.0)(typescript@5.4.2))(eslint-import-resolver-typescript@3.6.1)(eslint@8.57.0):
     dependencies:
       array-includes: 3.1.7
       array.prototype.findlastindex: 1.2.4
@@ -15044,17 +15053,17 @@ snapshots:
     dependencies:
       flat-cache: 3.2.0
 
-  file-loader@6.2.0(webpack@4.47.0):
-    dependencies:
-      loader-utils: 2.0.4
-      schema-utils: 3.3.0
-      webpack: 4.47.0
-
   file-loader@6.2.0(webpack@5.90.3):
     dependencies:
       loader-utils: 2.0.4
       schema-utils: 3.3.0
       webpack: 5.90.3
+
+  file-loader@6.2.0(webpack@5.97.0):
+    dependencies:
+      loader-utils: 2.0.4
+      schema-utils: 3.3.0
+      webpack: 5.97.0(webpack-cli@5.1.4)
 
   file-uri-to-path@1.0.0:
     optional: true
@@ -18392,7 +18401,7 @@ snapshots:
       ejs-loader: 0.5.0
       envinfo: 7.11.1
       esm: 3.2.25
-      file-loader: 6.2.0(webpack@4.47.0)
+      file-loader: 6.2.0(webpack@5.97.0)
       fork-ts-checker-webpack-plugin: 6.5.3(eslint@8.57.0)(typescript@5.4.2)(webpack@4.47.0)
       get-port: 5.1.1
       gittar: 0.1.1
@@ -20364,7 +20373,7 @@ snapshots:
       schema-utils: 3.3.0
       webpack: 4.47.0
     optionalDependencies:
-      file-loader: 6.2.0(webpack@4.47.0)
+      file-loader: 6.2.0(webpack@5.97.0)
 
   url-parse-lax@3.0.0:
     dependencies:

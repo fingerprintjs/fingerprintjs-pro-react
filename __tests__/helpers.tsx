@@ -1,6 +1,5 @@
 import { PropsWithChildren } from 'react'
-import { FpjsClientOptions } from '@fingerprintjs/fingerprintjs-pro-spa'
-import { FpjsProvider } from '../src'
+import { FpProvider, FpProviderOptions } from '../src'
 import { act } from 'react-dom/test-utils'
 
 export const getDefaultLoadOptions = () => ({
@@ -8,11 +7,11 @@ export const getDefaultLoadOptions = () => ({
 })
 
 export const createWrapper =
-  ({ loadOptions = getDefaultLoadOptions(), ...options }: Partial<FpjsClientOptions> = {}) =>
-  ({ children }: PropsWithChildren<{}>): JSX.Element => (
-    <FpjsProvider loadOptions={loadOptions} {...options}>
+  (providerProps: Partial<FpProviderOptions> = {}) =>
+  ({ children }: PropsWithChildren<{}>) => (
+    <FpProvider {...getDefaultLoadOptions()} {...providerProps}>
       {children}
-    </FpjsProvider>
+    </FpProvider>
   )
 
 export const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))

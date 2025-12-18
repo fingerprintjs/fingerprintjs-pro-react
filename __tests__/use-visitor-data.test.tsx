@@ -1,36 +1,42 @@
-import { useVisitorData, VisitorQueryContext } from '../src'
+import { useVisitorData, UseVisitorDataReturn } from '../src'
 import { render, renderHook } from '@testing-library/react'
 import { actWait, createWrapper } from './helpers'
 import { act } from 'react-dom/test-utils'
 import { useEffect, useState } from 'react'
 import userEvent from '@testing-library/user-event'
 import { FingerprintJSPro } from '@fingerprintjs/fingerprintjs-pro-spa'
+import { GetResult } from '@fingerprint/agent'
 
-const testData = {
-  visitorId: 'abcdef123456',
+const mockGetResult = {
+  visitor_id: 'kOzFgO0kw2Eivvb14mRL',
+  event_id: '1765898371879.Sad9kq',
+  sealed_result: null,
+  cache_hit: false,
+  suspect_score: 0.5,
+} satisfies GetResult
+
+const mockGet = jest.fn()
+const mockAgent = {
+  get: mockGet,
 }
-const init = jest.fn()
-const getVisitorData = jest.fn()
 
-jest.mock('@fingerprintjs/fingerprintjs-pro-spa', () => {
+const mockStart = jest.requireMock('@fingerprint/agent').start as jest.Mock
+
+jest.mock('@fingerprint/agent', () => {
   return {
-    ...(jest.requireActual('@fingerprintjs/fingerprintjs-pro-spa') as any),
-    FpjsClient: jest.fn(() => {
-      return {
-        init,
-        getVisitorData,
-        clearCache: jest.fn(),
-      }
-    }),
+    ...jest.requireActual('@fingerprint/agent'),
+    start: jest.fn(),
   }
 })
 
 describe('useVisitorData', () => {
   beforeEach(() => {
-    getVisitorData.mockReset()
+    jest.resetAllMocks()
+
+    mockStart.mockReturnValue(mockAgent)
   })
 
-  it('should provide the Fpjs context', async () => {
+  it('should provide the Fp context', async () => {
     const wrapper = createWrapper()
     const {
       result: { current },
@@ -43,10 +49,10 @@ describe('useVisitorData', () => {
   })
 
   it('should call getData on mount by default', async () => {
-    getVisitorData.mockImplementation(() => testData)
+    mockGet.mockImplementation(() => mockGetResult)
 
     const wrapper = createWrapper()
-    const { result } = renderHook(() => useVisitorData({}, { immediate: true }), { wrapper })
+    const { result } = renderHook(() => useVisitorData({ immediate: true }), { wrapper })
     expect(result.current).toMatchObject(
       expect.objectContaining({
         isLoading: true,
@@ -56,61 +62,61 @@ describe('useVisitorData', () => {
 
     await actWait(500)
 
-    expect(init).toHaveBeenCalled()
-    expect(getVisitorData).toHaveBeenCalled()
+    expect(mockStart).toHaveBeenCalled()
+    expect(mockGet).toHaveBeenCalled()
     expect(result.current).toMatchObject(
       expect.objectContaining({
         isLoading: false,
-        data: testData,
+        data: mockGetResult,
       })
     )
   })
 
   it("shouldn't call getData on mount if 'immediate' option is set to false", async () => {
-    getVisitorData.mockImplementation(() => testData)
+    mockGet.mockImplementation(() => mockGetResult)
 
     const wrapper = createWrapper()
-    const { rerender } = renderHook(() => useVisitorData({}, { immediate: false }), { wrapper })
+    const { rerender } = renderHook(() => useVisitorData({ immediate: false }), { wrapper })
 
-    expect(getVisitorData).not.toHaveBeenCalled()
+    expect(mockGet).not.toHaveBeenCalled()
 
-    await rerender()
+    rerender()
 
-    expect(getVisitorData).not.toHaveBeenCalled()
+    expect(mockGet).not.toHaveBeenCalled()
   })
 
   it('should support immediate fetch with cache disabled', async () => {
     const wrapper = createWrapper()
-    renderHook(() => useVisitorData({ ignoreCache: true }, { immediate: true }), { wrapper })
+    renderHook(() => useVisitorData({ immediate: true }), { wrapper })
 
     await actWait(500)
 
-    expect(getVisitorData).toHaveBeenCalledTimes(1)
-    expect(getVisitorData).toHaveBeenCalledWith({}, true)
+    expect(mockGet).toHaveBeenCalledTimes(1)
+    expect(mockGet).toHaveBeenCalledWith({})
   })
 
   it('should support overwriting default cache option in getData call', async () => {
     const wrapper = createWrapper()
-    const hook = renderHook(() => useVisitorData({ ignoreCache: true }, { immediate: false }), { wrapper })
-
-    await act(async () => {
-      await hook.result.current.getData({
-        ignoreCache: false,
-      })
+    const hook = renderHook(() => useVisitorData({ immediate: false }), {
+      wrapper,
     })
 
-    expect(getVisitorData).toHaveBeenCalledTimes(1)
-    expect(getVisitorData).toHaveBeenCalledWith({}, false)
+    await act(async () => {
+      await hook.result.current.getData()
+    })
+
+    expect(mockGet).toHaveBeenCalledTimes(1)
+    expect(mockGet).toHaveBeenCalledWith({})
   })
 
   it('should re-fetch data when options change if "immediate" is set to true', async () => {
     const Component = () => {
-      const [extended, setExtended] = useState(false)
-      const { data } = useVisitorData({ extendedResult: extended }, { immediate: true })
+      const [tag, setTag] = useState(1)
+      const { data } = useVisitorData({ immediate: true, tag })
 
       return (
         <>
-          <button onClick={() => setExtended((prev) => !prev)}>Change options</button>
+          <button onClick={() => setTag((prev) => prev + 1)}>Change options</button>
           <pre>{JSON.stringify(data)}</pre>
         </>
       )
@@ -132,21 +138,19 @@ describe('useVisitorData', () => {
 
     await actWait(1000)
 
-    expect(getVisitorData).toHaveBeenCalledTimes(2)
-    expect(getVisitorData).toHaveBeenNthCalledWith(1, { extendedResult: false }, undefined)
-    expect(getVisitorData).toHaveBeenNthCalledWith(2, { extendedResult: true }, undefined)
+    expect(mockGet).toHaveBeenCalledTimes(2)
+    expect(mockGet).toHaveBeenNthCalledWith(1, { tag: 1 })
+    expect(mockGet).toHaveBeenNthCalledWith(2, { tag: 2 })
   })
 
   it('should correctly pass errors from SPA library', async () => {
-    getVisitorData.mockRejectedValue(new Error(FingerprintJSPro.ERROR_CLIENT_TIMEOUT))
+    mockGet.mockRejectedValue(new Error(FingerprintJSPro.ERROR_CLIENT_TIMEOUT))
 
     const wrapper = createWrapper()
-    const hook = renderHook(() => useVisitorData({ ignoreCache: true }, { immediate: false }), { wrapper })
+    const hook = renderHook(() => useVisitorData({ immediate: false }), { wrapper })
 
     await act(async () => {
-      const promise = hook.result.current.getData({
-        ignoreCache: false,
-      })
+      const promise = hook.result.current.getData()
 
       await expect(promise).rejects.toThrow(FingerprintJSPro.ERROR_CLIENT_TIMEOUT)
     })
@@ -159,24 +163,19 @@ describe('useVisitorData', () => {
     const wrapper = createWrapper()
     const hook = renderHook(
       () =>
-        useVisitorData(
-          {
-            linkedId: useVisitorDataId,
-            tag: { tagA: useVisitorDataId },
-          },
-          { immediate: false }
-        ),
+        useVisitorData({
+          linkedId: useVisitorDataId,
+          tag: { tagA: useVisitorDataId },
+          immediate: false,
+        }),
       { wrapper }
     )
 
     await act(async () => {
       await hook.result.current.getData()
     })
-    expect(getVisitorData).toHaveBeenCalledTimes(1)
-    expect(getVisitorData).toHaveBeenCalledWith(
-      { linkedId: useVisitorDataId, tag: { tagA: useVisitorDataId } },
-      undefined
-    )
+    expect(mockGet).toHaveBeenCalledTimes(1)
+    expect(mockGet).toHaveBeenCalledWith({ linkedId: useVisitorDataId, tag: { tagA: useVisitorDataId } })
   })
 
   it('`getData` `getOptions` should be more important than `getVisitorData` `getOptions`', async () => {
@@ -185,13 +184,11 @@ describe('useVisitorData', () => {
     const wrapper = createWrapper()
     const hook = renderHook(
       () =>
-        useVisitorData(
-          {
-            linkedId: useVisitorDataId,
-            tag: { tagA: useVisitorDataId },
-          },
-          { immediate: false }
-        ),
+        useVisitorData({
+          linkedId: useVisitorDataId,
+          tag: { tagA: useVisitorDataId },
+          immediate: false,
+        }),
       { wrapper }
     )
 
@@ -201,8 +198,8 @@ describe('useVisitorData', () => {
         tag: { tagA: getDataId },
       })
     })
-    expect(getVisitorData).toHaveBeenCalledTimes(1)
-    expect(getVisitorData).toHaveBeenCalledWith({ linkedId: getDataId, tag: { tagA: getDataId } }, undefined)
+    expect(mockGet).toHaveBeenCalledTimes(1)
+    expect(mockGet).toHaveBeenCalledWith({ linkedId: getDataId, tag: { tagA: getDataId } })
   })
 
   it('`getData` `getOptions` should extend `getVisitorData` `getOptions`', async () => {
@@ -211,13 +208,11 @@ describe('useVisitorData', () => {
     const wrapper = createWrapper()
     const hook = renderHook(
       () =>
-        useVisitorData(
-          {
-            linkedId: useVisitorDataId,
-            tag: { tagA: useVisitorDataId },
-          },
-          { immediate: false }
-        ),
+        useVisitorData({
+          linkedId: useVisitorDataId,
+          tag: { tagA: useVisitorDataId },
+          immediate: false,
+        }),
       { wrapper }
     )
 
@@ -226,8 +221,8 @@ describe('useVisitorData', () => {
         linkedId: getDataId,
       })
     })
-    expect(getVisitorData).toHaveBeenCalledTimes(1)
-    expect(getVisitorData).toHaveBeenCalledWith({ linkedId: getDataId, tag: { tagA: useVisitorDataId } }, undefined)
+    expect(mockGet).toHaveBeenCalledTimes(1)
+    expect(mockGet).toHaveBeenCalledWith({ linkedId: getDataId, tag: { tagA: useVisitorDataId } })
   })
 
   it('getData should only change if the getOptions semantically changes', async () => {
@@ -242,11 +237,13 @@ describe('useVisitorData', () => {
     // More information about this pattern can be found at:
     // https://react.dev/reference/react/useState#storing-information-from-previous-renders
 
-    const getDataValues: VisitorQueryContext<false>['getData'][] = []
+    const getDataValues: UseVisitorDataReturn['getData'][] = []
     let effectCount = 0
     const Component = () => {
       const [count, setCount] = useState(0)
-      const { data, getData } = useVisitorData(count <= 1 ? { timeout: 1000 } : { timeout: 2000 }, { immediate: false })
+      const { data, getData } = useVisitorData(
+        count <= 1 ? { timeout: 1000, immediate: false } : { timeout: 2000, immediate: false }
+      )
 
       useEffect(() => {
         effectCount++
