@@ -53,12 +53,11 @@
   },
   "homepage": "https://github.com/fingerprintjs/fingerprintjs-pro-react#readme",
   "dependencies": {
-    "@fingerprintjs/fingerprintjs-pro-spa": "^1.3.3",
+    "@fingerprint/agent": "4.0.0-beta.3",
     "fast-deep-equal": "3.1.3"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.2.0",
-    "@fingerprint/agent": "4.0.0-beta.0",
     "@fingerprintjs/commit-lint-dx-team": "^0.0.2",
     "@fingerprintjs/conventional-changelog-dx-team": "^0.1.0",
     "@fingerprintjs/eslint-config-dx-team": "^0.1.0",
