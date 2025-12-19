@@ -4,7 +4,6 @@ import { actWait, createWrapper } from './helpers'
 import { act } from 'react-dom/test-utils'
 import { useEffect, useState } from 'react'
 import userEvent from '@testing-library/user-event'
-import { FingerprintJSPro } from '@fingerprintjs/fingerprintjs-pro-spa'
 import { GetResult } from '@fingerprint/agent'
 
 const mockGetResult = {
@@ -143,8 +142,9 @@ describe('useVisitorData', () => {
     expect(mockGet).toHaveBeenNthCalledWith(2, { tag: 2 })
   })
 
-  it('should correctly pass errors from SPA library', async () => {
-    mockGet.mockRejectedValue(new Error(FingerprintJSPro.ERROR_CLIENT_TIMEOUT))
+  it('should correctly pass errors from agent', async () => {
+    const ERROR_CLIENT_TIMEOUT = 'timeout'
+    mockGet.mockRejectedValue(new Error(ERROR_CLIENT_TIMEOUT))
 
     const wrapper = createWrapper()
     const hook = renderHook(() => useVisitorData({ immediate: false }), { wrapper })
@@ -152,10 +152,10 @@ describe('useVisitorData', () => {
     await act(async () => {
       const promise = hook.result.current.getData()
 
-      await expect(promise).rejects.toThrow(FingerprintJSPro.ERROR_CLIENT_TIMEOUT)
+      await expect(promise).rejects.toThrow(ERROR_CLIENT_TIMEOUT)
     })
 
-    expect(hook.result.current.error?.message).toBe(FingerprintJSPro.ERROR_CLIENT_TIMEOUT)
+    expect(hook.result.current.error?.message).toBe(ERROR_CLIENT_TIMEOUT)
   })
 
   it('`getVisitorData` `getOptions` should be passed from `getVisitorData` `getOptions`', async () => {
