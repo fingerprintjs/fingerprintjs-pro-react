@@ -5,7 +5,7 @@ import { QueryResult } from './query'
 export type VisitorQueryResult = QueryResult<GetResult>
 
 const stub = (): never => {
-  throw new Error('You forgot to wrap your component in <FpjsProvider>.')
+  throw new Error('You forgot to wrap your component in <FpProvider>.')
 }
 
 const initialContext = {
