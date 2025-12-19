@@ -1,6 +1,6 @@
 import { PropsWithChildren, useCallback, useEffect, useMemo, useRef } from 'react'
 import { FpContext } from '../fp-context'
-import { Agent, GetOptions, StartOptions, start } from '@fingerprint/agent'
+import { Agent, GetOptions, start, StartOptions } from '@fingerprint/agent'
 import * as packageInfo from '../../package.json'
 import { isSSR } from '../ssr'
 import { WithEnvironment } from './with-environment'
@@ -72,15 +72,19 @@ function ProviderWithEnv({
     })
   }, [agentOptions, env])
 
-  const clientRef = useRef<Agent>(createClient())
+  const clientRef = useRef<Agent>()
 
   const getClient = useCallback(() => {
     if (isSSR()) {
       throw new Error('FpProvider client cannot be used in SSR')
     }
 
+    if (!clientRef.current) {
+      clientRef.current = createClient()
+    }
+
     return clientRef.current
-  }, [])
+  }, [createClient])
 
   const getVisitorData = useCallback(
     (options?: GetOptions) => {
