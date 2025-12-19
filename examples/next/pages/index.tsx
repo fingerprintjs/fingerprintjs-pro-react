@@ -2,18 +2,12 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import { useVisitorData } from '@fingerprintjs/fingerprintjs-pro-react'
-import { useState } from 'react'
 
 const Home: NextPage = () => {
-  const [extendedResult, updateExtendedResult] = useState(false)
-  const { isLoading, error, data, getData } = useVisitorData({ extendedResult }, { immediate: true })
+  const { isLoading, error, data } = useVisitorData({ immediate: true })
 
   const reloadData = () => {
-    getData({ ignoreCache: true })
-  }
-
-  const onChangeExtendedResult = (e: React.ChangeEvent<HTMLInputElement>) => {
-    updateExtendedResult(e.target.checked)
+    //getData({ ignoreCache: true })
   }
 
   return (
@@ -39,13 +33,9 @@ const Home: NextPage = () => {
           <button onClick={reloadData} type='button'>
             Reload data
           </button>
-          <label>
-            <input type='checkbox' onChange={onChangeExtendedResult} checked={extendedResult} />
-            Extended result
-          </label>
         </div>
         <h4>
-          VisitorId: <span className={styles.visitorId}>{isLoading ? 'Loading...' : data?.visitorId}</span>
+          VisitorId: <span className={styles.visitorId}>{isLoading ? 'Loading...' : data?.visitor_id}</span>
         </h4>
         <h4>Full visitor data:</h4>
         <pre className={styles.data}>{error ? error.message : JSON.stringify(data, null, 2)}</pre>
