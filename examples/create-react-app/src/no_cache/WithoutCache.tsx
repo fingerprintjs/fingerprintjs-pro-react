@@ -5,7 +5,7 @@ import { FPJS_API_KEY } from '../shared/utils/env'
 
 function WithoutCache() {
   return (
-    <FpProvider apiKey={FPJS_API_KEY} cache={false}>
+    <FpProvider apiKey={FPJS_API_KEY} cache={{ duration: 0, storage: 'agent' }}>
       <div className='App'>
         <header className='header'>
           <h2>Solution without cache</h2>
