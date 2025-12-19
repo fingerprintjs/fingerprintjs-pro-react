@@ -1,3 +1,14 @@
+## [3.0.0-test.1](https://github.com/fingerprintjs/fingerprintjs-pro-react/compare/v2.7.1...v3.0.0-test.1) (2025-12-19)
+
+
+### ⚠ BREAKING CHANGES
+
+* The SDK api has changed to match changes introduced in V4 version of the agent.
+
+### Features
+
+* migrate to v4 version of the agent ([36a26ba](https://github.com/fingerprintjs/fingerprintjs-pro-react/commit/36a26ba6a2c035e1b3b8dc52b8371a3ed1883b7b))
+
 ## [2.7.1](https://github.com/fingerprintjs/fingerprintjs-pro-react/compare/v2.7.0...v2.7.1) (2025-09-15)
 
 
