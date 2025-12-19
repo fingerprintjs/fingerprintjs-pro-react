@@ -1,21 +1,17 @@
-import { useState } from 'react'
 import { Outlet } from 'react-router-dom'
 import { Nav } from '../shared/components/Nav'
 import { FPJS_API_KEY } from '../shared/utils/env'
-import { FpjsProvider } from '@fingerprintjs/fingerprintjs-pro-react'
-import { CacheLocation, FingerprintJSPro } from '@fingerprintjs/fingerprintjs-pro-spa'
+import { FpProvider } from '@fingerprintjs/fingerprintjs-pro-react'
 
 function LocalStorageCache() {
-  const [loadOptions] = useState<FingerprintJSPro.LoadOptions>({
-    apiKey: FPJS_API_KEY,
-  })
-
   return (
-    <FpjsProvider
-      loadOptions={loadOptions}
-      cacheLocation={CacheLocation.LocalStorage}
-      cachePrefix='MY_AWESOME_PREFIX'
-      cacheTimeInSeconds={60 * 10}
+    <FpProvider
+      apiKey={FPJS_API_KEY}
+      cache={{
+        storage: 'localStorage',
+        duration: 60 * 10,
+        cachePrefix: 'MY_AWESOME_PREFIX',
+      }}
     >
       <div className='App'>
         <header className='header'>
@@ -25,7 +21,7 @@ function LocalStorageCache() {
         <Nav />
         <Outlet />
       </div>
-    </FpjsProvider>
+    </FpProvider>
   )
 }
 

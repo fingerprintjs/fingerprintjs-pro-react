@@ -1,17 +1,11 @@
-import { FpjsProvider } from '@fingerprintjs/fingerprintjs-pro-react'
-import { useState } from 'react'
+import { FpProvider } from '@fingerprintjs/fingerprintjs-pro-react'
 import { Outlet } from 'react-router-dom'
 import { Nav } from '../shared/components/Nav'
 import { FPJS_API_KEY } from '../shared/utils/env'
-import { CacheLocation, FingerprintJSPro } from '@fingerprintjs/fingerprintjs-pro-spa'
 
 function SessionStorageCache() {
-  const [loadOptions] = useState<FingerprintJSPro.LoadOptions>({
-    apiKey: FPJS_API_KEY,
-  })
-
   return (
-    <FpjsProvider loadOptions={loadOptions} cacheLocation={CacheLocation.SessionStorage} cacheTimeInSeconds={60 * 5}>
+    <FpProvider apiKey={FPJS_API_KEY} cache={{ storage: 'sessionStorage', duration: 60 * 5 }}>
       <div className='App'>
         <header className='header'>
           <h2>Solution with a custom implementation of a session storage cache</h2>
@@ -20,7 +14,7 @@ function SessionStorageCache() {
         <Nav />
         <Outlet />
       </div>
-    </FpjsProvider>
+    </FpProvider>
   )
 }
 

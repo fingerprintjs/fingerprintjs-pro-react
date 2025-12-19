@@ -5,10 +5,10 @@ import { JSX } from 'preact/compat'
 
 const App: FunctionalComponent = () => {
   const [extendedResult, updateExtendedResult] = useState(false)
-  const { isLoading, error, data, getData } = useVisitorData({ extendedResult }, { immediate: true })
+  const { isLoading, error, data, getData } = useVisitorData({ immediate: true })
 
   const reloadData = (): void => {
-    getData({ ignoreCache: true })
+    getData()
   }
 
   const onChangeExtendedResult = (e: JSX.TargetedEvent<HTMLInputElement, Event>): void => {
@@ -38,7 +38,7 @@ const App: FunctionalComponent = () => {
           </label>
         </div>
         <h4>
-          VisitorId: <span className='visitorId'>{isLoading ? 'Loading...' : data?.visitorId}</span>
+          VisitorId: <span className='visitorId'>{isLoading ? 'Loading...' : data?.visitor_id}</span>
         </h4>
         <h4>Full visitor data:</h4>
         <pre className='data'>{error ? error.message : JSON.stringify(data, null, 2)}</pre>

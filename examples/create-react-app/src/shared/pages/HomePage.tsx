@@ -1,10 +1,13 @@
 import Toggler from '../components/Toggler'
 import VisitorDataPresenter from '../components/VisitorDataPresenter'
-import { useContext } from 'react'
-import { FpjsContext, useVisitorData } from '@fingerprintjs/fingerprintjs-pro-react'
+import { useCallback } from 'react'
+import { useVisitorData } from '@fingerprintjs/fingerprintjs-pro-react'
 
 function HomePage() {
-  const { clearCache } = useContext(FpjsContext)
+  const clearCache = useCallback(() => {
+    localStorage.clear()
+    sessionStorage.clear()
+  }, [])
 
   return (
     <section className='body'>
@@ -24,7 +27,7 @@ function HomePage() {
 }
 
 function VisitorDataComponent() {
-  const { data, isLoading, error } = useVisitorData({ extendedResult: true })
+  const { data, isLoading, error } = useVisitorData()
 
   return <VisitorDataPresenter data={data} isLoading={isLoading} error={error} />
 }

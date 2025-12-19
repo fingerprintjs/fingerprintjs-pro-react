@@ -1,7 +1,7 @@
 import { useVisitorData } from '@fingerprintjs/fingerprintjs-pro-react'
 
 function App() {
-  const { isLoading, error, data } = useVisitorData()
+  const { isLoading, error, isFetched, data } = useVisitorData()
 
   if (isLoading) {
     return <div>Loading...</div>
@@ -10,7 +10,7 @@ function App() {
     return <div>An error occurred: {error.message}</div>
   }
 
-  if (data) {
+  if (isFetched) {
     return <div>Welcome {data.visitor_id}!</div>
   }
   return null

@@ -1,6 +1,6 @@
-import { VisitorData } from '@fingerprintjs/fingerprintjs-pro-spa'
+import { GetResult } from '@fingerprintjs/fingerprintjs-pro-react'
 
-function VisitorDataPresenter({ data, isLoading, error }: { data?: VisitorData; isLoading?: boolean; error?: Error }) {
+function VisitorDataPresenter({ data, isLoading, error }: { data?: GetResult; isLoading?: boolean; error?: Error }) {
   if (error) {
     return <p>An error occurred: {error.message}</p>
   }
@@ -8,7 +8,7 @@ function VisitorDataPresenter({ data, isLoading, error }: { data?: VisitorData; 
   return (
     <div className='visitor-data'>
       <p>
-        <b>Visitor ID:</b> {isLoading ? 'Loading...' : data ? data.visitorId : 'not established yet'}
+        <b>Visitor ID:</b> {isLoading ? 'Loading...' : data ? data.visitor_id : 'not established yet'}
       </p>
       {data && (
         <>
