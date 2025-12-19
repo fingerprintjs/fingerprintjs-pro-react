@@ -85,30 +85,20 @@ To get your API key and get started, see the [Fingerprint Pro Quick Start Guide]
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import {
-  FpjsProvider,
+  FpProvider,
   FingerprintJSPro,
 } from '@fingerprintjs/fingerprintjs-pro-react'
 import App from './App'
 
 const root = ReactDOM.createRoot(document.getElementById('app'))
 
+// <FpProvider /> supports the same options as `start()` function.
 root.render(
-  <FpjsProvider
-    loadOptions={{
-      apiKey: 'your-public-api-key',
-      // region: 'eu',
-      endpoint: [
-        // 'metrics.yourwebsite.com',
-        FingerprintJSPro.defaultEndpoint,
-      ],
-      scriptUrlPattern: [
-        // 'https://metrics.yourwebsite.com/web/v<version>/<apiKey>/loader_v<loaderVersion>.js',
-        FingerprintJSPro.defaultScriptUrlPattern,
-      ],
-    }}
+  <FpProvider
+    apiKey='your-public-api-key'
   >
     <App />
-  </FpjsProvider>
+  </FpProvider>
 )
 ```
 
@@ -120,7 +110,7 @@ import React from 'react'
 import { useVisitorData } from '@fingerprintjs/fingerprintjs-pro-react'
 
 function App() {
-  const { isLoading, error, data } = useVisitorData()
+  const { isLoading, error, isFetched, data } = useVisitorData()
 
   if (isLoading) {
     return <div>Loading...</div>
@@ -129,16 +119,11 @@ function App() {
     return <div>An error occured: {error.message}</div>
   }
 
-  if (data) {
-    // Perform some logic based on the visitor data
-    return (
-      <div>
-        Welcome {data.visitorFound ? 'back' : ''}, {data.visitorId}!
-      </div>
-    )
-  } else {
-    return null
+  if (isFetched) {
+    return <div>Welcome {data.visitor_id}!</div>
   }
+  
+  return null
 }
 
 export default App
@@ -146,7 +131,6 @@ export default App
 
 The `useVisitorData` hook also returns a `getData` method you can use to make an API call on command.
 
-- You can pass `{ ignoreCache: true }` to `useVisitorData` to force a fresh identification request.
 - You can pass `{ immediate: false }` to `useVisitorData` to disable automatic visitor identification on render.
 
 Both `useVisitorData` and `getData` accept all the [get options](https://dev.fingerprint.com/reference/get-function#get-options) available in the JavaScript agent `get` function.
@@ -158,7 +142,6 @@ import { useVisitorData } from '@fingerprintjs/fingerprintjs-pro-react'
 
 function App() {
   const { isLoading, error, getData } = useVisitorData(
-    { ignoreCache: true },
     { immediate: false }
   )
   const [email, setEmail] = useState('')
@@ -223,20 +206,6 @@ function App() {
 }
 // ...
 ```
-
-## Caching strategy
-
-Fingerprint Pro usage is billed per API call. To avoid unnecessary API calls, it is a good practice to cache identification results. By default, the SDK uses `sessionStorage` to cache results.
-
-- Specify the `cacheLocation` prop on `<FpjsProvider>` to instead store results in `memory` or `localStorage`. Use `none` to disable caching completely.
-- Specify the `cacheTimeInSeconds` prop on `<FpjsProvider>` to set the cache time in seconds. It cannot exceed 86400 seconds (24 hours).
-- Specify the `cache` prop on `<FpjsProvider>` to use your custom cache implementation instead. For more details, see [Creating a custom cache](https://github.com/fingerprintjs/fingerprintjs-pro-spa#creating-a-custom-cache)
-  in the Fingerprint Pro SPA repository (a lower-level Fingerprint library used by this SDK).
-- Pass `{ignoreCache: true}` to the `getData()` function to ignore cached results for that specific API call.
-
-> [!NOTE]
-> If you use data from [`extendedResult`](https://dev.fingerprint.com/reference/get-function#extendedresult), pay additional attention to your caching strategy.
-> Some fields, for example, `ip` or `lastSeenAt`, might change over time for the same visitor. Use `getData({ ignoreCache: true })` to fetch the latest identification results.
 
 ## Error handling
 
