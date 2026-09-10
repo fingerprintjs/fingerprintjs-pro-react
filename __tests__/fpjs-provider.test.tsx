@@ -1,4 +1,4 @@
-import { PropsWithChildren, useContext } from 'react'
+import { PropsWithChildren, useContext, version as reactVersion } from 'react'
 import { act, render, renderHook } from '@testing-library/react'
 import { FingerprintContext, FingerprintProvider, FingerprintProviderOptions, useVisitorData } from '../src'
 import { createWrapper, getDefaultStartOptions } from './helpers'
@@ -67,7 +67,7 @@ describe('FingerprintProvider', () => {
     })
     expect(mockStart).toHaveBeenCalledWith({
       ...loadOptions,
-      integrationInfo: [`react-sdk/${version}/react`],
+      integrationInfo: [`react-sdk/${version}/react/${reactVersion}`],
       cache: {
         cachePrefix: 'cache',
         storage: 'sessionStorage',

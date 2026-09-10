@@ -1,3 +1,5 @@
+import { version as reactVersion } from 'react'
+
 import { Env, type EnvDetails } from './env.types'
 
 export interface DetectEnvContext {
@@ -81,6 +83,7 @@ export function detectEnvironment({ context }: DetectEnvParams): EnvDetails {
   if (isReact(context)) {
     return {
       name: Env.React,
+      version: reactVersion,
     }
   }
 
