@@ -37,13 +37,6 @@ function isPreact(context: DetectEnvContext) {
 }
 
 /**
- * Checks if user is using react.
- * */
-function isReact(context: DetectEnvContext) {
-  return !context.classRenderReceivesAnyArguments
-}
-
-/**
  * Runs checks that determine if user is using next.
  * Those checks should have almost 100% accuracy.
  * */
@@ -80,14 +73,8 @@ export function detectEnvironment({ context }: DetectEnvParams): EnvDetails {
     }
   }
 
-  if (isReact(context)) {
-    return {
-      name: Env.React,
-      version: reactVersion,
-    }
-  }
-
   return {
-    name: Env.Unknown,
+    name: Env.React,
+    version: reactVersion,
   }
 }
