@@ -1,3 +1,5 @@
+import { version as reactVersion } from 'react'
+
 import { detectEnvironment } from '../src/detect-env'
 import { Env } from '../src/env.types'
 import { afterEach, describe, expect, it, vi } from 'vitest'
@@ -33,6 +35,7 @@ describe('Detect user env', () => {
 
       expect(env).toEqual({
         name: Env.React,
+        version: reactVersion,
       })
     })
   })
@@ -88,6 +91,7 @@ describe('Detect user env', () => {
 
         expect(env).toEqual({
           name: Env.React,
+          version: reactVersion,
         })
       } finally {
         if (originalWindowDescriptor) {
@@ -96,66 +100,6 @@ describe('Detect user env', () => {
           Reflect.deleteProperty(globalThis, 'window')
         }
       }
-    })
-  })
-})
-
-describe('getEnvironment', () => {
-  afterEach(() => {
-    vi.resetModules()
-    vi.doUnmock('../src/env')
-  })
-
-  it('returns parsed env details when the build-time env placeholder is valid JSON', async () => {
-    vi.resetModules()
-    vi.doMock('../src/env', () => ({
-      env: JSON.stringify({ name: 'react', version: '18.0.0' }),
-    }))
-
-    const { getEnvironment: getEnvironmentFresh } = await import('../src/get-env')
-
-    expect(
-      getEnvironmentFresh({
-        context: { classRenderReceivesAnyArguments: false },
-      })
-    ).toEqual({
-      name: 'react',
-      version: '18.0.0',
-    })
-  })
-
-  it('falls back to detection when the build-time env JSON is not env details', async () => {
-    vi.resetModules()
-    vi.doMock('../src/env', () => ({
-      env: JSON.stringify({ foo: 'bar' }),
-    }))
-
-    const { getEnvironment: getEnvironmentFresh } = await import('../src/get-env')
-
-    expect(
-      getEnvironmentFresh({
-        // absence of classRenderReceivesAnyArguments is React signal
-        context: { classRenderReceivesAnyArguments: false },
-      })
-    ).toEqual({
-      name: Env.React,
-    })
-  })
-
-  it('falls back to detection when the build-time env is invalid', async () => {
-    vi.resetModules()
-    vi.doMock('../src/env', () => ({
-      env: '%DETECTED_ENV%',
-    }))
-
-    const { getEnvironment: getEnvironmentFresh } = await import('../src/get-env')
-
-    expect(
-      getEnvironmentFresh({
-        context: { classRenderReceivesAnyArguments: false },
-      })
-    ).toEqual({
-      name: Env.React,
     })
   })
 })

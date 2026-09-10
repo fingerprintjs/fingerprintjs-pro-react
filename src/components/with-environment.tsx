@@ -1,7 +1,6 @@
 import { Component, type JSX } from 'react'
 
-import { getEnvironment } from '../get-env'
-import { type DetectEnvParams } from '../detect-env'
+import { detectEnvironment, type DetectEnvParams } from '../detect-env'
 import { type EnvDetails } from '../env.types'
 
 export interface WithEnvironmentProps {
@@ -31,7 +30,7 @@ class WithEnvironment extends Component<WithEnvironmentProps> {
         context: { classRenderReceivesAnyArguments: hasAnyArguments },
       }
 
-      this.detectedEnv = getEnvironment(detectParams)
+      this.detectedEnv = detectEnvironment(detectParams)
     }
 
     return this.props.children(this.detectedEnv)

@@ -29,7 +29,6 @@
     "privacy"
   ],
   "scripts": {
-    "postinstall": "node scripts/detect-env.js",
     "prepare": "husky",
     "watch": "vite build --watch",
     "build": "vite build",
@@ -45,8 +44,7 @@
     "changeset:publish": "HUSKY=0 changeset publish"
   },
   "files": [
-    "dist",
-    "scripts"
+    "dist"
   ],
   "repository": {
     "type": "git",

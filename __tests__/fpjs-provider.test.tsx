@@ -1,4 +1,4 @@
-import { PropsWithChildren, useContext } from 'react'
+import { PropsWithChildren, useContext, version as reactVersion } from 'react'
 import { act, render, renderHook } from '@testing-library/react'
 import { FingerprintContext, FingerprintProvider, FingerprintProviderOptions, useVisitorData } from '../src'
 import { createWrapper, getDefaultStartOptions } from './helpers'
@@ -7,6 +7,8 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import * as agent from '@fingerprint/agent'
 import type { GetOptions } from '@fingerprint/agent'
 import * as ssr from '../src/ssr'
+import * as detectEnv from '../src/detect-env'
+import { Env } from '../src/env.types'
 
 vi.mock('@fingerprint/agent', { spy: true })
 
@@ -67,7 +69,7 @@ describe('FingerprintProvider', () => {
     })
     expect(mockStart).toHaveBeenCalledWith({
       ...loadOptions,
-      integrationInfo: [`react-sdk/${version}/react`],
+      integrationInfo: [`react-sdk/${version}/react/${reactVersion}`],
       cache: {
         cachePrefix: 'cache',
         storage: 'sessionStorage',
@@ -84,6 +86,18 @@ describe('FingerprintProvider', () => {
     expect(mockStart).toHaveBeenCalledWith(
       expect.objectContaining({
         integrationInfo: [`react-sdk/${version}/next/14.2.0`],
+      })
+    )
+  })
+
+  it('should omit the version in integrationInfo when the framework exposes none', () => {
+    vi.spyOn(detectEnv, 'detectEnvironment').mockReturnValue({ name: Env.Preact })
+
+    renderProvider()
+
+    expect(mockStart).toHaveBeenCalledWith(
+      expect.objectContaining({
+        integrationInfo: [`react-sdk/${version}/preact`],
       })
     )
   })

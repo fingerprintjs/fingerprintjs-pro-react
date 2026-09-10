@@ -1,3 +1,5 @@
+import { version as reactVersion } from 'react'
+
 import { Env, type EnvDetails } from './env.types'
 
 export interface DetectEnvContext {
@@ -32,13 +34,6 @@ function runEnvChecks(...strategies: EnvCheckStrategy[]) {
  * */
 function isPreact(context: DetectEnvContext) {
   return context.classRenderReceivesAnyArguments
-}
-
-/**
- * Checks if user is using react.
- * */
-function isReact(context: DetectEnvContext) {
-  return !context.classRenderReceivesAnyArguments
 }
 
 /**
@@ -78,13 +73,8 @@ export function detectEnvironment({ context }: DetectEnvParams): EnvDetails {
     }
   }
 
-  if (isReact(context)) {
-    return {
-      name: Env.React,
-    }
-  }
-
   return {
-    name: Env.Unknown,
+    name: Env.React,
+    version: reactVersion,
   }
 }

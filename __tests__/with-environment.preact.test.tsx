@@ -22,5 +22,18 @@ describe('WithEnvironment', () => {
 
       expect(container.innerHTML).toContain('preact')
     })
+
+    it('should not report a version', async () => {
+      const { WithEnvironment } = await import('../src/components/with-environment')
+      const PrintEnv = (props: { env: { version?: string } }) =>
+        h('div', null, JSON.stringify(props.env.version ?? null))
+
+      // @ts-expect-error -- preact's render signature does not match React's @testing-library/react types
+      const { container } = preactRender(h(WithEnvironment, { children: (env) => h(PrintEnv, { env }) }))
+
+      // `compat.version` is the hardcoded React-compatibility number and must never leak through
+      expect(compat.version).toBeDefined()
+      expect(container.innerHTML).toBe('<div>null</div>')
+    })
   })
 })
